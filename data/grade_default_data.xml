@@ -2,6 +2,66 @@
 <odoo>
 
     <!-- Military / General Ranks -->
+    <!-- Officers -->
+    <record id="grade_soldier_officer" model="employee.grade">
+        <field name="name">Soldier / Officer</field>
+    </record>
+    <record id="grade_sergeant" model="employee.grade">
+        <field name="name">Sergeant</field>
+    </record>
+
+    <record id="grade_assistant_sergeant" model="employee.grade">
+        <field name="name">Assistant Sergeant</field>
+    </record>
+
+    <record id="grade_staff_sergeant" model="employee.grade">
+        <field name="name">Staff Sergeant</field>
+    </record>
+
+    <record id="grade_assistant_sergeant_major" model="employee.grade">
+        <field name="name">Assistant Sergeant Major</field>
+    </record>
+
+    <record id="grade_sergeant_major" model="employee.grade">
+        <field name="name">Sergeant Major</field>
+    </record>
+
+    <record id="grade_third_lieutenant" model="employee.grade">
+        <field name="name">Third Lieutenant</field>
+    </record>
+
+    <record id="grade_second_lieutenant" model="employee.grade">
+        <field name="name">Second Lieutenant</field>
+    </record>
+
+    <record id="grade_first_lieutenant" model="employee.grade">
+        <field name="name">First Lieutenant</field>
+    </record>
+
+    <record id="grade_captain" model="employee.grade">
+        <field name="name">Captain</field>
+    </record>
+
+    <record id="grade_senior_captain" model="employee.grade">
+        <field name="name">Senior Captain</field>
+    </record>
+
+    <record id="grade_major" model="employee.grade">
+        <field name="name">Major</field>
+    </record>
+
+    <record id="grade_lieutenant_colonel" model="employee.grade">
+        <field name="name">Lieutenant Colonel</field>
+    </record>
+
+    <record id="grade_colonel" model="employee.grade">
+        <field name="name">Colonel</field>
+    </record>
+
+    <record id="grade_brigadier_general" model="employee.grade">
+        <field name="name">Brigadier General</field>
+    </record>
+
     <record id="grade_major_general" model="employee.grade">
         <field name="name">Major General</field>
     </record>
@@ -10,49 +70,16 @@
         <field name="name">Lieutenant General</field>
     </record>
 
-    <record id="grade_accused_general" model="employee.grade">
-        <field name="name">Accused General</field>
+    <record id="grade_general" model="employee.grade">
+        <field name="name">General</field>
     </record>
 
-    <record id="grade_brigadier_general" model="employee.grade">
-        <field name="name">Brigadier General</field>
+    <record id="grade_marshal" model="employee.grade">
+        <field name="name">Marshal</field>
     </record>
 
-    <record id="grade_colonel" model="employee.grade">
-        <field name="name">Colonel</field>
-    </record>
+    <!-- Non-Commissioned Officers -->
 
-    <record id="grade_lieutenant" model="employee.grade">
-        <field name="name">Lieutenant</field>
-    </record>
-
-    <record id="grade_battler" model="employee.grade">
-        <field name="name">Battler</field>
-    </record>
-
-    <record id="grade_accused" model="employee.grade">
-        <field name="name">Accused</field>
-    </record>
-
-    <record id="grade_first_lieutenant" model="employee.grade">
-        <field name="name">First Lieutenant</field>
-    </record>
-
-    <record id="grade_second_lieutenant" model="employee.grade">
-        <field name="name">Second Lieutenant</field>
-    </record>
-
-    <record id="grade_acting_sergeant" model="employee.grade">
-        <field name="name">Acting Sergeant</field>
-    </record>
-
-    <record id="grade_assistant_acting_sergeant" model="employee.grade">
-        <field name="name">Assistant Acting Sergeant</field>
-    </record>
-
-    <record id="grade_chief_sergeant" model="employee.grade">
-        <field name="name">Chief Sergeant</field>
-    </record>
 
     <record id="grade_superior_rank" model="employee.grade">
         <field name="name">Superior Rank</field>
@@ -108,29 +135,11 @@
         <field name="name">Above Rank</field>
     </record>
 
-    <record id="grade_assistant_chief" model="employee.grade">
-        <field name="name">Assistant Chief</field>
-    </record>
-
-    <record id="grade_chief" model="employee.grade">
-        <field name="name">Chief</field>
-    </record>
-
-    <record id="grade_jungle_chief" model="employee.grade">
-        <field name="name">Jungle Chief</field>
-    </record>
-
-    <record id="grade_chief_of_regiment" model="employee.grade">
-        <field name="name">Chief of Regiment</field>
-    </record>
 
     <record id="grade_without_rank" model="employee.grade">
         <field name="name">Without Rank</field>
     </record>
 
-    <record id="grade_soldier_officer" model="employee.grade">
-        <field name="name">Soldier / Officer</field>
-    </record>
 
     <!-- Judicial Grades -->
     <record id="grade_judicial_branch_1" model="employee.grade">
@@ -200,6 +209,41 @@
 
     <record id="grade_tenth_position" model="employee.grade">
         <field name="name">Tenth Position</field>
+    </record>
+    <record id="grade_duham_saran" model="employee.grade">
+        <field name="name">دوهم سارن</field>
+    </record>
+
+    <record id="grade_lomray_saran" model="employee.grade">
+        <field name="name">لومړی سارن</field>
+    </record>
+
+    <record id="grade_sarman" model="employee.grade">
+        <field name="name">سارمن</field>
+    </record>
+
+    <record id="grade_samonyar" model="employee.grade">
+        <field name="name">سمونیار</field>
+    </record>
+
+    <record id="grade_samonmal" model="employee.grade">
+        <field name="name">سمونمل</field>
+    </record>
+
+    <record id="grade_samonwal" model="employee.grade">
+        <field name="name">سمونوال</field>
+    </record>
+
+    <record id="grade_mal_paswal" model="employee.grade">
+        <field name="name">مل پاسوال</field>
+    </record>
+
+    <record id="grade_paswal" model="employee.grade">
+        <field name="name">پاسوال</field>
+    </record>
+
+    <record id="grade_loy_paswal" model="employee.grade">
+        <field name="name">لوى پاسوال</field>
     </record>
 
 </odoo>
