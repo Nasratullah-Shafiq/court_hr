@@ -3,7 +3,7 @@ from datetime import date
 from dateutil.relativedelta import relativedelta
 
 from odoo.exceptions import UserError
-from odoo import fields, models, api
+from odoo import _, models, fields, api
 import base64
 import qrcode
 
@@ -538,7 +538,7 @@ class HrEmployeeInherit(models.Model):
             ).report_action(self)
 
         raise UserError(
-            'Please select an employee category before printing the employee card.'
+            _('Please select an employee category before printing the employee card.')
         )
 
 
