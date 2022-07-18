@@ -12,6 +12,29 @@
             <!--  Add other user fields as required  -->
         </record>
 
+        <!--Default Employee Officer User for Supreme Court-->
+        <record id="egp_hr_supreme_court_user" model="res.users">
+            <field name="name">Supreme Court</field>
+            <field name="login">supreme_court@gmail.com</field>
+            <field name="password">123</field>
+
+            <field name="groups_id"
+                   eval="[(4, ref('egp_hr.group_supreme_court_employee_officers'))]"/>
+        </record>
+
+        <!--Default Employee Officer User for Afghan Red Crescent Society-->
+        <record id="egp_hr_afghan_red_crescent_user" model="res.users">
+            <field name="name">Afghan Red Crescent Society</field>
+            <field name="login">arcs@gmail.com</field>
+            <field name="password">123</field>
+
+            <field name="groups_id"
+                   eval="[
+               (4, ref('egp_hr.group_arcs_employee_officers'))
+           ]"/>
+        </record>
+
+        <!--Default Employee Officer User -->
         <record id="egp_hr_employee_default_expert_user" model="res.users">
             <field name="name">
                 <![CDATA[ کارشناس سوانح ]]>
