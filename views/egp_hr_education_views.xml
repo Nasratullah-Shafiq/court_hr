@@ -1,0 +1,313 @@
+<odoo>
+
+    <!-- ========================= -->
+    <!-- Tree Views -->
+    <!-- ========================= -->
+
+    <!-- Modern Education Tree -->
+    <record id="view_employee_education_tree_modern" model="ir.ui.view">
+        <field name="name">employee.education.tree.modern</field>
+        <field name="model">employee.education</field>
+        <field name="arch" type="xml">
+            <tree string="Modern Education">
+                <field name="employee_id"/>
+                <field name="education_type"/>
+                <field name="degree_id"/>
+                <field name="country_id"/>
+                <field name="province_id"/>
+                <field name="university_id"/>
+                <field name="faculty_id"/>
+                <field name="major_id"/>
+                <field name="education_start_date"/>
+                <field name="education_end_date"/>
+                <field name="education_year"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Islamic Education Tree -->
+    <record id="view_employee_education_tree_islamic" model="ir.ui.view">
+        <field name="name">employee.education.tree.islamic</field>
+        <field name="model">employee.education</field>
+        <field name="arch" type="xml">
+            <tree string="Islamic Education">
+                <field name="employee_id"/>
+                <field name="education_type"/>
+                <field name="degree_id"/>
+                <field name="country_id"/>
+                <field name="province_id"/>
+                <field name="society_id"/>
+                <field name="major_id"/>
+                <field name="education_start_date"/>
+                <field name="education_end_date"/>
+                <field name="education_year"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Military Education Tree -->
+    <record id="view_employee_education_tree_military" model="ir.ui.view">
+        <field name="name">employee.education.tree.military</field>
+        <field name="model">employee.education</field>
+        <field name="arch" type="xml">
+            <tree string="Military Education">
+                <field name="employee_id"/>
+                <field name="education_type"/>
+                <field name="degree_id"/>
+                <field name="country_id"/>
+                <field name="province_id"/>
+                <field name="society_id"/>
+                <field name="major_id"/>
+                <field name="education_start_date"/>
+                <field name="education_end_date"/>
+                <field name="education_year"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Form View -->
+    <!-- ========================= -->
+    <record id="view_employee_education_form" model="ir.ui.view">
+        <field name="name">employee.education.form</field>
+        <field name="model">employee.education</field>
+        <field name="arch" type="xml">
+            <form string="Employee Education">
+                <sheet>
+                     <!-- Employee Information -->
+                <group string="Employee Information">
+                    <group>
+                        <field name="employee_id" required="1"/>
+                        <field name="father_name" required="1"/>
+                    </group>
+
+                    <group>
+                        <field name="grand_father_name" required="1"/>
+                        <field name="job_id" required="1"/>
+                        <field name="department_id" required="1"/>
+                    </group>
+                </group>
+                    <group string="Education Information">
+                        <group>
+
+                            <field name="education_type"/>
+                            <field name="degree_id"/>
+                            <field name="country_id"/>
+                            <field name="province_id"/>
+                            <field name="university_id" invisible="education_type != 'modern_education'"/>
+                            <field name="society_id" invisible="education_type == 'modern_education'"/>
+                            <field name="faculty_id" invisible="education_type != 'modern_education'"/>
+                            <field name="major_id"/>
+                        </group>
+                        <group>
+                            <field name="education_duration"/>
+                            <field name="in_service"/>
+                            <field name="batch_no"/>
+                            <field name="education_start_date"/>
+                            <field name="education_end_date"/>
+                        </group>
+                    </group>
+                    <group string="Remarks">
+                        <field name="education_remarks"/>
+                    </group>
+                    <group>
+                        <field name="attachments" widget="many2many_binary"/>
+                    </group>
+                </sheet>
+
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_employee_education_search" model="ir.ui.view">
+        <field name="name">employee.education.search</field>
+        <field name="model">employee.education</field>
+        <field name="arch" type="xml">
+            <search string="Search Employee Education">
+
+                <!-- ========================= -->
+                <!-- Basic Search Fields -->
+                <!-- ========================= -->
+                <field name="employee_id"/>
+                <field name="education_type"/>
+                <field name="degree_id"/>
+                <field name="university_id"/>
+                <field name="society_id"/>
+                <field name="major_id"/>
+
+                <!-- ========================= -->
+                <!-- Quick Filters -->
+                <!-- ========================= -->
+                <filter name="filter_modern"
+                        string="Modern Education"
+                        domain="[('education_type','=','modern_education')]"/>
+
+                <filter name="filter_islamic"
+                        string="Islamic Education"
+                        domain="[('education_type','=','islamic_education')]"/>
+
+                <filter name="filter_military"
+                        string="Military Education"
+                        domain="[('education_type','=','military_education')]"/>
+
+                <!-- ========================= -->
+                <!-- Date Filters -->
+                <!-- ========================= -->
+                <filter name="filter_current_year"
+                        string="Current Year"
+                        domain="[('education_year','=', context_today().year)]"/>
+
+                <!-- ========================= -->
+                <!-- Group By -->
+                <!-- ========================= -->
+                <group expand="0" string="Group By">
+
+                    <filter name="group_by_employee"
+                            string="Employee"
+                            context="{'group_by':'employee_id'}"/>
+
+                    <filter name="group_by_type"
+                            string="Education Type"
+                            context="{'group_by':'education_type'}"/>
+
+                    <filter name="group_by_degree"
+                            string="Degree"
+                            context="{'group_by':'degree_id'}"/>
+
+                    <filter name="group_by_country"
+                            string="Country"
+                            context="{'group_by':'country_id'}"/>
+
+                    <filter name="group_by_year"
+                            string="Year"
+                            context="{'group_by':'education_year'}"/>
+
+                </group>
+
+                <!-- ========================= -->
+                <!-- SEARCH PANEL (LEFT SIDE FILTER UI) -->
+                <!-- ========================= -->
+                <searchpanel>
+
+                    <field name="education_type"
+                           string="Education Type"
+                           icon="fa-book"
+                           enable_counters="1"/>
+
+                    <field name="degree_id"
+                           string="Degree"
+                           icon="fa-graduation-cap"
+                           enable_counters="1"/>
+
+                    <field name="country_id"
+                           string="Country"
+                           enable_counters="1"/>
+
+                    <field name="education_year"
+                           string="Year"
+                           icon="fa-calendar"
+                           enable_counters="1"/>
+
+                    <field name="education_month"
+                           string="Month"
+                           icon="fa-calendar"
+                           enable_counters="1"/>
+
+                </searchpanel>
+
+            </search>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Actions -->
+    <!-- ========================= -->
+
+    <!-- Modern Education Action -->
+    <record id="action_employee_education_modern" model="ir.actions.act_window">
+        <field name="name">Modern Education</field>
+        <field name="res_model">employee.education</field>
+        <field name="view_mode">tree,form,graph,pivot</field>
+        <field name="view_id" ref="view_employee_education_tree_modern"/>
+        <field name="domain">[('education_type', '=', 'modern_education')]</field>
+        <field name="context">{'default_education_type': 'modern_education'}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first modern education record
+            </p>
+            <p>
+                Track employee academic qualifications, university degrees, and modern education details.
+            </p>
+        </field>
+    </record>
+
+    <!-- Islamic Education Action -->
+    <record id="action_employee_education_islamic" model="ir.actions.act_window">
+        <field name="name">Islamic Education</field>
+        <field name="res_model">employee.education</field>
+        <field name="view_mode">tree,form,graph,pivot</field>
+        <field name="view_id" ref="view_employee_education_tree_islamic"/>
+        <field name="domain">[('education_type', '=', 'islamic_education')]</field>
+        <field name="context">{'default_education_type': 'islamic_education'}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first Islamic education record
+            </p>
+            <p>
+                Track employee religious studies, madrasa education, and Islamic qualifications.
+            </p>
+        </field>
+    </record>
+
+    <!-- Military Education Action -->
+    <record id="action_employee_education_military" model="ir.actions.act_window">
+        <field name="name">Military Education</field>
+        <field name="res_model">employee.education</field>
+        <field name="view_mode">tree,form,graph,pivot</field>
+        <field name="view_id" ref="view_employee_education_tree_military"/>
+        <field name="domain">[('education_type', '=', 'military_education')]</field>
+        <field name="context">{'default_education_type': 'military_education'}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first military education record
+            </p>
+            <p>
+                Track employee military training, defense courses, and strategic education.
+            </p>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Menus -->
+    <!-- ========================= -->
+
+    <menuitem id="menu_employee_education_root" name="Employee Education" parent="menu_employee_resume_sub"
+              sequence="30"/>
+
+    <menuitem
+            id="menu_employee_education_modern"
+            name="Modern Education"
+            parent="menu_employee_education_root"
+            action="action_employee_education_modern"
+            sequence="1"/>
+
+    <menuitem
+            id="menu_employee_education_islamic"
+            name="Islamic Education"
+            parent="menu_employee_education_root"
+            action="action_employee_education_islamic"
+            sequence="2"/>
+
+    <menuitem
+            id="menu_employee_education_military"
+            name="Military Education"
+            parent="menu_employee_education_root"
+            action="action_employee_education_military"
+            sequence="3"/>
+
+</odoo>
