@@ -131,6 +131,9 @@
                     <field name="grand_father_name"/>
 
                 </xpath>
+                <xpath expr="//field[@name='department_id']" position="after">
+                    <field name="english_department"/>
+                </xpath>
                 <xpath expr="//field[@name='work_email']" position="after">
 
                     <!--                    <group string="job information">-->
