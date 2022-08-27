@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- ========================= -->
+    <!-- Tree View -->
+    <!-- ========================= -->
+    <record id="view_employee_travel_tree" model="ir.ui.view">
+        <field name="name">employee.travel.tree</field>
+        <field name="model">employee.travel</field>
+        <field name="arch" type="xml">
+            <tree string="Employee Travel">
+                <field name="employee_id"/>
+                <field name="country"/>
+                <field name="province"/>
+                <field name="travel_start_date"/>
+                <field name="travel_end_date"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Form View with Chatter -->
+    <!-- ========================= -->
+    <record id="view_employee_travel_form" model="ir.ui.view">
+        <field name="name">employee.travel.form</field>
+        <field name="model">employee.travel</field>
+        <field name="arch" type="xml">
+            <form string="Employee Travel">
+                <sheet>
+                    <group string="Employee Information">
+                        <group>
+                            <field name="employee_id" required="1"/>
+                            <field name="father_name" required="1"/>
+
+                        </group>
+                        <group>
+                            <field name="grand_father_name" required="1"/>
+                            <field name="job_id" required="1"/>
+                            <field name="department_id" required="1"/>
+
+                        </group>
+                    </group>
+
+                    <!-- Basic Information -->
+                    <group string="Travel Information">
+                        <group>
+
+                            <field name="country"/>
+                        </group>
+                        <group>
+                            <field name="province"/>
+                        </group>
+
+                        <group>
+                            <field name="travel_start_date"/>
+                            <field name="travel_end_date"/>
+                        </group>
+                    </group>
+
+                    <!-- Remarks & Attachments -->
+                    <group>
+                        <field name="attachments" widget="many2many_binary"/>
+                        <field name="remarks"/>
+                    </group>
+
+                </sheet>
+
+                <!-- Chatter -->
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+
+            </form>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Search View with Search Panel -->
+    <!-- ========================= -->
+    <record id="view_employee_travel_search" model="ir.ui.view">
+        <field name="name">employee.travel.search</field>
+        <field name="model">employee.travel</field>
+        <field name="arch" type="xml">
+            <search string="Search Employee Travel">
+
+                <!-- Search Fields -->
+                <field name="employee_id"/>
+                <field name="country"/>
+                <field name="province"/>
+
+                <!-- Search Panel -->
+                <searchpanel>
+                    <field name="employee_id"/>
+                    <field name="country"/>
+                    <field name="province"/>
+                </searchpanel>
+
+            </search>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Graph View -->
+    <!-- ========================= -->
+    <record id="view_employee_travel_graph" model="ir.ui.view">
+        <field name="name">employee.travel.graph</field>
+        <field name="model">employee.travel</field>
+        <field name="arch" type="xml">
+            <graph string="Employee Travel Analysis" type="bar">
+                <field name="country" type="row"/>
+                <field name="employee_id" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Pivot View -->
+    <!-- ========================= -->
+    <record id="view_employee_travel_pivot" model="ir.ui.view">
+        <field name="name">employee.travel.pivot</field>
+        <field name="model">employee.travel</field>
+        <field name="arch" type="xml">
+            <pivot string="Employee Travel Pivot">
+                <field name="employee_id" type="row"/>
+                <field name="country" type="col"/>
+                <field name="province" type="col"/>
+            </pivot>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Action -->
+    <!-- ========================= -->
+    <record id="action_employee_travel" model="ir.actions.act_window">
+        <field name="name">Employee Travel</field>
+        <field name="res_model">employee.travel</field>
+        <field name="view_mode">tree,form,graph,pivot</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first employee travel record
+            </p>
+            <p>
+                Track employee travel details, dates, and attachments.
+            </p>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Menu Item -->
+    <!-- ========================= -->
+    <menuitem
+        id="menu_employee_travel"
+        name="Employee Travel"
+        parent="menu_employee_resume_sub"
+        action="action_employee_travel"
+        sequence="50"/>
+
+</odoo>
