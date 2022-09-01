@@ -1,0 +1,590 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+
+        <!-- ========================================================= -->
+        <!-- REPORT ACTION                                               -->
+        <!-- ========================================================= -->
+
+        <record id="hr_employee_exclusive_report" model="ir.actions.report">
+            <field name="name"> Employee Exclusive Report </field>
+            <field name="model">hr.employee</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">egp_hr.print_employee_explosive_report</field>
+            <field name="report_file">egp_hr.print_employee_explosive_report</field>
+            <field name="print_report_name">'Employee Exclusive Report - %s' % (object.name).replace('/', '') </field>
+            <field name="binding_model_id" ref="model_hr_employee"/>
+            <field name="paperformat_id" ref="egp_hr.report_paperformat_a4"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <!-- ========================================================= -->
+        <!-- MAIN TEMPLATE                                               -->
+        <!-- ========================================================= -->
+
+        <template id="print_employee_explosive_report">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="web.basic_layout">
+                        <div class="page"
+                             dir="rtl"
+                             style="
+                                font-family:'DejaVu Sans', Arial, sans-serif;
+                                font-size:15px;
+                                padding:0;
+                                margin:0;
+                                direction:rtl;
+                             ">
+
+                            <!-- ================================================= -->
+                            <!-- HEADER                                            -->
+                            <!-- ================================================= -->
+
+                            <table style="
+                                width:100%;
+                                border-collapse:collapse;
+
+                                height:35mm;
+                            ">
+
+                                <tr>
+
+                                    <!-- LEFT LOGO -->
+                                    <td style="
+                                        width:18%;
+                                        text-align:left;
+                                        vertical-align:middle;
+                                        border:none;
+                                        padding-left:10mm;
+                                    ">
+
+                                        <img
+                                                src="/egp_hr/static/description/Emerate_logo.png"
+                                                style="
+                                                width:30mm;
+                                                height:30mm;
+                                                object-fit:contain;
+                                            "
+                                        />
+
+                                    </td>
+
+
+                                    <!-- CENTER HEADER -->
+                                    <td style="
+                                        width:64%;
+                                        text-align:center;
+                                        vertical-align:middle;
+                                        border:none;
+                                        font-weight:bold;
+                                        font-size:20px;
+                                        line-height:2;
+                                    ">
+
+                                        <div>
+                                            امارت اسلامی افغانستان
+                                        </div>
+
+                                        <div>
+                                            ستره محکمه
+                                        </div>
+
+                                        <div>
+                                            دیتابیس داخلی ستره محکمه
+                                        </div>
+
+                                    </td>
+
+
+                                    <!-- RIGHT LOGO -->
+                                    <td style="
+                                        width:18%;
+                                        text-align:right;
+                                        vertical-align:middle;
+                                        border:none;
+                                        padding-right:10mm;
+                                    ">
+
+                                        <t t-if="doc.create_uid.company_id.logo">
+
+                                            <img
+                                                    t-att-src="'data:image/png;base64,' + doc.create_uid.company_id.logo.decode('utf-8')"
+                                                    style="
+                                                    width:30mm;
+                                                    height:30mm;
+                                                    object-fit:contain;
+                                                "
+                                            />
+
+                                        </t>
+
+                                        <t t-else="">
+
+                                            <img
+                                                    src="/egp_hr/static/description/MCIT_logo.png"
+                                                    style="
+                                                    width:30mm;
+                                                    height:30mm;
+                                                    object-fit:contain;
+                                                "
+                                            />
+                                        </t>
+                                    </td>
+                                </tr>
+                            </table>
+
+
+                            <!-- ================================================= -->
+                            <!-- TABLE CONTAINER                                    -->
+                            <!-- ================================================= -->
+
+                            <div style="
+                                margin-top:7mm;
+
+                                padding:5mm;
+                                width:100%;
+                                box-sizing:border-box;
+                            ">
+
+
+                                <!-- TABLE TITLE -->
+                                <div style="
+                                    text-align:center;
+                                    font-size:19px;
+                                    font-weight:bold;
+                                    margin-bottom:4mm;
+                                ">
+
+                                   جدول شهرت کارمندان
+
+                                </div>
+
+
+                                <!-- ================================================= -->
+                                <!-- EMPLOYEE FAME TABLE                               -->
+                                <!-- ================================================= -->
+
+                               <table style="
+    width:100%;
+    border-collapse:collapse;
+    direction:rtl;
+    font-size:15px;
+    table-layout:fixed;
+    text-align:center;
+">
+
+    <thead>
+
+        <tr style="
+            background:#c6c6c6;
+            font-weight:bold;
+            text-align:center;
+        ">
+
+            <th style="width:3%; border:1px solid #888; padding:2mm 1mm; text-align:center; vertical-align:middle;">
+                شماره
+            </th>
+
+            <th style="width:6%; border:1px solid #888; padding:2mm 1mm; text-align:center; vertical-align:middle;">
+                اسم و<br/>تخلص
+            </th>
+
+            <th style="width:5%; border:1px solid #888; padding:2mm 1mm; text-align:center; vertical-align:middle;">
+                ولد
+            </th>
+
+            <th style="width:5%; border:1px solid #888; padding:2mm 1mm; text-align:center; vertical-align:middle;">
+                ولدیت
+            </th>
+
+            <th style="width:6%; border:1px solid #888; padding:2mm 1mm; text-align:center; vertical-align:middle;">
+                سکونت<br/>اصلی
+            </th>
+
+            <th style="width:6%; border:1px solid #888; padding:2mm 1mm; text-align:center; vertical-align:middle;">
+                سکونت<br/>فعلی
+            </th>
+
+            <th style="width:3%; border:1px solid #888; padding:2mm 1mm; text-align:center; vertical-align:middle;">
+                سن
+            </th>
+
+            <th style="width:8%; border:1px solid #888; padding:2mm 1mm; text-align:center; vertical-align:middle;">
+                وظیفه قبلی
+            </th>
+
+            <th style="width:4%; border:1px solid #888; padding:2mm 1mm; text-align:center; vertical-align:middle;">
+                سال<br/>فراغت
+            </th>
+
+            <th style="width:7%; border:1px solid #888; padding:2mm 1mm; text-align:center; vertical-align:middle;">
+                جای فراغت
+            </th>
+
+            <th style="width:6%; border:1px solid #888; padding:2mm 1mm; text-align:center; vertical-align:middle;">
+                درجه<br/>تحصیل
+            </th>
+
+            <th style="width:5%; border:1px solid #888; padding:2mm 1mm; text-align:center; vertical-align:middle;">
+                تدریس
+            </th>
+
+            <th style="width:4%; border:1px solid #888; padding:2mm 1mm; text-align:center; vertical-align:middle;">
+                قضیه
+            </th>
+
+            <th style="width:9%; border:1px solid #888; padding:2mm 1mm; text-align:center; vertical-align:middle;">
+                وظیفه فعلی
+            </th>
+
+            <th style="width:4%; border:1px solid #888; padding:2mm 1mm; text-align:center; vertical-align:middle;">
+                نمره<br/>امتحان
+            </th>
+
+            <th style="width:7%; border:1px solid #888; padding:2mm 1mm; text-align:center; vertical-align:middle;">
+                ملاحظات
+            </th>
+
+            <th style="width:8%; border:1px solid #888; padding:2mm 1mm; text-align:center; vertical-align:middle;">
+                تصویر
+            </th>
+
+        </tr>
+
+    </thead>
+
+
+    <tbody>
+
+        <tr style="
+            text-align:center;
+            vertical-align:middle;
+        ">
+
+            <!-- NUMBER -->
+
+            <td style="
+                border:1px solid #aaa;
+                padding:2mm 1mm;
+                text-align:center;
+                vertical-align:middle;
+            ">
+                1
+            </td>
+
+
+            <!-- NAME -->
+
+            <td style="
+                border:1px solid #aaa;
+                padding:2mm 1mm;
+                text-align:center;
+                vertical-align:middle;
+                white-space:normal;
+                word-wrap:break-word;
+            ">
+                <span t-field="doc.name"/>
+            </td>
+
+
+            <!-- FATHER -->
+
+            <td style="
+                border:1px solid #aaa;
+                padding:2mm 1mm;
+                text-align:center;
+                vertical-align:middle;
+                white-space:normal;
+                word-wrap:break-word;
+            ">
+                <span t-field="doc.father_name"/>
+            </td>
+
+
+            <!-- GRANDFATHER -->
+
+            <td style="
+                border:1px solid #aaa;
+                padding:2mm 1mm;
+                text-align:center;
+                vertical-align:middle;
+                white-space:normal;
+                word-wrap:break-word;
+            ">
+                <span t-field="doc.grand_father_name"/>
+            </td>
+
+
+            <!-- ORIGINAL RESIDENCE -->
+
+            <td style="
+                border:1px solid #aaa;
+                padding:2mm 1mm;
+                text-align:center;
+                vertical-align:middle;
+                white-space:normal;
+                word-wrap:break-word;
+            ">
+
+                <span t-field="doc.permanent_province"/>
+
+                <br/>
+
+                <span t-field="doc.permanent_district"/>
+
+            </td>
+
+
+            <!-- CURRENT RESIDENCE -->
+
+            <td style="
+                border:1px solid #aaa;
+                padding:2mm 1mm;
+                text-align:center;
+                vertical-align:middle;
+                white-space:normal;
+                word-wrap:break-word;
+            ">
+
+                <span t-field="doc.temporary_province"/>
+
+                <br/>
+
+                <span t-field="doc.temporary_district"/>
+
+            </td>
+
+
+            <!-- AGE -->
+
+            <td style="
+                border:1px solid #aaa;
+                padding:2mm 1mm;
+                text-align:center;
+                vertical-align:middle;
+            ">
+
+                <t t-if="doc.emp_date_of_birth">
+
+                    <span
+                        t-esc="
+                            datetime.date.today().year
+                            - doc.emp_date_of_birth.year
+                        "
+                    />
+
+                </t>
+
+            </td>
+
+
+            <!-- PREVIOUS JOB -->
+
+            <td style="
+                border:1px solid #aaa;
+                padding:2mm 1mm;
+                text-align:center;
+                vertical-align:middle;
+                white-space:normal;
+                word-wrap:break-word;
+            ">
+
+                <t t-if="doc.experience_ids">
+
+                    <span
+                        t-field="doc.experience_ids[-1].job_id.name"
+                    />
+
+                </t>
+
+            </td>
+
+
+            <!-- GRADUATION YEAR -->
+
+            <td style="
+                border:1px solid #aaa;
+                padding:2mm 1mm;
+                text-align:center;
+                vertical-align:middle;
+            ">
+
+                <t t-if="doc.modern_education_ids">
+
+                    <span
+                        t-esc="
+                            doc.modern_education_ids[-1].education_end_date.year
+                            if doc.modern_education_ids[-1].education_end_date
+                            else ''
+                        "
+                    />
+
+                </t>
+
+            </td>
+
+
+            <!-- GRADUATION PLACE -->
+
+            <td style="
+                border:1px solid #aaa;
+                padding:2mm 1mm;
+                text-align:center;
+                vertical-align:middle;
+                white-space:normal;
+                word-wrap:break-word;
+            ">
+
+                <t t-if="doc.modern_education_ids">
+
+                    <span
+                        t-field="doc.modern_education_ids[-1].university_id.name"
+                    />
+
+                </t>
+
+            </td>
+
+
+            <!-- EDUCATION DEGREE -->
+
+            <td style="
+                border:1px solid #aaa;
+                padding:2mm 1mm;
+                text-align:center;
+                vertical-align:middle;
+                white-space:normal;
+                word-wrap:break-word;
+            ">
+
+                <t t-if="doc.modern_education_ids">
+
+                    <span
+                        t-field="doc.modern_education_ids[-1].degree_id.name"
+                    />
+
+                </t>
+
+            </td>
+
+
+            <!-- TEACHING -->
+
+            <td style="
+                border:1px solid #aaa;
+                padding:2mm 1mm;
+                text-align:center;
+                vertical-align:middle;
+                white-space:normal;
+                word-wrap:break-word;
+            ">
+
+                <span t-field="doc.job_title"/>
+
+            </td>
+
+
+            <!-- CASE -->
+
+            <td style="
+                border:1px solid #aaa;
+                padding:2mm 1mm;
+                text-align:center;
+                vertical-align:middle;
+            ">
+            </td>
+
+
+            <!-- CURRENT JOB -->
+
+            <td style="
+                border:1px solid #aaa;
+                padding:2mm 1mm;
+                text-align:center;
+                vertical-align:middle;
+                white-space:normal;
+                word-wrap:break-word;
+            ">
+
+                <span t-field="doc.job_id.name"/>
+
+            </td>
+
+
+            <!-- EXAM SCORE -->
+
+            <td style="
+                border:1px solid #aaa;
+                padding:2mm 1mm;
+                text-align:center;
+                vertical-align:middle;
+            ">
+            </td>
+
+
+            <!-- REMARKS -->
+
+            <td style="
+                border:1px solid #aaa;
+                padding:2mm 1mm;
+                text-align:center;
+                vertical-align:middle;
+                white-space:normal;
+                word-wrap:break-word;
+            ">
+
+                <span t-field="doc.work_email"/>
+
+            </td>
+
+
+            <!-- IMAGE -->
+
+            <td style="
+                border:1px solid #aaa;
+                padding:2mm 1mm;
+                text-align:center;
+                vertical-align:middle;
+            ">
+
+                <t t-if="doc.avatar_1920">
+
+                    <img
+                        t-att-src="image_data_uri(doc.avatar_1920)"
+                        style="
+                            width:20mm;
+                            height:28mm;
+                            object-fit:cover;
+                            display:block;
+                            margin:auto;
+                        "
+                        alt="Employee Image"
+                    />
+
+                </t>
+
+            </td>
+
+        </tr>
+
+    </tbody>
+
+</table>
+
+                            </div>
+
+
+                        </div>
+
+                    </t>
+
+                </t>
+
+            </t>
+
+        </template>
+
+    </data>
+
+</odoo>
