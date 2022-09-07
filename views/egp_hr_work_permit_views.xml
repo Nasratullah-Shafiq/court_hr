@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- ========================= -->
+    <!-- Tree View -->
+    <!-- ========================= -->
+    <record id="view_employee_work_permit_tree" model="ir.ui.view">
+        <field name="name">employee.work.permit.tree</field>
+        <field name="model">employee.work.permit</field>
+        <field name="arch" type="xml">
+            <tree string="Employee Work Permits">
+                <field name="employee_id"/>
+                <field name="letter_no"/>
+                <field name="permit_no"/>
+                <field name="letter_date"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Form View with Chatter -->
+    <!-- ========================= -->
+    <record id="view_employee_work_permit_form" model="ir.ui.view">
+        <field name="name">employee.work.permit.form</field>
+        <field name="model">employee.work.permit</field>
+        <field name="arch" type="xml">
+            <form string="Employee Work Permit">
+                <sheet>
+                    <group string="Employee Information">
+                        <group>
+                            <field name="employee_id" required="1"/>
+                            <field name="father_name" required="1"/>
+
+                        </group>
+                        <group>
+                            <field name="grand_father_name" required="1"/>
+                            <field name="job_id" required="1"/>
+                            <field name="department_id" required="1"/>
+
+                        </group>
+                    </group>
+
+                    <!-- Basic Information -->
+                    <group string="Work Permit Information">
+                        <group>
+                            <field name="permit_no" required="1"/>
+                            <field name="attachments" widget="many2many_binary"/>
+                        </group>
+                        <group>
+                            <field name="letter_no" required="1"/>
+                            <field name="letter_date"/>
+                        </group>
+                    </group>
+
+                    <group>
+                        <field name="remarks"/>
+                    </group>
+
+
+                </sheet>
+
+                <!-- Chatter -->
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Search View -->
+    <!-- ========================= -->
+    <record id="view_employee_work_permit_search" model="ir.ui.view">
+        <field name="name">employee.work.permit.search</field>
+        <field name="model">employee.work.permit</field>
+        <field name="arch" type="xml">
+            <search string="Search Employee Work Permits">
+                <field name="employee_id"/>
+                <field name="letter_no"/>
+                <field name="permit_no"/>
+                <field name="letter_date"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Action -->
+    <!-- ========================= -->
+    <record id="action_employee_work_permit" model="ir.actions.act_window">
+        <field name="name">Employee Work Permits</field>
+        <field name="res_model">employee.work.permit</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first employee work permit record
+            </p>
+            <p>
+                Track employee letters and permit numbers.
+            </p>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Menu Item -->
+    <!-- ========================= -->
+    <menuitem
+            id="menu_employee_work_permit"
+            name="Work Permits"
+            parent="menu_employee_resume_root"
+            action="action_employee_work_permit"
+            sequence="60"/>
+
+</odoo>
