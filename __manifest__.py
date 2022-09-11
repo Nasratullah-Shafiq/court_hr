@@ -1,10 +1,10 @@
 {
     "name": "EGP HR Employee",
     "version": "17.0.1.0.0",
-    "summary": "EGP Human Resource Module",
+    "summary": "MCIT-Afghanistan ERP Employee module streamlines employee management and HR processes",
     'sequence': -350,
     'category': 'Human Resources',
-    "description": "",
+    "description": "MCIT-Afghanistan ERP Employee Management module provides a comprehensive platform for managing employee records and HR processes. It centralizes personal, professional, educational, employment, organizational, and service information, while supporting employee job information, experience, training, rewards, retirement, disciplinary records, and other HR-related data. The module helps HR teams maintain accurate employee records, streamline administrative workflows, and generate reliable reports for effective workforce management.",
     'depends': ['hr', 'mail', 'xlsx_reporting', 'hr_skills', 'gamification', 'egp_hr_org_structure',
                 'maintenance'],
     'data': [
