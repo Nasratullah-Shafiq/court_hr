@@ -21,8 +21,6 @@ class ResCountryState(models.Model):
     )
 
 
-
-
 class EmployeeDistrict(models.Model):
     _name = 'employee.district'
     _description = 'Employee District'
