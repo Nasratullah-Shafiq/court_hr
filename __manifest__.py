@@ -7,6 +7,7 @@
     "description": "MCIT-Afghanistan ERP Employee Management module provides a comprehensive platform for managing employee records and HR processes. It centralizes personal, professional, educational, employment, organizational, and service information, while supporting employee job information, experience, training, rewards, retirement, disciplinary records, and other HR-related data. The module helps HR teams maintain accurate employee records, streamline administrative workflows, and generate reliable reports for effective workforce management.",
     'depends': ['hr', 'mail', 'xlsx_reporting', 'hr_skills', 'gamification', 'egp_hr_org_structure',
                 'maintenance'],
+
     'data': [
         # security files
         'security/egp_hr_security.xml',
@@ -58,6 +59,7 @@
         'views/egp_hr_travel_views.xml',
         'views/egp_hr_property_views.xml',
         'views/egp_hr_work_permit_views.xml',
+        'views/egp_hr_dashboard_menu.xml',
 
         # wizard xml views
         'wizard/views/retirement_report_wizard_views.xml',
@@ -77,8 +79,17 @@
     "assets": {
         'web.assets_backend': [
             # 'egp_hr/static/src/css/attachment_preview.css',
+
+            # JavaScript
+            'egp_hr/static/src/js/employee_dashboard.js',
             'egp_hr/static/src/js/qcent_many2many_attachment_preview.js',
+
+            # XML
+            'egp_hr/static/src/xml/employee_dashboard.xml',
             'egp_hr/static/src/xml/qcent_many2many_attachment_preview_template.xml',
+
+            # CSS
+            'egp_hr/static/src/css/employee_dashboard.css',
         ],
     },
     "author": "Nasratullah Shafiq",
