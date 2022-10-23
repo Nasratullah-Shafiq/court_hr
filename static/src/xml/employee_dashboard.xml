@@ -1,0 +1,1262 @@
+<!--<templates xml:space="preserve">-->
+
+<!--    <t t-name="employee_dashboard.Main">-->
+
+<!--        <div class="o_employee_dashboard container-fluid p-4">-->
+
+<!--            &lt;!&ndash; ================================================= &ndash;&gt;-->
+<!--            &lt;!&ndash; HEADER &ndash;&gt;-->
+<!--            &lt;!&ndash; ================================================= &ndash;&gt;-->
+
+<!--            <div class="mb-4 p-3 bg-white rounded shadow-sm">-->
+
+<!--                <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">-->
+
+<!--                    <div>-->
+
+<!--                        <h2 class="mb-1 fw-bold">-->
+<!--                            Employee Management Dashboard-->
+<!--                        </h2>-->
+
+<!--                        <div class="text-muted small">-->
+<!--                            Overview of employee information and workforce statistics-->
+<!--                        </div>-->
+
+<!--                    </div>-->
+
+
+<!--                    <div class="d-flex align-items-center gap-2">-->
+
+<!--                        <span class="text-muted">-->
+<!--                            Recruitment Year:-->
+<!--                        </span>-->
+
+<!--                        <select-->
+<!--                            class="form-select form-select-sm w-auto"-->
+<!--                            t-on-change="onYearChange">-->
+
+<!--                            <option value="all">-->
+<!--                                All Years-->
+<!--                            </option>-->
+
+<!--                            <option value="2024">-->
+<!--                                2024-->
+<!--                            </option>-->
+
+<!--                            <option value="2025">-->
+<!--                                2025-->
+<!--                            </option>-->
+
+<!--                            <option value="2026">-->
+<!--                                2026-->
+<!--                            </option>-->
+
+<!--                        </select>-->
+
+<!--                    </div>-->
+
+<!--                </div>-->
+
+<!--            </div>-->
+
+
+<!--            &lt;!&ndash; ================================================= &ndash;&gt;-->
+<!--            &lt;!&ndash; KPI CARDS &ndash;&gt;-->
+<!--            &lt;!&ndash; ================================================= &ndash;&gt;-->
+
+<!--            <div class="row g-4 mb-4">-->
+
+
+<!--                &lt;!&ndash; TOTAL EMPLOYEES &ndash;&gt;-->
+
+<!--                <div class="col-xl-3 col-md-6">-->
+
+<!--                    <div-->
+<!--                        class="card kpi-card border-0 shadow-sm p-4 h-100"-->
+<!--                        t-on-click="openAllEmployees"-->
+<!--                        style="cursor:pointer;">-->
+
+<!--                        <div class="d-flex justify-content-between align-items-center">-->
+
+<!--                            <div>-->
+
+<!--                                <div class="kpi-label">-->
+<!--                                    Total Employees-->
+<!--                                </div>-->
+
+<!--                                <div class="kpi-value text-primary">-->
+<!--                                    <t t-esc="state.total_count"/>-->
+<!--                                </div>-->
+
+<!--                                <div class="kpi-subtext">-->
+<!--                                    Registered employees-->
+<!--                                </div>-->
+
+<!--                            </div>-->
+
+<!--                            <div class="kpi-icon bg-primary-subtle text-primary d-flex align-items-center justify-content-center">-->
+
+<!--                                <i class="fa fa-users fa-lg"></i>-->
+
+<!--                            </div>-->
+
+<!--                        </div>-->
+
+<!--                    </div>-->
+
+<!--                </div>-->
+
+
+<!--                &lt;!&ndash; ACTIVE &ndash;&gt;-->
+
+<!--                <div class="col-xl-3 col-md-6">-->
+
+<!--                    <div-->
+<!--                        class="card kpi-card border-0 shadow-sm p-4 h-100"-->
+<!--                        t-on-click="openActiveEmployees"-->
+<!--                        style="cursor:pointer;">-->
+
+<!--                        <div class="d-flex justify-content-between align-items-center">-->
+
+<!--                            <div>-->
+
+<!--                                <div class="kpi-label">-->
+<!--                                    Active Employees-->
+<!--                                </div>-->
+
+<!--                                <div class="kpi-value text-success">-->
+<!--                                    <t t-esc="state.active_count"/>-->
+<!--                                </div>-->
+
+<!--                                <div class="kpi-subtext">-->
+<!--                                    Currently active-->
+<!--                                </div>-->
+
+<!--                            </div>-->
+
+<!--                            <div class="kpi-icon bg-success-subtle text-success d-flex align-items-center justify-content-center">-->
+
+<!--                                <i class="fa fa-user-check fa-lg"></i>-->
+
+<!--                            </div>-->
+
+<!--                        </div>-->
+
+<!--                    </div>-->
+
+<!--                </div>-->
+
+
+<!--                &lt;!&ndash; INACTIVE &ndash;&gt;-->
+
+<!--                <div class="col-xl-3 col-md-6">-->
+
+<!--                    <div class="card kpi-card border-0 shadow-sm p-4 h-100">-->
+
+<!--                        <div class="d-flex justify-content-between align-items-center">-->
+
+<!--                            <div>-->
+
+<!--                                <div class="kpi-label">-->
+<!--                                    Inactive Employees-->
+<!--                                </div>-->
+
+<!--                                <div class="kpi-value text-secondary">-->
+<!--                                    <t t-esc="state.inactive_count"/>-->
+<!--                                </div>-->
+
+<!--                                <div class="kpi-subtext">-->
+<!--                                    Archived employees-->
+<!--                                </div>-->
+
+<!--                            </div>-->
+
+<!--                            <div class="kpi-icon bg-secondary-subtle text-secondary d-flex align-items-center justify-content-center">-->
+
+<!--                                <i class="fa fa-user-times fa-lg"></i>-->
+
+<!--                            </div>-->
+
+<!--                        </div>-->
+
+<!--                    </div>-->
+
+<!--                </div>-->
+
+
+<!--                &lt;!&ndash; CURRENT &ndash;&gt;-->
+
+<!--                <div class="col-xl-3 col-md-6">-->
+
+<!--                    <div-->
+<!--                        class="card kpi-card border-0 shadow-sm p-4 h-100"-->
+<!--                        t-on-click="openCurrentEmployees"-->
+<!--                        style="cursor:pointer;">-->
+
+<!--                        <div class="d-flex justify-content-between align-items-center">-->
+
+<!--                            <div>-->
+
+<!--                                <div class="kpi-label">-->
+<!--                                    Current Employees-->
+<!--                                </div>-->
+
+<!--                                <div class="kpi-value text-info">-->
+<!--                                    <t t-esc="state.current_count"/>-->
+<!--                                </div>-->
+
+<!--                                <div class="kpi-subtext">-->
+<!--                                    برحال-->
+<!--                                </div>-->
+
+<!--                            </div>-->
+
+<!--                            <div class="kpi-icon bg-info-subtle text-info d-flex align-items-center justify-content-center">-->
+
+<!--                                <i class="fa fa-id-badge fa-lg"></i>-->
+
+<!--                            </div>-->
+
+<!--                        </div>-->
+
+<!--                    </div>-->
+
+<!--                </div>-->
+
+<!--            </div>-->
+
+
+<!--            &lt;!&ndash; ================================================= &ndash;&gt;-->
+<!--            &lt;!&ndash; SECOND KPI ROW &ndash;&gt;-->
+<!--            &lt;!&ndash; ================================================= &ndash;&gt;-->
+
+<!--            <div class="row g-4 mb-4">-->
+
+
+<!--                &lt;!&ndash; EDUCATION &ndash;&gt;-->
+
+<!--                <div class="col-xl-3 col-md-6">-->
+
+<!--                    <div class="card kpi-card border-0 shadow-sm p-4 h-100">-->
+
+<!--                        <div class="d-flex justify-content-between align-items-center">-->
+
+<!--                            <div>-->
+
+<!--                                <div class="kpi-label">-->
+<!--                                    Education Records-->
+<!--                                </div>-->
+
+<!--                                <div class="kpi-value text-primary">-->
+<!--                                    <t t-esc="state.education_count"/>-->
+<!--                                </div>-->
+
+<!--                                <div class="kpi-subtext">-->
+<!--                                    Employee education-->
+<!--                                </div>-->
+
+<!--                            </div>-->
+
+<!--                            <div class="kpi-icon bg-primary-subtle text-primary d-flex align-items-center justify-content-center">-->
+
+<!--                                <i class="fa fa-graduation-cap fa-lg"></i>-->
+
+<!--                            </div>-->
+
+<!--                        </div>-->
+
+<!--                    </div>-->
+
+<!--                </div>-->
+
+
+<!--                &lt;!&ndash; EXPERIENCE &ndash;&gt;-->
+
+<!--                <div class="col-xl-3 col-md-6">-->
+
+<!--                    <div class="card kpi-card border-0 shadow-sm p-4 h-100">-->
+
+<!--                        <div class="d-flex justify-content-between align-items-center">-->
+
+<!--                            <div>-->
+
+<!--                                <div class="kpi-label">-->
+<!--                                    Experience Records-->
+<!--                                </div>-->
+
+<!--                                <div class="kpi-value text-info">-->
+<!--                                    <t t-esc="state.experience_count"/>-->
+<!--                                </div>-->
+
+<!--                                <div class="kpi-subtext">-->
+<!--                                    Professional experience-->
+<!--                                </div>-->
+
+<!--                            </div>-->
+
+<!--                            <div class="kpi-icon bg-info-subtle text-info d-flex align-items-center justify-content-center">-->
+
+<!--                                <i class="fa fa-briefcase fa-lg"></i>-->
+
+<!--                            </div>-->
+
+<!--                        </div>-->
+
+<!--                    </div>-->
+
+<!--                </div>-->
+
+
+<!--                &lt;!&ndash; TRAINING &ndash;&gt;-->
+
+<!--                <div class="col-xl-3 col-md-6">-->
+
+<!--                    <div class="card kpi-card border-0 shadow-sm p-4 h-100">-->
+
+<!--                        <div class="d-flex justify-content-between align-items-center">-->
+
+<!--                            <div>-->
+
+<!--                                <div class="kpi-label">-->
+<!--                                    Training Records-->
+<!--                                </div>-->
+
+<!--                                <div class="kpi-value text-warning">-->
+<!--                                    <t t-esc="state.training_count"/>-->
+<!--                                </div>-->
+
+<!--                                <div class="kpi-subtext">-->
+<!--                                    Employee training-->
+<!--                                </div>-->
+
+<!--                            </div>-->
+
+<!--                            <div class="kpi-icon bg-warning-subtle text-warning d-flex align-items-center justify-content-center">-->
+
+<!--                                <i class="fa fa-book fa-lg"></i>-->
+
+<!--                            </div>-->
+
+<!--                        </div>-->
+
+<!--                    </div>-->
+
+<!--                </div>-->
+
+
+<!--                &lt;!&ndash; RETIREMENT &ndash;&gt;-->
+
+<!--                <div class="col-xl-3 col-md-6">-->
+
+<!--                    <div-->
+<!--                        class="card kpi-card border-0 shadow-sm p-4 h-100"-->
+<!--                        t-on-click="openRetiredEmployees"-->
+<!--                        style="cursor:pointer;">-->
+
+<!--                        <div class="d-flex justify-content-between align-items-center">-->
+
+<!--                            <div>-->
+
+<!--                                <div class="kpi-label">-->
+<!--                                    Retired Employees-->
+<!--                                </div>-->
+
+<!--                                <div class="kpi-value text-secondary">-->
+<!--                                    <t t-esc="state.retired_count"/>-->
+<!--                                </div>-->
+
+<!--                                <div class="kpi-subtext">-->
+<!--                                    متقاعد-->
+<!--                                </div>-->
+
+<!--                            </div>-->
+
+<!--                            <div class="kpi-icon bg-secondary-subtle text-secondary d-flex align-items-center justify-content-center">-->
+
+<!--                                <i class="fa fa-user-circle fa-lg"></i>-->
+
+<!--                            </div>-->
+
+<!--                        </div>-->
+
+<!--                    </div>-->
+
+<!--                </div>-->
+
+<!--            </div>-->
+
+
+<!--            &lt;!&ndash; ================================================= &ndash;&gt;-->
+<!--            &lt;!&ndash; CHART ROW 1 &ndash;&gt;-->
+<!--            &lt;!&ndash; ================================================= &ndash;&gt;-->
+
+<!--            <div class="row g-4 mb-4">-->
+
+
+<!--                &lt;!&ndash; GENDER &ndash;&gt;-->
+
+<!--                <div class="col-lg-4">-->
+
+<!--                    <div class="card border-0 shadow-sm p-4 h-100">-->
+
+<!--                        <h5 class="mb-3 fw-semibold">-->
+<!--                            Employee Gender-->
+<!--                        </h5>-->
+
+<!--                        <div style="height:320px;">-->
+
+<!--                            <canvas-->
+<!--                                id="employeeGenderChart">-->
+<!--                            </canvas>-->
+
+<!--                        </div>-->
+
+<!--                    </div>-->
+
+<!--                </div>-->
+
+
+<!--                &lt;!&ndash; JOB STATUS &ndash;&gt;-->
+
+<!--                <div class="col-lg-8">-->
+
+<!--                    <div class="card border-0 shadow-sm p-4 h-100">-->
+
+<!--                        <div class="d-flex justify-content-between align-items-center mb-3">-->
+
+<!--                            <h5 class="fw-semibold mb-0">-->
+<!--                                Employee Job Status-->
+<!--                            </h5>-->
+
+<!--                            <i class="fa fa-bar-chart text-muted"></i>-->
+
+<!--                        </div>-->
+
+<!--                        <div style="height:320px;">-->
+
+<!--                            <canvas-->
+<!--                                id="employeeStatusChart">-->
+<!--                            </canvas>-->
+
+<!--                        </div>-->
+
+<!--                    </div>-->
+
+<!--                </div>-->
+
+<!--            </div>-->
+
+
+<!--            &lt;!&ndash; ================================================= &ndash;&gt;-->
+<!--            &lt;!&ndash; CHART ROW 2 &ndash;&gt;-->
+<!--            &lt;!&ndash; ================================================= &ndash;&gt;-->
+
+<!--            <div class="row g-4">-->
+
+
+<!--                &lt;!&ndash; CATEGORY &ndash;&gt;-->
+
+<!--                <div class="col-lg-6">-->
+
+<!--                    <div class="card border-0 shadow-sm p-4 h-100">-->
+
+<!--                        <h5 class="mb-3 fw-semibold">-->
+<!--                            Employee Categories-->
+<!--                        </h5>-->
+
+<!--                        <div style="height:320px;">-->
+
+<!--                            <canvas-->
+<!--                                id="employeeCategoryChart">-->
+<!--                            </canvas>-->
+
+<!--                        </div>-->
+
+<!--                    </div>-->
+
+<!--                </div>-->
+
+
+<!--                &lt;!&ndash; JOB STATUS SUMMARY &ndash;&gt;-->
+
+<!--                <div class="col-lg-6">-->
+
+<!--                    <div class="card border-0 shadow-sm p-4 h-100">-->
+
+<!--                        <h5 class="mb-4 fw-semibold">-->
+<!--                            Workforce Status Summary-->
+<!--                        </h5>-->
+
+
+<!--                        <div class="row g-3">-->
+
+
+<!--                            <div class="col-6">-->
+
+<!--                                <div class="p-3 rounded bg-success-subtle">-->
+
+<!--                                    <div class="text-muted small">-->
+<!--                                        Current-->
+<!--                                    </div>-->
+
+<!--                                    <div class="fs-3 fw-bold text-success">-->
+<!--                                        <t t-esc="state.current_count"/>-->
+<!--                                    </div>-->
+
+<!--                                    <div class="small text-muted">-->
+<!--                                        برحال-->
+<!--                                    </div>-->
+
+<!--                                </div>-->
+
+<!--                            </div>-->
+
+
+<!--                            <div class="col-6">-->
+
+<!--                                <div class="p-3 rounded bg-warning-subtle">-->
+
+<!--                                    <div class="text-muted small">-->
+<!--                                        Retired-->
+<!--                                    </div>-->
+
+<!--                                    <div class="fs-3 fw-bold text-warning">-->
+<!--                                        <t t-esc="state.retired_count"/>-->
+<!--                                    </div>-->
+
+<!--                                    <div class="small text-muted">-->
+<!--                                        متقاعد-->
+<!--                                    </div>-->
+
+<!--                                </div>-->
+
+<!--                            </div>-->
+
+
+<!--                            <div class="col-6">-->
+
+<!--                                <div class="p-3 rounded bg-danger-subtle">-->
+
+<!--                                    <div class="text-muted small">-->
+<!--                                        Dismissed-->
+<!--                                    </div>-->
+
+<!--                                    <div class="fs-3 fw-bold text-danger">-->
+<!--                                        <t t-esc="state.dismissed_count"/>-->
+<!--                                    </div>-->
+
+<!--                                    <div class="small text-muted">-->
+<!--                                        معزول-->
+<!--                                    </div>-->
+
+<!--                                </div>-->
+
+<!--                            </div>-->
+
+
+<!--                            <div class="col-6">-->
+
+<!--                                <div class="p-3 rounded bg-secondary-subtle">-->
+
+<!--                                    <div class="text-muted small">-->
+<!--                                        Deceased-->
+<!--                                    </div>-->
+
+<!--                                    <div class="fs-3 fw-bold text-secondary">-->
+<!--                                        <t t-esc="state.deceased_count"/>-->
+<!--                                    </div>-->
+
+<!--                                    <div class="small text-muted">-->
+<!--                                        وفات-->
+<!--                                    </div>-->
+
+<!--                                </div>-->
+
+<!--                            </div>-->
+
+
+<!--                        </div>-->
+
+<!--                    </div>-->
+
+<!--                </div>-->
+
+<!--            </div>-->
+
+<!--        </div>-->
+
+<!--    </t>-->
+
+<!--</templates>-->
+
+
+<templates xml:space="preserve">
+
+    <t t-name="employee_dashboard.Main">
+
+        <div class="o_employee_dashboard">
+
+            <!-- ================================================= -->
+            <!-- HEADER -->
+            <!-- ================================================= -->
+
+            <div class="dashboard-header">
+
+                <div class="dashboard-header-content d-flex justify-content-between align-items-center flex-wrap gap-3">
+
+                    <div class="dashboard-title-wrapper">
+
+                        <div class="dashboard-title-icon">
+                            <i class="fa fa-users"/>
+                        </div>
+
+                        <div>
+
+                            <h2 class="dashboard-title">
+                                Employee Management Dashboard
+                            </h2>
+
+                            <div class="dashboard-subtitle">
+                                Overview of employee information and workforce statistics
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="dashboard-filter">
+
+                        <span class="dashboard-filter-label">
+                            <i class="fa fa-calendar-o me-1"/>
+                            Recruitment Year
+                        </span>
+
+                        <select
+                            class="form-select dashboard-year-select"
+                            t-on-change="onYearChange">
+
+                            <option value="all">
+                                All Years
+                            </option>
+
+                            <option value="2024">
+                                2024
+                            </option>
+
+                            <option value="2025">
+                                2025
+                            </option>
+
+                            <option value="2026">
+                                2026
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- LOADING -->
+            <!-- ================================================= -->
+
+            <t t-if="state.loading">
+
+                <div class="dashboard-card dashboard-loading">
+
+                    <div class="dashboard-loading-content">
+
+                        <i class="fa fa-spinner fa-spin text-primary"/>
+
+                        <div class="text-muted">
+                            Loading employee statistics...
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </t>
+
+
+            <t t-else="">
+
+
+                <!-- ================================================= -->
+                <!-- KPI ROW 1 -->
+                <!-- ================================================= -->
+
+                <div class="row g-3 mb-3">
+
+
+                    <!-- TOTAL -->
+
+                    <div class="col-xl-3 col-md-6">
+
+                        <div
+                            class="kpi-card is-clickable"
+                            t-on-click="openAllEmployees">
+
+                            <div class="d-flex justify-content-between align-items-center h-100">
+
+                                <div class="kpi-content">
+
+                                    <div class="kpi-label">
+                                        Total Employees
+                                    </div>
+
+                                    <div class="kpi-value text-primary">
+                                        <t t-esc="state.total_count"/>
+                                    </div>
+
+                                    <div class="kpi-subtext">
+                                        Registered employees
+                                    </div>
+
+                                </div>
+
+                                <div class="kpi-icon bg-primary-subtle text-primary">
+                                    <i class="fa fa-users"/>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ACTIVE -->
+
+                    <div class="col-xl-3 col-md-6">
+
+                        <div
+                            class="kpi-card is-clickable"
+                            t-on-click="openActiveEmployees">
+
+                            <div class="d-flex justify-content-between align-items-center h-100">
+
+                                <div class="kpi-content">
+
+                                    <div class="kpi-label">
+                                        Active Employees
+                                    </div>
+
+                                    <div class="kpi-value text-success">
+                                        <t t-esc="state.active_count"/>
+                                    </div>
+
+                                    <div class="kpi-subtext">
+                                        Currently active
+                                    </div>
+
+                                </div>
+
+                                <div class="kpi-icon bg-success-subtle text-success">
+                                    <i class="fa fa-user-check"/>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- INACTIVE -->
+
+                    <div class="col-xl-3 col-md-6">
+
+                        <div class="kpi-card">
+
+                            <div class="d-flex justify-content-between align-items-center h-100">
+
+                                <div class="kpi-content">
+
+                                    <div class="kpi-label">
+                                        Inactive Employees
+                                    </div>
+
+                                    <div class="kpi-value text-secondary">
+                                        <t t-esc="state.inactive_count"/>
+                                    </div>
+
+                                    <div class="kpi-subtext">
+                                        Archived employees
+                                    </div>
+
+                                </div>
+
+                                <div class="kpi-icon bg-secondary-subtle text-secondary">
+                                    <i class="fa fa-user-times"/>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- CURRENT -->
+
+                    <div class="col-xl-3 col-md-6">
+
+                        <div
+                            class="kpi-card is-clickable"
+                            t-on-click="openCurrentEmployees">
+
+                            <div class="d-flex justify-content-between align-items-center h-100">
+
+                                <div class="kpi-content">
+
+                                    <div class="kpi-label">
+                                        Current Employees
+                                    </div>
+
+                                    <div class="kpi-value text-info">
+                                        <t t-esc="state.current_count"/>
+                                    </div>
+
+                                    <div class="kpi-subtext">
+                                        برحال
+                                    </div>
+
+                                </div>
+
+                                <div class="kpi-icon bg-info-subtle text-info">
+                                    <i class="fa fa-id-badge"/>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- KPI ROW 2 -->
+                <!-- ================================================= -->
+
+                <div class="row g-3 mb-4">
+
+
+                    <!-- EDUCATION -->
+
+                    <div class="col-xl-3 col-md-6">
+
+                        <div class="kpi-card">
+
+                            <div class="d-flex justify-content-between align-items-center h-100">
+
+                                <div class="kpi-content">
+
+                                    <div class="kpi-label">
+                                        Education Records
+                                    </div>
+
+                                    <div class="kpi-value text-primary">
+                                        <t t-esc="state.education_count"/>
+                                    </div>
+
+                                    <div class="kpi-subtext">
+                                        Employee education
+                                    </div>
+
+                                </div>
+
+                                <div class="kpi-icon bg-primary-subtle text-primary">
+                                    <i class="fa fa-graduation-cap"/>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- EXPERIENCE -->
+
+                    <div class="col-xl-3 col-md-6">
+
+                        <div class="kpi-card">
+
+                            <div class="d-flex justify-content-between align-items-center h-100">
+
+                                <div class="kpi-content">
+
+                                    <div class="kpi-label">
+                                        Experience Records
+                                    </div>
+
+                                    <div class="kpi-value text-info">
+                                        <t t-esc="state.experience_count"/>
+                                    </div>
+
+                                    <div class="kpi-subtext">
+                                        Professional experience
+                                    </div>
+
+                                </div>
+
+                                <div class="kpi-icon bg-info-subtle text-info">
+                                    <i class="fa fa-briefcase"/>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- TRAINING -->
+
+                    <div class="col-xl-3 col-md-6">
+
+                        <div class="kpi-card">
+
+                            <div class="d-flex justify-content-between align-items-center h-100">
+
+                                <div class="kpi-content">
+
+                                    <div class="kpi-label">
+                                        Training Records
+                                    </div>
+
+                                    <div class="kpi-value text-warning">
+                                        <t t-esc="state.training_count"/>
+                                    </div>
+
+                                    <div class="kpi-subtext">
+                                        Employee training
+                                    </div>
+
+                                </div>
+
+                                <div class="kpi-icon bg-warning-subtle text-warning">
+                                    <i class="fa fa-book"/>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- RETIRED -->
+
+                    <div class="col-xl-3 col-md-6">
+
+                        <div
+                            class="kpi-card is-clickable"
+                            t-on-click="openRetiredEmployees">
+
+                            <div class="d-flex justify-content-between align-items-center h-100">
+
+                                <div class="kpi-content">
+
+                                    <div class="kpi-label">
+                                        Retired Employees
+                                    </div>
+
+                                    <div class="kpi-value text-secondary">
+                                        <t t-esc="state.retired_count"/>
+                                    </div>
+
+                                    <div class="kpi-subtext">
+                                        متقاعد
+                                    </div>
+
+                                </div>
+
+                                <div class="kpi-icon bg-secondary-subtle text-secondary">
+                                    <i class="fa fa-user-circle"/>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- CHARTS ROW 1 -->
+                <!-- ================================================= -->
+
+                <div class="row g-3 mb-3">
+
+
+                    <!-- GENDER -->
+
+                    <div class="col-xl-4">
+
+                        <div class="dashboard-card h-100">
+
+                            <div class="dashboard-card-header">
+
+                                <div>
+
+                                    <h5 class="dashboard-card-title">
+                                        Employee Gender
+                                    </h5>
+
+                                    <div class="dashboard-card-subtitle">
+                                        Gender distribution
+                                    </div>
+
+                                </div>
+
+                                <div class="dashboard-card-icon">
+                                    <i class="fa fa-pie-chart"/>
+                                </div>
+
+                            </div>
+
+                            <div class="chart-container chart-small">
+
+                                <canvas id="employeeGenderChart"/>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- JOB STATUS -->
+
+                    <div class="col-xl-8">
+
+                        <div class="dashboard-card h-100">
+
+                            <div class="dashboard-card-header">
+
+                                <div>
+
+                                    <h5 class="dashboard-card-title">
+                                        Employee Job Status
+                                    </h5>
+
+                                    <div class="dashboard-card-subtitle">
+                                        Workforce distribution by employment status
+                                    </div>
+
+                                </div>
+
+                                <div class="dashboard-card-icon">
+                                    <i class="fa fa-bar-chart"/>
+                                </div>
+
+                            </div>
+
+                            <div class="chart-container">
+
+                                <canvas id="employeeStatusChart"/>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- CHARTS ROW 2 -->
+                <!-- ================================================= -->
+
+                <div class="row g-3">
+
+
+                    <!-- CATEGORY -->
+
+                    <div class="col-xl-7">
+
+                        <div class="dashboard-card h-100">
+
+                            <div class="dashboard-card-header">
+
+                                <div>
+
+                                    <h5 class="dashboard-card-title">
+                                        Employee Categories
+                                    </h5>
+
+                                    <div class="dashboard-card-subtitle">
+                                        Workforce distribution by employee category
+                                    </div>
+
+                                </div>
+
+                                <div class="dashboard-card-icon">
+                                    <i class="fa fa-sitemap"/>
+                                </div>
+
+                            </div>
+
+                            <div class="chart-container">
+
+                                <canvas id="employeeCategoryChart"/>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- WORKFORCE SUMMARY -->
+
+                    <div class="col-xl-5">
+
+                        <div class="dashboard-card h-100">
+
+                            <div class="dashboard-card-header">
+
+                                <div>
+
+                                    <h5 class="dashboard-card-title">
+                                        Workforce Status
+                                    </h5>
+
+                                    <div class="dashboard-card-subtitle">
+                                        Employment status summary
+                                    </div>
+
+                                </div>
+
+                                <div class="dashboard-card-icon">
+                                    <i class="fa fa-id-card-o"/>
+                                </div>
+
+                            </div>
+
+
+                            <div class="status-grid">
+
+
+                                <!-- CURRENT -->
+
+                                <div class="status-item">
+
+                                    <div class="status-item-label">
+
+                                        <span
+                                            class="status-dot bg-success"/>
+
+                                        Current
+
+                                    </div>
+
+                                    <div class="status-item-value text-success">
+                                        <t t-esc="state.current_count"/>
+                                    </div>
+
+                                    <div class="status-item-subtext">
+                                        برحال
+                                    </div>
+
+                                </div>
+
+
+                                <!-- RETIRED -->
+
+                                <div class="status-item">
+
+                                    <div class="status-item-label">
+
+                                        <span
+                                            class="status-dot bg-warning"/>
+
+                                        Retired
+
+                                    </div>
+
+                                    <div class="status-item-value text-warning">
+                                        <t t-esc="state.retired_count"/>
+                                    </div>
+
+                                    <div class="status-item-subtext">
+                                        متقاعد
+                                    </div>
+
+                                </div>
+
+
+                                <!-- DISMISSED -->
+
+                                <div class="status-item">
+
+                                    <div class="status-item-label">
+
+                                        <span
+                                            class="status-dot bg-danger"/>
+
+                                        Dismissed
+
+                                    </div>
+
+                                    <div class="status-item-value text-danger">
+                                        <t t-esc="state.dismissed_count"/>
+                                    </div>
+
+                                    <div class="status-item-subtext">
+                                        معزول
+                                    </div>
+
+                                </div>
+
+
+                                <!-- DECEASED -->
+
+                                <div class="status-item">
+
+                                    <div class="status-item-label">
+
+                                        <span
+                                            class="status-dot bg-secondary"/>
+
+                                        Deceased
+
+                                    </div>
+
+                                    <div class="status-item-value text-secondary">
+                                        <t t-esc="state.deceased_count"/>
+                                    </div>
+
+                                    <div class="status-item-subtext">
+                                        وفات
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </t>
+
+        </div>
+
+    </t>
+
+</templates>
