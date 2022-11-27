@@ -1,0 +1,765 @@
+
+
+
+
+
+/* =========================================================
+   EMPLOYEE MANAGEMENT DASHBOARD
+   ========================================================= */
+
+.o_employee_dashboard {
+    height: calc(100vh - 46px);
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-sizing: border-box;
+
+    padding: 24px !important;
+
+    background: #f4f6f9;
+}
+
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+.o_employee_dashboard::-webkit-scrollbar {
+    width: 7px;
+}
+
+.o_employee_dashboard::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.o_employee_dashboard::-webkit-scrollbar-thumb {
+    background: #cbd0d6;
+    border-radius: 10px;
+}
+
+.o_employee_dashboard::-webkit-scrollbar-thumb:hover {
+    background: #aeb4bb;
+}
+
+
+/* =========================================================
+   DASHBOARD HEADER
+   ========================================================= */
+
+.o_employee_dashboard .dashboard-header {
+    background: #ffffff;
+    border: 1px solid #e7e9ec;
+    border-radius: 14px;
+    padding: 20px 24px;
+    margin-bottom: 22px;
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.o_employee_dashboard .dashboard-title-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.o_employee_dashboard .dashboard-title-icon {
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background: #e8f0fe;
+    color: #4e73df;
+
+    font-size: 20px;
+}
+
+.o_employee_dashboard .dashboard-title {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 700;
+    color: #212529;
+    line-height: 1.3;
+}
+
+.o_employee_dashboard .dashboard-subtitle {
+    margin-top: 4px;
+    font-size: 13px;
+    color: #7a8087;
+}
+
+
+/* =========================================================
+   YEAR FILTER
+   ========================================================= */
+
+.o_employee_dashboard .dashboard-filter {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.o_employee_dashboard .dashboard-filter-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #6c757d;
+}
+
+.o_employee_dashboard .dashboard-year-select {
+    min-width: 125px;
+    height: 38px;
+
+    border: 1px solid #dfe3e8;
+    border-radius: 8px;
+
+    background-color: #ffffff;
+
+    font-size: 13px;
+    font-weight: 500;
+
+    cursor: pointer;
+}
+
+.o_employee_dashboard .dashboard-year-select:focus {
+    border-color: #7b9df2;
+    box-shadow: 0 0 0 3px rgba(78, 115, 223, 0.10);
+}
+
+
+/* =========================================================
+   KPI CARDS
+   ========================================================= */
+
+.o_employee_dashboard .kpi-card {
+    position: relative;
+
+    background: #ffffff;
+
+    border: 1px solid #e7e9ec !important;
+    border-radius: 14px !important;
+
+    padding: 20px !important;
+
+    min-height: 145px;
+
+    overflow: hidden;
+
+    cursor: default;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.o_employee_dashboard .kpi-card.is-clickable {
+    cursor: pointer;
+}
+
+.o_employee_dashboard .kpi-card.is-clickable:hover {
+    transform: translateY(-3px);
+
+    border-color: #d7dce2 !important;
+
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.07) !important;
+}
+
+.o_employee_dashboard .kpi-card::after {
+    content: "";
+
+    position: absolute;
+
+    width: 80px;
+    height: 80px;
+
+    right: -28px;
+    bottom: -30px;
+
+    border-radius: 50%;
+
+    background: rgba(78, 115, 223, 0.035);
+}
+
+.o_employee_dashboard .kpi-content {
+    position: relative;
+    z-index: 2;
+}
+
+.o_employee_dashboard .kpi-label {
+    margin-bottom: 7px;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    color: #7a8087;
+
+    text-transform: uppercase;
+    letter-spacing: 0.35px;
+}
+
+.o_employee_dashboard .kpi-value {
+    margin-bottom: 4px;
+
+    font-size: 30px;
+    font-weight: 700;
+
+    line-height: 1.1;
+
+    color: #212529;
+}
+
+.o_employee_dashboard .kpi-subtext {
+    font-size: 12px;
+    color: #9aa0a6;
+}
+
+.o_employee_dashboard .kpi-icon {
+    position: relative;
+    z-index: 2;
+
+    width: 52px;
+    height: 52px;
+
+    flex: 0 0 52px;
+
+    border-radius: 13px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 19px;
+}
+
+
+/* =========================================================
+   DASHBOARD CARDS
+   ========================================================= */
+
+.o_employee_dashboard .dashboard-card {
+    background: #ffffff;
+
+    border: 1px solid #e7e9ec;
+
+    border-radius: 14px;
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.035);
+
+    padding: 20px;
+}
+
+.o_employee_dashboard .dashboard-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 18px;
+}
+
+.o_employee_dashboard .dashboard-card-title {
+    margin: 0;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    color: #252a30;
+}
+
+.o_employee_dashboard .dashboard-card-subtitle {
+    margin-top: 3px;
+
+    font-size: 12px;
+    color: #92979d;
+}
+
+.o_employee_dashboard .dashboard-card-icon {
+    width: 34px;
+    height: 34px;
+
+    border-radius: 9px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #6c757d;
+    background: #f3f5f7;
+}
+
+
+/* =========================================================
+   CHART AREA
+   ========================================================= */
+
+.o_employee_dashboard .chart-container {
+    position: relative;
+
+    width: 100%;
+    height: 300px;
+}
+
+.o_employee_dashboard .chart-container.chart-small {
+    height: 285px;
+}
+
+
+/* =========================================================
+   WORKFORCE STATUS
+   ========================================================= */
+
+.o_employee_dashboard .status-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 12px;
+}
+
+.o_employee_dashboard .status-item {
+    position: relative;
+
+    padding: 15px;
+
+    border-radius: 11px;
+
+    border: 1px solid #edf0f2;
+
+    background: #fafbfc;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.o_employee_dashboard .status-item:hover {
+    transform: translateY(-2px);
+
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+}
+
+.o_employee_dashboard .status-item-label {
+    margin-bottom: 5px;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    color: #737980;
+}
+
+.o_employee_dashboard .status-item-value {
+    font-size: 26px;
+    font-weight: 700;
+
+    line-height: 1.1;
+}
+
+.o_employee_dashboard .status-item-subtext {
+    margin-top: 4px;
+
+    font-size: 11px;
+
+    color: #9aa0a6;
+}
+
+
+/* =========================================================
+   STATUS DOT
+   ========================================================= */
+
+.o_employee_dashboard .status-dot {
+    width: 8px;
+    height: 8px;
+
+    display: inline-block;
+
+    border-radius: 50%;
+
+    margin-right: 6px;
+}
+
+
+/* =========================================================
+   LOADING
+   ========================================================= */
+
+.o_employee_dashboard .dashboard-loading {
+    min-height: 400px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.o_employee_dashboard .dashboard-loading-content {
+    text-align: center;
+}
+
+.o_employee_dashboard .dashboard-loading-content .fa {
+    font-size: 28px;
+    margin-bottom: 12px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1199px) {
+
+    .o_employee_dashboard {
+        padding: 18px !important;
+    }
+
+    .o_employee_dashboard .dashboard-title {
+        font-size: 20px;
+    }
+
+    .o_employee_dashboard .kpi-value {
+        font-size: 27px;
+    }
+}
+
+
+@media (max-width: 767px) {
+
+    .o_employee_dashboard {
+        padding: 12px !important;
+    }
+
+    .o_employee_dashboard .dashboard-header {
+        padding: 16px;
+    }
+
+    .o_employee_dashboard .dashboard-header-content {
+        gap: 16px;
+    }
+
+    .o_employee_dashboard .dashboard-title-wrapper {
+        align-items: flex-start;
+    }
+
+    .o_employee_dashboard .dashboard-title {
+        font-size: 18px;
+    }
+
+    .o_employee_dashboard .dashboard-filter {
+        width: 100%;
+    }
+
+    .o_employee_dashboard .dashboard-year-select {
+        flex: 1;
+    }
+
+    .o_employee_dashboard .status-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .o_employee_dashboard .chart-container,
+    .o_employee_dashboard .chart-container.chart-small {
+        height: 260px;
+    }
+}
+
+
+/* =========================================================
+   KPI CARDS
+   ========================================================= */
+
+.o_employee_dashboard .kpi-card {
+    position: relative;
+
+    background: #ffffff;
+
+    border: 1px solid #e7e9ec !important;
+    border-radius: 14px !important;
+
+    padding: 20px !important;
+
+    min-height: 145px;
+
+    overflow: hidden;
+
+    cursor: default;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
+}
+
+
+/* =========================================================
+   CLICKABLE CARDS
+   ========================================================= */
+
+.o_employee_dashboard .kpi-card.is-clickable {
+    cursor: pointer;
+}
+
+.o_employee_dashboard .kpi-card.is-clickable:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 12px 28px rgba(0, 0, 0, 0.10) !important;
+}
+
+
+/* =========================================================
+   CARD DECORATIVE COLOR
+   ========================================================= */
+
+.o_employee_dashboard .kpi-card::after {
+    content: "";
+
+    position: absolute;
+
+    width: 110px;
+    height: 110px;
+
+    right: -40px;
+    bottom: -45px;
+
+    border-radius: 50%;
+
+    opacity: 0.10;
+
+    transition:
+        transform 0.25s ease,
+        opacity 0.25s ease;
+}
+
+.o_employee_dashboard .kpi-card:hover::after {
+    transform: scale(1.15);
+
+    opacity: 0.16;
+}
+
+
+/* =========================================================
+   KPI CONTENT
+   ========================================================= */
+
+.o_employee_dashboard .kpi-content {
+    position: relative;
+    z-index: 2;
+}
+
+.o_employee_dashboard .kpi-label {
+    margin-bottom: 7px;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    color: #6c757d;
+
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+}
+
+.o_employee_dashboard .kpi-value {
+    margin-bottom: 5px;
+
+    font-size: 30px;
+    font-weight: 700;
+
+    line-height: 1.1;
+}
+
+.o_employee_dashboard .kpi-subtext {
+    font-size: 12px;
+
+    color: #92979d;
+}
+
+
+/* =========================================================
+   KPI ICON
+   ========================================================= */
+
+.o_employee_dashboard .kpi-icon {
+    position: relative;
+    z-index: 2;
+
+    width: 54px;
+    height: 54px;
+
+    flex: 0 0 54px;
+
+    border-radius: 14px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 20px;
+
+    box-shadow:
+        0 5px 12px rgba(0, 0, 0, 0.06);
+}
+
+
+/* =========================================================
+   FIRST ROW
+   ========================================================= */
+
+
+/* ---------------------------------------------------------
+   1. TOTAL EMPLOYEES
+   BLUE
+   --------------------------------------------------------- */
+
+.o_employee_dashboard .kpi-card:nth-child(1) {
+    border-top: 4px solid #4e73df !important;
+}
+
+.o_employee_dashboard .kpi-card:nth-child(1)::after {
+    background: #4e73df;
+}
+
+.o_employee_dashboard .kpi-card:nth-child(1) .kpi-icon {
+    background: #e8efff !important;
+    color: #4e73df !important;
+}
+
+
+/* ---------------------------------------------------------
+   2. ACTIVE EMPLOYEES
+   GREEN
+   --------------------------------------------------------- */
+
+.o_employee_dashboard .kpi-card:nth-child(2) {
+    border-top: 4px solid #1cc88a !important;
+}
+
+.o_employee_dashboard .kpi-card:nth-child(2)::after {
+    background: #1cc88a;
+}
+
+.o_employee_dashboard .kpi-card:nth-child(2) .kpi-icon {
+    background: #e4f8f0 !important;
+    color: #1cc88a !important;
+}
+
+
+/* ---------------------------------------------------------
+   3. INACTIVE EMPLOYEES
+   GRAY
+   --------------------------------------------------------- */
+
+.o_employee_dashboard .kpi-card:nth-child(3) {
+    border-top: 4px solid #858796 !important;
+}
+
+.o_employee_dashboard .kpi-card:nth-child(3)::after {
+    background: #858796;
+}
+
+.o_employee_dashboard .kpi-card:nth-child(3) .kpi-icon {
+    background: #f0f1f4 !important;
+    color: #6c6e78 !important;
+}
+
+
+/* ---------------------------------------------------------
+   4. CURRENT EMPLOYEES
+   CYAN
+   --------------------------------------------------------- */
+
+.o_employee_dashboard .kpi-card:nth-child(4) {
+    border-top: 4px solid #36b9cc !important;
+}
+
+.o_employee_dashboard .kpi-card:nth-child(4)::after {
+    background: #36b9cc;
+}
+
+.o_employee_dashboard .kpi-card:nth-child(4) .kpi-icon {
+    background: #e4f8fb !important;
+    color: #249aae !important;
+}
+
+
+/* =========================================================
+   SECOND ROW
+   ========================================================= */
+
+
+/* ---------------------------------------------------------
+   5. EDUCATION
+   PURPLE
+   --------------------------------------------------------- */
+
+.o_employee_dashboard .row .kpi-card:nth-child(1) {
+    border-top: 4px solid #6f42c1 !important;
+}
+
+.o_employee_dashboard .row .kpi-card:nth-child(1)::after {
+    background: #6f42c1;
+}
+
+.o_employee_dashboard .row .kpi-card:nth-child(1) .kpi-icon {
+    background: #f0eafd !important;
+    color: #6f42c1 !important;
+}
+
+
+/* ---------------------------------------------------------
+   6. EXPERIENCE
+   TEAL
+   --------------------------------------------------------- */
+
+.o_employee_dashboard .row .kpi-card:nth-child(2) {
+    border-top: 4px solid #20c997 !important;
+}
+
+.o_employee_dashboard .row .kpi-card:nth-child(2)::after {
+    background: #20c997;
+}
+
+.o_employee_dashboard .row .kpi-card:nth-child(2) .kpi-icon {
+    background: #e3faf4 !important;
+    color: #159a74 !important;
+}
+
+
+/* ---------------------------------------------------------
+   7. TRAINING
+   ORANGE
+   --------------------------------------------------------- */
+
+.o_employee_dashboard .row .kpi-card:nth-child(3) {
+    border-top: 4px solid #f6c23e !important;
+}
+
+.o_employee_dashboard .row .kpi-card:nth-child(3)::after {
+    background: #f6c23e;
+}
+
+.o_employee_dashboard .row .kpi-card:nth-child(3) .kpi-icon {
+    background: #fff6dc !important;
+    color: #d99c00 !important;
+}
+
+
+/* ---------------------------------------------------------
+   8. RETIRED EMPLOYEES
+   RED/PURPLE
+   --------------------------------------------------------- */
+
+.o_employee_dashboard .row .kpi-card:nth-child(4) {
+    border-top: 4px solid #e74a3b !important;
+}
+
+.o_employee_dashboard .row .kpi-card:nth-child(4)::after {
+    background: #e74a3b;
+}
+
+.o_employee_dashboard .row .kpi-card:nth-child(4) .kpi-icon {
+    background: #fde9e7 !important;
+    color: #e74a3b !important;
+}
