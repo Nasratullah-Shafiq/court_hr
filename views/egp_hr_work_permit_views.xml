@@ -11,6 +11,7 @@
             <tree string="Employee Work Permits">
                 <field name="employee_id"/>
                 <field name="letter_no"/>
+                
                 <field name="permit_no"/>
                 <field name="letter_date"/>
             </tree>
