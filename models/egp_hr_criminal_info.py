@@ -30,8 +30,6 @@ class EmployeeCriminalInfo(models.Model):
         readonly=True
     )
 
-
-
     letter_no = fields.Char(string='Letter Number', required=True, tracking=True)
     responsibility = fields.Text(string='Responsibility', tracking=True)
     non_responsibility = fields.Text(string='Non-Responsibility', tracking=True)
