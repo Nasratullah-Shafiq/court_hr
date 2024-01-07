@@ -9,7 +9,6 @@
         <field name="model">employee.reward</field>
         <field name="arch" type="xml">
             <tree string="Employee Reward">
-            
                 <field name="employee_id"/>
                 <field name="reward_type"/>
                 <field name="amount_of_cash_for_reward"/>
