@@ -9,7 +9,6 @@ class EmployeePromotion(models.Model):
     _description = 'Employee Promotions'
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
-    
     employee_id = fields.Many2one('hr.employee', string='Employee', tracking=True)
     job_id = fields.Many2one('hr.job', string='Job', related='employee_id.job_id', store=True, readonly=True,
                              tracking=True)
