@@ -35,7 +35,6 @@ class EmployeeVillage(models.Model):
     _description = 'Employee Village'
     name = fields.Char(string='Village',tracking=True)
 
-
     @api.constrains('name')
     def _check_name_constraints(self):
         for record in self:
