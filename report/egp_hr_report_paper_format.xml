@@ -15,6 +15,5 @@
             <field name="header_spacing">35</field> <!-- Right margin in mm -->
             <field name="dpi">90</field>
         </record>
-
     </data>
 </odoo>
