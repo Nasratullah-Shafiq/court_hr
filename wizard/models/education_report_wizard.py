@@ -11,7 +11,6 @@ class EducationReportWizard(models.TransientModel):
         'employee.university',
         string='University'
     )
-
     degree_id = fields.Many2one(
         'employee.degree',
         string='Degree'
