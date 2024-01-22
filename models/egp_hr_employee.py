@@ -12,7 +12,6 @@ class HrEmployeeInherit(models.Model):
     _inherit = 'hr.employee'
     _description = "Human Resource"
 
-
     experience_ids = fields.One2many('employee.experience', 'employee_id', string='Experience', tracking=True)
     promotion_ids = fields.One2many('employee.promotions', 'employee_id', string='Fire', tracking=True)
     exam_ids = fields.One2many('employee.exam', 'employee_id', string='Exam', tracking=True)
