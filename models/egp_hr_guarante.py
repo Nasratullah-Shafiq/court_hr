@@ -4,7 +4,6 @@ from odoo.exceptions import ValidationError
 import re
 from datetime import datetime
 
-
 class EmployeeGuarantee(models.Model):
     _name = 'employee.guarantee'
     _description = 'Employee Guarantee'
