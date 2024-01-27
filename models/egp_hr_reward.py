@@ -22,7 +22,6 @@ class EmployeeReward(models.Model):
         store=True,
         readonly=True
     )
-
     
     grand_father_name = fields.Char(
         string='Grand Father Name',
