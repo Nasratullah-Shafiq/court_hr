@@ -7,6 +7,7 @@ class EmployeeReportWizard(models.TransientModel):
     _name = 'employee.report.wizard'
     _description = 'Employee Report Wizard'
 
+
     # =========================
     # Filters
     # =========================
