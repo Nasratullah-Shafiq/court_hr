@@ -10,7 +10,6 @@ class PromotionReportWizard(models.TransientModel):
 
     start_date = fields.Date(string="Start Date", required=True)
     end_date = fields.Date(string="End Date", required=True)
-
     total_promotions = fields.Integer(
         string="Total Promotions",
         readonly=True
