@@ -14,7 +14,6 @@ class RetirementReportWizard(models.TransientModel):
         'employee.retirement.type',
         string="Retirement Type"
     )
-
     total_retirements = fields.Integer(
         string="Total Retirements",
         readonly=True
