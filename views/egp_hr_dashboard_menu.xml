@@ -5,7 +5,6 @@
         <field name="name">Employee Dashboard</field>
         <field name="tag">employee_dashboard</field>
     </record>
-
     <menuitem
         id="menu_employee_dashboard"
         name="Employee Dashboard"
