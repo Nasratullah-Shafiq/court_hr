@@ -29,7 +29,6 @@ class EmployeeDistrict(models.Model):
     name = fields.Char(string='District', translate=True, tracking=True)
     province_id = fields.Many2one('res.country.state', string='Province', ondelete='cascade', required=True, tracking=True)
 
-
 class EmployeeVillage(models.Model):
     _name = 'employee.village'
     _description = 'Employee Village'
