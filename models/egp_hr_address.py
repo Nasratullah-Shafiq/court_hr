@@ -12,7 +12,6 @@ class ResCountryState(models.Model):
         required=True,
         translate=True, tracking=True
     )
-
     district_ids = fields.One2many(
         'employee.district',
         'province_id',
