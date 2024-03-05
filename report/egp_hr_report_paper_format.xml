@@ -7,8 +7,9 @@
             <field name="name">Job Summary Report Format</field>
             <field name="format">A4</field>
             <field name="orientation">Portrait</field>
-            
+
             <field name="page_height">0</field>
+            
             <field name="page_width">0</field>
             <field name="margin_top">20</field> <!-- Decreased top margin in mm -->
             <field name="margin_bottom">40</field> <!-- Bottom margin in mm -->
