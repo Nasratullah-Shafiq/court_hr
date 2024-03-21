@@ -9,7 +9,6 @@ import qrcode
 
 from io import BytesIO
 
-
 class HrEmployeeInherit(models.Model):
     _inherit = 'hr.employee'
     _description = "Human Resource"
