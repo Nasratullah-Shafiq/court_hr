@@ -10,6 +10,16 @@
             <field name="comment">The user will be able to approve employee document</field>
         </record>
 
+        <!--    Employee ID Card Officer Group  -->
+
+        <record id="group_id_card_officer" model="res.groups">
+            <field name="name">EGP-HR ID Card Officer</field>
+            <field name="category_id" ref="base.module_category_human_resources_employees"/>
+            <field name="implied_ids" eval="[(6, 0, [ref('base.group_user')])]"/>
+            <field name="comment">The user will be able to manage and approve employee ID cards.</field>
+        </record>
+
+        <!--   ID Card officer group    -->
         <record id="group_supreme_court_employee_officers" model="res.groups">
             <field name="name">Supreme Court - Employee Officer / Create All Employee Details</field>
             <field name="category_id" ref="base.module_category_human_resources_employees"/>
@@ -160,19 +170,19 @@
 
 
         <!-- Contact menu invisible for  Officer/Amir  and assigned to administrator  -->
-<!--        <record id="contacts.menu_contacts" model="ir.ui.menu">-->
-<!--            <field name="groups_id" eval="[(6, 0, [ref('base.group_erp_manager')])]"/>-->
-<!--        </record>-->
+        <!--        <record id="contacts.menu_contacts" model="ir.ui.menu">-->
+        <!--            <field name="groups_id" eval="[(6, 0, [ref('base.group_erp_manager')])]"/>-->
+        <!--        </record>-->
 
         <!-- To-do menu invisible for  Officer/Amir  and assigned to administrator  -->
-<!--        <record id="project_todo.menu_todo_todos" model="ir.ui.menu">-->
-<!--            <field name="groups_id" eval="[(6, 0, [ref('base.group_erp_manager')])]"/>-->
-<!--        </record>-->
+        <!--        <record id="project_todo.menu_todo_todos" model="ir.ui.menu">-->
+        <!--            <field name="groups_id" eval="[(6, 0, [ref('base.group_erp_manager')])]"/>-->
+        <!--        </record>-->
 
         <!-- Calendar menu invisible for  Officer/Amir  and assigned to administrator  -->
-<!--        <record id="calendar.mail_menu_calendar" model="ir.ui.menu">-->
-<!--            <field name="groups_id" eval="[(6, 0, [ref('base.group_erp_manager')])]"/>-->
-<!--        </record>-->
+        <!--        <record id="calendar.mail_menu_calendar" model="ir.ui.menu">-->
+        <!--            <field name="groups_id" eval="[(6, 0, [ref('base.group_erp_manager')])]"/>-->
+        <!--        </record>-->
 
         <!-- Link Tracker menu invisible for Officer/Amir  and assigned to administrator  -->
         <record id="utm.menu_link_tracker_root" model="ir.ui.menu">
