@@ -105,7 +105,6 @@
             </field>
         </record>
 
-
         <record id="view_employee_form_inherit" model="ir.ui.view">
             <field name="name">hr.employee.inherit</field>
             <field name="model">hr.employee</field>
