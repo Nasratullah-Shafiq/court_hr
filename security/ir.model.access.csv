@@ -149,7 +149,3 @@ access_employee_society_expert,employee.society expert,model_employee_society,eg
 
 access_employee_major_officer,employee.major officer,model_employee_major,egp_hr.group_employee_officers,1,1,1,1
 access_employee_major_expert,employee.major expert,model_employee_major,egp_hr.group_employee_expert,1,1,1,1
-
-access_hr_retirement_id_card_officer,employee.retirement,model_employee_retirement,egp_hr.group_id_card_officer,1,1,1,1
-access_hr_retirement_type_id_card_officer,employee.retirement.type,model_employee_retirement_type,egp_hr.group_id_card_officer,1,1,1,1
-access_hr_retirement_reason_id_card_officer,employee.retirement.reason,model_employee_retirement_reason,egp_hr.group_id_card_officer,1,1,1,1
