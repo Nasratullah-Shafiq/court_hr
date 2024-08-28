@@ -28,7 +28,6 @@ class EmployeeTraining(models.Model):
         readonly=True
     )
 
-
     course_id = fields.Many2one('employee.course', string="Course", tracking=True)
     training_location = fields.Char(string='Training Location', tracking=True)
     training_start_date = fields.Date(string='Start Date', tracking=True)
