@@ -1,0 +1,31 @@
+{
+    "name": "Court HR Employee",
+    "version": "17.0.1.0.0",
+    "summary": "EGP Human Resource Module",
+    'sequence': -100,
+    'category': 'Human Resources',
+    "description": "",
+    'depends': ['hr', 'mail', 'hr_recruitment', 'hr_skills', 'gamification', 'maintenance'],
+    'data': [
+        'security/court_hr_employee_security.xml',
+        'security/ir.model.access.csv',
+        'views/court_hr_employee.xml',
+        'data/court_hr_employee_default_data.xml',
+        'report/court_hr_employee_report.xml',
+        'report/court_hr_report_paper_format.xml',
+        'views/court_hr_print_action.xml',
+        'views/court_hr_resume.xml',
+        'views/employee_search.xml',
+    ],
+    # "assets": {
+    #     'web.assets_backend': [
+    #         'court_hr/static/src/js/custom_search_button.js',
+    #     ],
+    # },
+    "author": "Nasratullah Shafiq",
+    "website": "https://mcit.gov.af/",
+    "installable": True,
+    "application": True,
+    "auto_install": False,
+    "license": 'OPL-1',
+}
