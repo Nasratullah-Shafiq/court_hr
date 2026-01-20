@@ -101,6 +101,14 @@ class HrEmployeeInherit(models.Model):
     recruitment_date = fields.Date(string='Recruitment Date',
                                    groups="court_hr.group_employee_officers,court_hr.group_employee_expert")
 
+    approver = fields.Char(string='Approver',
+                                    groups="court_hr.group_employee_officers,court_hr.group_employee_expert")
+    pezhand_department = fields.Char(string='Pezhand Department',
+                                    groups="court_hr.group_employee_officers,court_hr.group_employee_expert")
+
+    deputy_ministry_procurement = fields.Char(string='Deputy Ministry of Procurement',
+                                    groups="court_hr.group_employee_officers,court_hr.group_employee_expert")
+
     marital_status = fields.Selection([
         ('single', 'Single'),
         ('married', 'Married'),
@@ -220,6 +228,11 @@ class HrEmployeeInherit(models.Model):
                                           groups="court_hr.group_employee_officers,court_hr.group_employee_expert")
     temporary_province = fields.Selection(PROVINCES, string="Province",
                                           groups="court_hr.group_employee_officers,court_hr.group_employee_expert")
+    job_province = fields.Selection(PROVINCES, string="Province",
+                                          groups="court_hr.group_employee_officers,court_hr.group_employee_expert")
+    job_district = fields.Many2one('employee.district', string="Permanent District", tracking=True,
+                                         ondelete='cascade',
+                                         groups="court_hr.group_employee_officers,court_hr.group_employee_expert")
     passport_place_of_issue = fields.Selection(PROVINCES, string="Place of Issue",
                                           groups="court_hr.group_employee_officers,court_hr.group_employee_expert")
     nic_place_of_issue = fields.Selection(PROVINCES, string="Place of Issue",
