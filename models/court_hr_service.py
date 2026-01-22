@@ -17,7 +17,7 @@ class HrEmployeeInherit(models.Model):
 
 class EmployeeService(models.Model):
     _name = 'employee.service'
-    _description = 'Employee Experience'
+    _description = 'Employee Service'
 
     employee_id = fields.Many2one('hr.employee', string='Employee')
 
@@ -58,7 +58,7 @@ class EmployeeService(models.Model):
         ('Zabul', 'Zabul')
     ], string="Province")
 
-    organization_id = fields.Many2one('employee.organization', string="Organization")
+
     job_position = fields.Char(string='Job Position')
 
     grade = fields.Selection([
