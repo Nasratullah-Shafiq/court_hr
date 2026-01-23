@@ -2,7 +2,6 @@
 from odoo import fields, models, api
 from dateutil.relativedelta import relativedelta
 from odoo.exceptions import ValidationError
-import re
 
 
 
@@ -20,6 +19,25 @@ class EmployeeService(models.Model):
     _description = 'Employee Service'
 
     employee_id = fields.Many2one('hr.employee', string='Employee')
+
+    letter_no = fields.Char(string='Document No')
+    letter_date = fields.Date(string='Start Date')
+    image = fields.Binary("Upload Image", attachment=True)
+    image_filename = fields.Char("Image Filename")
+
+    court_level = fields.Selection([
+        ('مرکز', 'مرکز'),
+        ('تمیز مرکزی', 'تمیز مرکزی'),
+        ('تمیز زون قندهار', 'تمیز زون قندهار'),
+        ('مرافعه', 'مرافعه'),
+        ('ابتداییه', 'ابتداییه'),
+        ('نظامی', 'نظامی')
+    ], default="مرکز", string="Court Level",
+        groups="court_hr.group_employee_officers,court_hr.group_employee_expert")
+
+    district = fields.Many2one('employee.district', string="District", tracking=True,
+                                         ondelete='cascade',
+                                         groups="court_hr.group_employee_officers,court_hr.group_employee_expert")
 
     province = fields.Selection([
         ('Badakhshan', 'Badakhshan'),
@@ -58,8 +76,16 @@ class EmployeeService(models.Model):
         ('Zabul', 'Zabul')
     ], string="Province")
 
+    position_type = fields.Selection(
+        related='employee_id.job_id.position_type',
+        string='Position Type',
+        store=True,
+        readonly=True
+    )
+
 
     job_position = fields.Char(string='Job Position')
+    related_section = fields.Char(string='Related Section')
 
     grade = fields.Selection([
         ('major_general', 'Major General'),
@@ -175,16 +201,16 @@ class EmployeeService(models.Model):
                     f"The fields should contain only letters and spaces: {', '.join(invalid_fields)}"
                 )
 
-    @api.depends('job_start_date', 'job_end_date')
+    @api.depends('service_start_date', 'service_end_date')
     def _compute_duration_human_readable(self):
         for record in self:
-            if record.job_start_date and record.job_end_date:
+            if record.service_start_date and record.service_end_date:
                 # Validation: Check if start date is greater than end date
-                if record.job_start_date > record.job_end_date:
+                if record.service_start_date > record.service_end_date:
                     raise ValidationError("The start date must be earlier than or equal to the end date.")
 
                 # Calculate the duration using relativedelta
-                rdelta = relativedelta(record.job_end_date, record.job_start_date)
+                rdelta = relativedelta(record.service_end_date, record.service_start_date)
 
                 # Build the human-readable duration string
                 duration_parts = []
@@ -199,11 +225,6 @@ class EmployeeService(models.Model):
                 record.duration_human_readable = "0 months"
 
 
-class EmployeeOrganization(models.Model):
-    _name = 'employee.organization'
-    _description = 'Employee Organization'
-
-    name = fields.Char(string='Organization')
 
     @api.constrains('name')
     def _check_name_constraints(self):
