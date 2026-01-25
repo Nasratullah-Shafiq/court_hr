@@ -47,8 +47,7 @@ class EmployeeRelative(models.Model):
     relationship_property = fields.Char(string='Property')
     relationship_remarks = fields.Text(string='Remarks')
 
-    image = fields.Binary("Upload Image", attachment=True)
-    image_filename = fields.Char("Image Filename")  # optional, store original filename
+    attachments = fields.Many2many('ir.attachment', string="Attachments")
 
 
     @api.constrains('relationship_name', 'relationship_last_name', 'relationship_father_name',
