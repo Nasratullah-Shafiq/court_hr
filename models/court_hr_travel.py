@@ -24,3 +24,5 @@ class EmployeeTravel(models.Model):
     travel_start_date = fields.Date(string='Start Date')
     travel_end_date = fields.Date(string='End Date')
     remarks = fields.Text(string='Remarks')
+    image = fields.Binary("Upload Image", attachment=True)
+    image_filename = fields.Char("Image Filename")
