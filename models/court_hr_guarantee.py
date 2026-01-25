@@ -25,6 +25,8 @@ class CashGuarantee(models.Model):
     bank_name = fields.Char(string='Bank Name')
     bank_slip_no = fields.Integer(string='Bank Slip No')
     cash_remarks = fields.Text(string='Remarks')
+    image = fields.Binary("Upload Image", attachment=True)
+    image_filename = fields.Char("Image Filename")
 
     @api.constrains('bank_name')
     def _check_name_constraints(self):
@@ -85,6 +87,8 @@ class CashGuarantee(models.Model):
         deed_no = fields.Integer(string='Deed No')
         deed_date = fields.Date(string='Deed Date')
         property_remarks = fields.Text(string='Remarks')
+        image = fields.Binary("Upload Image", attachment=True)
+        image_filename = fields.Char("Image Filename")
 
 
 class PersonGuarantee(models.Model):
@@ -147,6 +151,9 @@ class PersonGuarantee(models.Model):
     ]
     permanent_province = fields.Selection(PROVINCES, string="Province")
     temporary_province = fields.Selection(PROVINCES, string="Province")
+
+    image = fields.Binary("Upload Image", attachment=True)
+    image_filename = fields.Char("Image Filename")
 
     @api.constrains('person_name', 'last_name', 'father_name', 'grand_father_name', 'job_position', 'organization')
     def _check_only_characters(self):
