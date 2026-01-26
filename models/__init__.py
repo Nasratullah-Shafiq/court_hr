@@ -18,6 +18,6 @@ from . import court_hr_guarantee
 from . import court_hr_document_attachment
 from . import court_hr_fire
 from . import court_hr_service
-
+from . import court_hr_promotions
 
 
