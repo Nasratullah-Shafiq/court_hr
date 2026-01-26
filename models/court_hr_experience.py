@@ -158,6 +158,7 @@ class EmployeeExperience(models.Model):
         compute="_compute_duration_human_readable",
         store=True
     )
+    attachments = fields.Many2many('ir.attachment', string="Attachments")
 
 
 
