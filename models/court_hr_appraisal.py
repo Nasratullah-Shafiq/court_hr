@@ -48,3 +48,5 @@ class EmployeeAppraisal(models.Model):
     employee_opinion_again = fields.Text(string='Employee Opinion')
     supervisor_opinion = fields.Text(string='Superior Head')
 
+    attachments = fields.Many2many('ir.attachment', string="Attachments")
+
