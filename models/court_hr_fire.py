@@ -25,6 +25,8 @@ class EmployeeFire(models.Model):
     date_approved = fields.Date(string='Date Approved', Tracking='true')
     fire_remarks = fields.Text(string='Remarks', Tracking='true')
 
+    attachments = fields.Many2many('ir.attachment', string="Attachments")
+
 
     class EmployeeLeaveReason(models.Model):
         _name = 'employee.leave.reason'
