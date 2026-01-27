@@ -25,6 +25,8 @@ class EmployeeExam(models.Model):
     exam_score = fields.Integer(string='Score')
     exam_remarks = fields.Text(string='Remarks')
 
+    attachments = fields.Many2many('ir.attachment', string="Attachments")
+
     @api.constrains('exam_score')
     def _check_exam_score(self):
         for record in self:
