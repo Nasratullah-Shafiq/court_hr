@@ -49,6 +49,8 @@ class EmployeeEducation(models.Model):
     batch_no = fields.Integer(string='Batch No', tracking=True)
     education_remarks = fields.Text(string='Remarks', tracking=True)
 
+    attachments = fields.Many2many('ir.attachment', string="Attachments")
+
 
 
     @api.constrains('major')
@@ -57,37 +59,7 @@ class EmployeeEducation(models.Model):
             if record.major and not re.match('^[A-Za-z ]+$', record.major):
                 raise ValidationError("The Major field should only contain alphabetic characters and spaces.")
 
-    # @api.model
-    # def create(self, vals):
-    #     record = super(EmployeeEducation, self).create(vals)
-    #     record._track_changes(vals)
-    #     return record
-    #
-    # def write(self, vals):
-    #     self._track_changes(vals)
-    #     return super(EmployeeEducation, self).write(vals)
-    #
-    # def _track_changes(self, vals):
-    #     tracked_fields = self._get_tracked_fields()
-    #     for field_name, value in vals.items():
-    #         if field_name in tracked_fields:
-    #             old_value = self[field_name]
-    #             new_value = value
-    #             if old_value != new_value:
-    #                 self.message_post(body=f"{tracked_fields[field_name]}: {old_value} → {new_value}")
-    #
-    # def _get_tracked_fields(self):
-    #     return {
-    #         'country': 'Country',
-    #         'degree': 'Degree',
-    #         'university_id': 'University',
-    #         'faculty_id': 'Faculty',
-    #         'major': 'Major',
-    #         'education_start_date': 'Start Date',
-    #         'education_end_date': 'End Date',
-    #         'batch_no': 'Batch No',
-    #         'education_remarks': 'Remarks'
-    #     }
+
 
 
 class EmployeeUniversity(models.Model):
