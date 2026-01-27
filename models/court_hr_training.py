@@ -24,6 +24,8 @@ class EmployeeTraining(models.Model):
                                         ('medium', 'medium'), ('elementary', 'elementary')], string="Training Result")
     training_certification = fields.Char(string='Certification')
     training_remarks = fields.Text(string='Remarks')
+    image = fields.Binary("Upload Image", attachment=True)
+    image_filename = fields.Char("Image Filename")
 
 
 class EmployeeCourse(models.Model):
