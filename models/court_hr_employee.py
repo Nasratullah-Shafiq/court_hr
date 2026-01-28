@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from email.policy import default
 from odoo import fields, models, api
+from dateutil.relativedelta import relativedelta
+from datetime import date
 
 
 class HrEmployeeInherit(models.Model):
@@ -187,6 +189,7 @@ class HrEmployeeInherit(models.Model):
 
     religion = fields.Char(string='Religion', tracking=True, groups="court_hr.group_employee_officers,court_hr.group_employee_expert")
     today_date = fields.Date(string="Today's Date", tracking=True, default=fields.Date.today, groups="court_hr.group_employee_officers,court_hr.group_employee_expert")
+
     # Define the list of provinces once
     PROVINCES = [
         ('Badakhshan', 'Badakhshan'),
@@ -238,6 +241,56 @@ class HrEmployeeInherit(models.Model):
     nic_place_of_issue = fields.Selection(PROVINCES, string="Place of Issue",
                                                groups="court_hr.group_employee_officers,court_hr.group_employee_expert")
 
+    age = fields.Integer(
+        string="Age",
+        compute="_compute_age",
+        store=True
+    )
+
+    def cron_retirement_toast(self):
+        today = date.today()
+        employees = self.search([('emp_date_of_birth', '!=', False)])
+
+        hr_users = self.env.ref('hr.group_hr_user').users
+
+        for emp in employees:
+            age = today.year - emp.emp_date_of_birth.year - (
+                    (today.month, today.day) < (emp.emp_date_of_birth.month, emp.emp_date_of_birth.day)
+            )
+
+            # Retirement warning at age 64
+            if age == 64:
+                for user in hr_users:
+                    user.notify_warning(
+                        message=f"{emp.name} will retire next year.",
+                        title="Retirement Warning",
+                        sticky=False  # This makes it toast-style
+                    )
+
+            # Automatic retirement at age 65
+            if age >= 65:
+                exists = self.env['employee.retirement'].search([('employee_id', '=', emp.id)], limit=1)
+                if not exists:
+                    self.env['employee.retirement'].create({
+                        'employee_id': emp.id,
+                        'retirement_end_date': today,
+                        'retirement_remarks': 'Automatically retired at age 65'
+                    })
+                    for user in hr_users:
+                        user.notify_success(
+                            message=f"{emp.name} has been retired automatically (age {age}).",
+                            title="Employee Retired",
+                            sticky=False
+                        )
+
+    @api.depends('emp_date_of_birth')
+    def _compute_age(self):
+        today = date.today()
+        for emp in self:
+            if emp.emp_date_of_birth:
+                emp.age = relativedelta(today, emp.emp_date_of_birth).years
+            else:
+                emp.age = 0
 
 
     single_fire_record = fields.Char(
