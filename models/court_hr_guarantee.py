@@ -152,8 +152,7 @@ class PersonGuarantee(models.Model):
     permanent_province = fields.Selection(PROVINCES, string="Province")
     temporary_province = fields.Selection(PROVINCES, string="Province")
 
-    image = fields.Binary("Upload Image", attachment=True)
-    image_filename = fields.Char("Image Filename")
+    attachments = fields.Many2many('ir.attachment', string="Attachments")
 
     @api.constrains('person_name', 'last_name', 'father_name', 'grand_father_name', 'job_position', 'organization')
     def _check_only_characters(self):
