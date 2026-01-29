@@ -58,7 +58,8 @@ class HrEmployeeInherit(models.Model):
     recruitment_type = fields.Selection([
         ('حکمی', 'حکمی'),
         ('رقابتی', 'رقابتی')
-    ], default="رقابتی", string="Recruitment Type", groups="court_hr.group_employee_officers,court_hr.group_employee_expert")
+    ], default="رقابتی", string="Recruitment Type",
+        groups="court_hr.group_employee_officers,court_hr.group_employee_expert")
 
     execution_type = fields.Selection([
         ('جدیدالتقرر', 'جدیدالتقرر'),
@@ -67,12 +68,13 @@ class HrEmployeeInherit(models.Model):
         ('انفصال', 'انفصال'),
         ('انفکاک', 'انفکاک'),
         ('عزل', 'عزل')
-    ], default="جدیدالتقرر", string="Execution Type", groups="court_hr.group_employee_officers,court_hr.group_employee_expert")
+    ], default="جدیدالتقرر", string="Execution Type",
+        groups="court_hr.group_employee_officers,court_hr.group_employee_expert")
 
     p2_form_no = fields.Char(string='P2 Form Number',
-                                    groups="court_hr.group_employee_officers,court_hr.group_employee_expert")
+                             groups="court_hr.group_employee_officers,court_hr.group_employee_expert")
     p2_approval_date = fields.Date(string='P2 Approval Date',
-                                groups="court_hr.group_employee_officers,court_hr.group_employee_expert")
+                                   groups="court_hr.group_employee_officers,court_hr.group_employee_expert")
 
     court_level = fields.Selection([
         ('مرکز', 'مرکز'),
@@ -99,17 +101,17 @@ class HrEmployeeInherit(models.Model):
         groups="base.group_erp_manager,court_hr.group_employee_officers,court_hr.group_employee_expert")
 
     approval_date = fields.Date(string='Approval Date',
-                                   groups="court_hr.group_employee_officers,court_hr.group_employee_expert")
+                                groups="court_hr.group_employee_officers,court_hr.group_employee_expert")
     recruitment_date = fields.Date(string='Recruitment Date',
                                    groups="court_hr.group_employee_officers,court_hr.group_employee_expert")
 
     approver = fields.Char(string='Approver',
-                                    groups="court_hr.group_employee_officers,court_hr.group_employee_expert")
+                           groups="court_hr.group_employee_officers,court_hr.group_employee_expert")
     pezhand_department = fields.Char(string='Pezhand Department',
-                                    groups="court_hr.group_employee_officers,court_hr.group_employee_expert")
+                                     groups="court_hr.group_employee_officers,court_hr.group_employee_expert")
 
     deputy_ministry_procurement = fields.Char(string='Deputy Ministry of Procurement',
-                                    groups="court_hr.group_employee_officers,court_hr.group_employee_expert")
+                                              groups="court_hr.group_employee_officers,court_hr.group_employee_expert")
 
     marital_status = fields.Selection([
         ('single', 'Single'),
@@ -128,7 +130,8 @@ class HrEmployeeInherit(models.Model):
         ('o-', 'O-'),
     ], string="Blood Group", groups="court_hr.group_employee_officers,court_hr.group_employee_expert")
 
-    start_date = fields.Date(string='Start Date', groups="court_hr.group_employee_officers,court_hr.group_employee_expert"),
+    start_date = fields.Date(string='Start Date',
+                             groups="court_hr.group_employee_officers,court_hr.group_employee_expert"),
     end_date = fields.Date(string='End Date', groups="court_hr.group_employee_officers,court_hr.group_employee_expert"),
 
     identification_type = fields.Selection([('paper_id_card', 'Paper ID card'),
@@ -169,12 +172,15 @@ class HrEmployeeInherit(models.Model):
                                       groups="court_hr.group_employee_officers,court_hr.group_employee_expert")
     passport_end_date = fields.Date(string='Expiry Date', tracking=True,
                                     groups="court_hr.group_employee_officers,court_hr.group_employee_expert")
-    passport_type = fields.Selection([('ordinary_passport', 'Ordinary Passport'), ('diplomatic_passport', 'Diplomatic Passport'), ('service_official_passport', 'Service (Official) Passport'), ('special_passport', 'Special Passport')], string='Passport Type',
+    passport_type = fields.Selection(
+        [('ordinary_passport', 'Ordinary Passport'), ('diplomatic_passport', 'Diplomatic Passport'),
+         ('service_official_passport', 'Service (Official) Passport'), ('special_passport', 'Special Passport')],
+        string='Passport Type',
+        tracking=True,
+        groups="court_hr.group_employee_officers,court_hr.group_employee_expert", default='ordinary_passport')
+
+    emp_gender = fields.Selection([('male', 'Male'), ('female', 'Female'), ('other', 'Other')], string='Gender',
                                   tracking=True,
-                                  groups="court_hr.group_employee_officers,court_hr.group_employee_expert", default='ordinary_passport')
-
-
-    emp_gender = fields.Selection([('male', 'Male'), ('female', 'Female'), ('other', 'Other')], string='Gender', tracking=True,
                                   groups="court_hr.group_employee_officers,court_hr.group_employee_expert")
     emp_date_of_birth = fields.Date(string='Date Of Birth', tracking=True,
                                     groups="court_hr.group_employee_officers,court_hr.group_employee_expert")
@@ -187,8 +193,10 @@ class HrEmployeeInherit(models.Model):
     emp_nationality = fields.Many2one('res.country', string="Nationality", tracking=True, ondelete='cascade',
                                       groups="court_hr.group_employee_officers,court_hr.group_employee_expert")
 
-    religion = fields.Char(string='Religion', tracking=True, groups="court_hr.group_employee_officers,court_hr.group_employee_expert")
-    today_date = fields.Date(string="Today's Date", tracking=True, default=fields.Date.today, groups="court_hr.group_employee_officers,court_hr.group_employee_expert")
+    religion = fields.Char(string='Religion', tracking=True,
+                           groups="court_hr.group_employee_officers,court_hr.group_employee_expert")
+    today_date = fields.Date(string="Today's Date", tracking=True, default=fields.Date.today,
+                             groups="court_hr.group_employee_officers,court_hr.group_employee_expert")
 
     # Define the list of provinces once
     PROVINCES = [
@@ -232,14 +240,14 @@ class HrEmployeeInherit(models.Model):
     temporary_province = fields.Selection(PROVINCES, string="Province",
                                           groups="court_hr.group_employee_officers,court_hr.group_employee_expert")
     job_province = fields.Selection(PROVINCES, string="Province",
-                                          groups="court_hr.group_employee_officers,court_hr.group_employee_expert")
+                                    groups="court_hr.group_employee_officers,court_hr.group_employee_expert")
     job_district = fields.Many2one('employee.district', string="Permanent District", tracking=True,
-                                         ondelete='cascade',
-                                         groups="court_hr.group_employee_officers,court_hr.group_employee_expert")
+                                   ondelete='cascade',
+                                   groups="court_hr.group_employee_officers,court_hr.group_employee_expert")
     passport_place_of_issue = fields.Selection(PROVINCES, string="Place of Issue",
-                                          groups="court_hr.group_employee_officers,court_hr.group_employee_expert")
-    nic_place_of_issue = fields.Selection(PROVINCES, string="Place of Issue",
                                                groups="court_hr.group_employee_officers,court_hr.group_employee_expert")
+    nic_place_of_issue = fields.Selection(PROVINCES, string="Place of Issue",
+                                          groups="court_hr.group_employee_officers,court_hr.group_employee_expert")
 
     age = fields.Integer(
         string="Age",
@@ -292,7 +300,6 @@ class HrEmployeeInherit(models.Model):
             else:
                 emp.age = 0
 
-
     single_fire_record = fields.Char(
         compute='_compute_single_fire_record',
         string="Single Fire Record"
@@ -315,12 +322,27 @@ class HrEmployeeInherit(models.Model):
             fire_count = self.env['employee.fire'].search_count([('employee_id', '=', record.id)])
             record.single_fire_record = (fire_count == 1)
 
-    def employee_fire(self):
+    def fired_employee(self):
         print("These are the fired employees!")
-
 
     def active_employee(self):
         print("These are the active employees!")
+
+    def besarnawesht_employee(self):
+        print("These are the Besarnawesht employees!")
+
+    def waiting_employee(self):
+        print("These are the waiting employees!")
+
+    def retire_employee(self):
+        print("These are the retire employees!")
+
+    def dead_employee(self):
+        print("These are the dead employees!")
+
+    def removed_employee(self):
+        print("These are the Removed employees!")
+
 
 
 
@@ -331,7 +353,7 @@ class HrEmployeeInherit(models.Model):
     has_equipment_records = fields.Char(
         string="Has Equipment Records",
         compute="_compute_has_equipment_records",
-         # No need to store this computed value
+        # No need to store this computed value
     )
 
     @api.depends_context('uid')  # Recomputes the value when the context changes
@@ -370,7 +392,6 @@ class HrEmployeeInherit(models.Model):
         for employee in self:
             message = "Hello, this is a predefined message!"
             self.send_message_to_employee(employee.id, message)
-
 
     # this code send a message for a specific employee
     @api.model
