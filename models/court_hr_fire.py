@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
-from odoo import fields, models, api
-from odoo.exceptions import ValidationError
+from odoo import models, fields, api
+from odoo.exceptions import UserError, ValidationError
+from datetime import date, datetime, timedelta
+import datetime
 
 class HrEmployeeInherit(models.Model):
     _inherit = 'hr.employee'
@@ -14,6 +16,7 @@ class HrEmployeeInherit(models.Model):
 class EmployeeFire(models.Model):
     _name = 'employee.fire'
     _description = 'Employee Fire'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
 
     employee_id = fields.Many2one('hr.employee', string='Employee')
 
@@ -26,6 +29,37 @@ class EmployeeFire(models.Model):
     fire_remarks = fields.Text(string='Remarks', Tracking='true')
 
     attachments = fields.Many2many('ir.attachment', string="Attachments")
+
+    # Month & Year for filtering
+    fire_month = fields.Selection(
+        [
+            ('1', 'January'), ('2', 'February'), ('3', 'March'), ('4', 'April'),
+            ('5', 'May'), ('6', 'June'), ('7', 'July'), ('8', 'August'),
+            ('9', 'September'), ('10', 'October'), ('11', 'November'), ('12', 'December')
+        ],
+        string="Month",
+        compute="_compute_fire_year_month",
+        store=True
+    )
+
+    fire_year = fields.Selection(
+        selection=lambda self: [(str(y), str(y)) for y in
+                                range(datetime.date.today().year - 30,
+                                      datetime.date.today().year + 10)],
+        string="Year",
+        compute="_compute_fire_year_month",
+        store=True
+    )
+
+    @api.depends('date_approved')
+    def _compute_fire_year_month(self):
+        for rec in self:
+            if rec.date_approved:
+                rec.fire_month = str(rec.date_approved.month)
+                rec.fire_year = str(rec.date_approved.year)
+            else:
+                rec.fire_month = False
+                rec.fire_year = False
 
 
     class EmployeeLeaveReason(models.Model):
