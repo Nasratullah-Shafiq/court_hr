@@ -1,0 +1,12 @@
+<odoo>
+    <record id="cron_employee_retirement_toast" model="ir.cron">
+        <field name="name">Employee Retirement Toast Notifications</field>
+        <field name="model_id" ref="hr.model_hr_employee"/>
+        <field name="state">code</field>
+        <field name="code">model.cron_retirement_toast()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="active">True</field>
+    </record>
+</odoo>
