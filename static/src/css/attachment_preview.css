@@ -1,0 +1,11 @@
+/* Ensure file viewer is always on top */
+.o_file_viewer,
+.o_dialog,
+.modal {
+    z-index: 2000 !important;
+}
+
+/* If inside another modal */
+.modal-backdrop {
+    z-index: 1990 !important;
+}
