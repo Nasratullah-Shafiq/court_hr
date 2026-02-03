@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- ========================= -->
+    <!-- Tree View -->
+    <!-- ========================= -->
+    <record id="view_employee_experience_tree" model="ir.ui.view">
+        <field name="name">employee.experience.tree</field>
+        <field name="model">employee.experience</field>
+        <field name="arch" type="xml">
+            <tree string="Employee Experiences">
+                <field name="employee_id"/>
+                <field name="organization_id"/>
+                <field name="job_position"/>
+                <field name="grade"/>
+                <field name="step"/>
+                <field name="job_start_date"/>
+                <field name="job_end_date"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Form View with Chatter -->
+    <!-- ========================= -->
+    <record id="view_employee_experience_form" model="ir.ui.view">
+        <field name="name">employee.experience.form</field>
+        <field name="model">employee.experience</field>
+        <field name="arch" type="xml">
+            <form string="Employee Experience">
+                <sheet>
+
+                    <!-- Basic Info -->
+                    <group>
+                        <group>
+                            <field name="employee_id" required="1"/>
+                            <field name="organization_id"/>
+                            <field name="organization_type"/>
+                        </group>
+                        <group>
+                            <field name="job_position"/>
+                            <field name="grade"/>
+                            <field name="step"/>
+                            <field name="department"/>
+                            <field name="court_level"/>
+                            <field name="province"/>
+                        </group>
+                    </group>
+
+                    <!-- Dates & Duration -->
+                    <group>
+                        <field name="job_start_date"/>
+                        <field name="job_end_date"/>
+                        <field name="duration_human_readable" readonly="1"/>
+                    </group>
+
+                    <!-- Status & Remarks -->
+                    <group>
+                        <field name="status_id"/>
+                        <field name="job_remarks"/>
+                    </group>
+
+                    <!-- Attachments -->
+                    <group>
+                        <field name="attachments" widget="many2many_binary"/>
+                    </group>
+
+                </sheet>
+
+                <!-- Chatter -->
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+
+            </form>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Search View with Search Panel -->
+    <!-- ========================= -->
+    <record id="view_employee_experience_search" model="ir.ui.view">
+        <field name="name">employee.experience.search</field>
+        <field name="model">employee.experience</field>
+        <field name="arch" type="xml">
+            <search string="Search Employee Experiences">
+
+                <!-- Search Fields -->
+                <field name="employee_id"/>
+                <field name="organization_id"/>
+                <field name="grade"/>
+                <field name="step"/>
+                <field name="status_id"/>
+
+                <!-- Search Panel -->
+                <searchpanel>
+                    <field name="organization_type" string="Organization Type" enable_counters="1"/>
+                    <field name="province" string="Province" enable_counters="1"/>
+                    <field name="court_level" string="Court Level" enable_counters="1"/>
+                </searchpanel>
+
+            </search>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Graph View -->
+    <!-- ========================= -->
+    <record id="view_employee_experience_graph" model="ir.ui.view">
+        <field name="name">employee.experience.graph</field>
+        <field name="model">employee.experience</field>
+        <field name="arch" type="xml">
+            <graph string="Employee Experience Analysis" type="bar">
+                <field name="organization_id" type="row"/>
+                <field name="employee_id" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Pivot View -->
+    <!-- ========================= -->
+    <record id="view_employee_experience_pivot" model="ir.ui.view">
+        <field name="name">employee.experience.pivot</field>
+        <field name="model">employee.experience</field>
+        <field name="arch" type="xml">
+            <pivot string="Employee Experience Pivot">
+                <field name="organization_id" type="row"/>
+                <field name="grade" type="col"/>
+                <field name="employee_id" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Action -->
+    <!-- ========================= -->
+    <record id="action_employee_experience" model="ir.actions.act_window">
+        <field name="name">Employee Experiences</field>
+        <field name="res_model">employee.experience</field>
+        <field name="view_mode">tree,form,graph,pivot</field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Menu Item -->
+    <!-- ========================= -->
+    <menuitem
+        id="menu_employee_experience"
+        name="Employee Experiences"
+        parent="menu_employee_resume_root"
+        action="action_employee_experience"
+        sequence="40"/>
+
+</odoo>
