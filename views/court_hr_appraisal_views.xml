@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- ========================= -->
+    <!-- Tree View -->
+    <!-- ========================= -->
+    <record id="view_employee_appraisal_tree" model="ir.ui.view">
+        <field name="name">employee.appraisal.tree</field>
+        <field name="model">employee.appraisal</field>
+        <field name="arch" type="xml">
+            <tree string="Employee Appraisals">
+                <field name="employee_id"/>
+                <field name="appraisal_type"/>
+                <field name="appraisal_date"/>
+                <field name="total_marks"/>
+                <field name="final_result"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Form View with Chatter -->
+    <!-- ========================= -->
+    <record id="view_employee_appraisal_form" model="ir.ui.view">
+        <field name="name">employee.appraisal.form</field>
+        <field name="model">employee.appraisal</field>
+        <field name="arch" type="xml">
+            <form string="Employee Appraisal">
+                <sheet>
+
+                    <!-- Basic Information -->
+                    <group>
+                        <group>
+                            <field name="employee_id" required="1"/>
+                            <field name="appraisal_type"/>
+                            <field name="appraisal_date"/>
+                        </group>
+                        <group>
+                            <field name="head_details"/>
+                            <field name="total_marks"/>
+                            <field name="final_result"/>
+                        </group>
+                    </group>
+
+                    <!-- Opinions -->
+                    <group string="Evaluation Details">
+                        <group>
+                            <field name="basic_objective_of_work_plan"/>
+                            <field name="is_action_plan_accommodated"/>
+                        </group>
+                        <group>
+                            <field name="is_agree_with_the_result"/>
+                        </group>
+                    </group>
+
+                    <!-- Text Opinions -->
+                    <group string="Opinions">
+                        <field name="head_opinion"/>
+                        <field name="superior_head_opinion"/>
+                        <field name="supervisor_opinion"/>
+                        <field name="employee_opinion"/>
+                        <field name="employee_opinion_again"/>
+                    </group>
+
+                    <!-- Attachments -->
+                    <group>
+                        <field name="attachments" widget="many2many_binary"/>
+                    </group>
+
+                </sheet>
+
+                <!-- Chatter -->
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+
+            </form>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Search View with Search Panel -->
+    <!-- ========================= -->
+    <record id="view_employee_appraisal_search" model="ir.ui.view">
+        <field name="name">employee.appraisal.search</field>
+        <field name="model">employee.appraisal</field>
+        <field name="arch" type="xml">
+            <search string="Search Employee Appraisals">
+
+                <!-- Search Fields -->
+                <field name="employee_id"/>
+                <field name="appraisal_type"/>
+                <field name="final_result"/>
+
+                <!-- Search Panel -->
+                <searchpanel>
+                    <field name="appraisal_type" enable_counters="1"/>
+                    <field name="appraisal_month" string="Appraisal Month" enable_counters="1" icon="fa-calendar-o"/>
+                    <field name="appraisal_year" string="Appraisal Year" enable_counters="1" icon="fa-calendar-o"/>
+                </searchpanel>
+
+            </search>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Graph View -->
+    <!-- ========================= -->
+    <record id="view_employee_appraisal_graph" model="ir.ui.view">
+        <field name="name">employee.appraisal.graph</field>
+        <field name="model">employee.appraisal</field>
+        <field name="arch" type="xml">
+            <graph string="Employee Appraisal Analysis" type="bar">
+                <field name="appraisal_type" type="row"/>
+                <field name="employee_id" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Action -->
+    <!-- ========================= -->
+    <record id="action_employee_appraisal" model="ir.actions.act_window">
+        <field name="name">Employee Appraisals</field>
+        <field name="res_model">employee.appraisal</field>
+        <field name="view_mode">tree,form,graph</field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Menu Item -->
+    <!-- ========================= -->
+    <menuitem
+        id="menu_employee_appraisal"
+        name="Employee Appraisals"
+        parent="menu_employee_resume_root"
+        action="action_employee_appraisal"
+        sequence="20"/>
+
+</odoo>
