@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- ========================= -->
+    <!-- Tree View -->
+    <!-- ========================= -->
+    <record id="view_employee_exam_tree" model="ir.ui.view">
+        <field name="name">employee.exam.tree</field>
+        <field name="model">employee.exam</field>
+        <field name="arch" type="xml">
+            <tree string="Employee Exams">
+                <field name="employee_id"/>
+                <field name="exam_subject"/>
+                <field name="exam_type"/>
+                <field name="exam_date"/>
+                <field name="exam_score"/>
+                <field name="exam_result"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Form View with Chatter -->
+    <!-- ========================= -->
+    <record id="view_employee_exam_form" model="ir.ui.view">
+        <field name="name">employee.exam.form</field>
+        <field name="model">employee.exam</field>
+        <field name="arch" type="xml">
+            <form string="Employee Exam">
+                <sheet>
+
+                    <!-- Basic Information -->
+                    <group>
+                        <group>
+                            <field name="employee_id" required="1"/>
+                            <field name="exam_subject"/>
+                            <field name="exam_type"/>
+                        </group>
+                        <group>
+                            <field name="exam_date"/>
+                            <field name="exam_score"/>
+                            <field name="exam_result"/>
+                        </group>
+                    </group>
+
+                    <!-- Remarks -->
+                    <group string="Remarks">
+                        <field name="exam_remarks"/>
+                    </group>
+
+                    <!-- Attachments -->
+                    <group>
+                        <field name="attachments" widget="many2many_binary"/>
+                    </group>
+
+                </sheet>
+
+                <!-- Chatter -->
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+
+            </form>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Search View with Search Panel -->
+    <!-- ========================= -->
+    <record id="view_employee_exam_search" model="ir.ui.view">
+        <field name="name">employee.exam.search</field>
+        <field name="model">employee.exam</field>
+        <field name="arch" type="xml">
+            <search string="Search Employee Exams">
+
+                <!-- Search Fields -->
+                <field name="employee_id"/>
+                <field name="exam_subject"/>
+                <field name="exam_type"/>
+                <field name="exam_date"/>
+
+                <!-- Search Panel -->
+                <searchpanel>
+                    <field name="exam_type" enable_counters="1" icon="fa-pencil"/>
+
+                </searchpanel>
+
+            </search>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Graph View -->
+    <!-- ========================= -->
+    <record id="view_employee_exam_graph" model="ir.ui.view">
+        <field name="name">employee.exam.graph</field>
+        <field name="model">employee.exam</field>
+        <field name="arch" type="xml">
+            <graph string="Employee Exam Analysis" type="bar">
+                <field name="exam_type" type="row"/>
+                <field name="employee_id" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Pivot View -->
+    <!-- ========================= -->
+    <record id="view_employee_exam_pivot" model="ir.ui.view">
+        <field name="name">employee.exam.pivot</field>
+        <field name="model">employee.exam</field>
+        <field name="arch" type="xml">
+            <pivot string="Employee Exam Pivot">
+                <field name="exam_type" type="row"/>
+                <field name="exam_subject" type="col"/>
+                <field name="employee_id" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Action -->
+    <!-- ========================= -->
+    <record id="action_employee_exam" model="ir.actions.act_window">
+        <field name="name">Employee Exams</field>
+        <field name="res_model">employee.exam</field>
+        <field name="view_mode">tree,form,graph,pivot</field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Menu Item -->
+    <!-- ========================= -->
+    <menuitem
+        id="menu_employee_exam"
+        name="Employee Exams"
+        parent="menu_employee_resume_root"
+        action="action_employee_exam"
+        sequence="30"/>
+
+</odoo>
