@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- ===================== -->
+    <!-- TREE VIEW -->
+    <!-- ===================== -->
+    <record id="view_employee_punishment_tree" model="ir.ui.view">
+        <field name="name">employee.punishment.tree</field>
+        <field name="model">employee.punishment</field>
+        <field name="arch" type="xml">
+            <tree string="Employee Punishments">
+                <field name="employee_id"/>
+                <field name="punishment_type"/>
+                <field name="violation_type"/>
+                <field name="order"/>
+                <field name="punishment_date"/>
+                <field name="punishment_start_date"/>
+                <field name="punishment_end_date"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- ===================== -->
+    <!-- FORM VIEW -->
+    <!-- ===================== -->
+    <record id="view_employee_punishment_form" model="ir.ui.view">
+        <field name="name">employee.punishment.form</field>
+        <field name="model">employee.punishment</field>
+        <field name="arch" type="xml">
+            <form string="Employee Punishment">
+                <sheet>
+
+                    <group>
+                        <field name="employee_id" required="1"/>
+                        <field name="punishment_type" required="1"/>
+                        <field name="violation_type"/>
+                    </group>
+
+                    <group>
+                        <field name="order"/>
+                        <field name="punishment_date"/>
+                    </group>
+
+                    <group>
+                        <field name="punishment_start_date"/>
+                        <field name="punishment_end_date"/>
+                    </group>
+
+                    <group>
+                        <field name="punishment_remarks"/>
+                    </group>
+
+                </sheet>
+
+                <!-- Chatter (optional but recommended) -->
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+
+            </form>
+        </field>
+    </record>
+
+    <!-- ===================== -->
+    <!-- PIVOT VIEW -->
+    <!-- ===================== -->
+    <record id="view_employee_punishment_pivot" model="ir.ui.view">
+        <field name="name">employee.punishment.pivot</field>
+        <field name="model">employee.punishment</field>
+        <field name="arch" type="xml">
+            <pivot string="Employee Punishment Analysis">
+                <field name="employee_id" type="row"/>
+                <field name="punishment_type" type="row"/>
+                <field name="violation_type" type="row"/>
+                <field name="punishment_date" type="col"/>
+            </pivot>
+        </field>
+    </record>
+
+    <!-- ===================== -->
+    <!-- GRAPH VIEW -->
+    <!-- ===================== -->
+    <record id="view_employee_punishment_graph" model="ir.ui.view">
+        <field name="name">employee.punishment.graph</field>
+        <field name="model">employee.punishment</field>
+        <field name="arch" type="xml">
+            <graph string="Employee Punishment Graph" type="bar">
+                <field name="punishment_type" type="row"/>
+                <field name="punishment_date" type="col"/>
+            </graph>
+        </field>
+    </record>
+
+    <!-- ===================== -->
+    <!-- SEARCH VIEW -->
+    <!-- ===================== -->
+    <record id="view_employee_punishment_search" model="ir.ui.view">
+        <field name="name">employee.punishment.search</field>
+        <field name="model">employee.punishment</field>
+        <field name="arch" type="xml">
+            <search string="Search Employee Punishments">
+
+                <!-- Search fields -->
+                <field name="employee_id"/>
+                <field name="punishment_type"/>
+                <field name="violation_type"/>
+                <field name="punishment_date"/>
+
+                <!-- Search Panel -->
+                <searchpanel>
+                    <field name="punishment_type"
+                           string="Punishment Type"
+                           enable_counters="1"
+                           icon="fa-gavel"/>
+
+                    <field name="violation_type"
+                           string="Violation Type"
+                           enable_counters="1"
+                           icon="fa-exclamation-triangle"/>
+                    <field name="punishment_month" string="Punishment Month" enable_counters="1" icon="fa-calendar-o"/>
+                    <field name="punishment_year" string="Punishment Year" enable_counters="1" icon="fa-calendar-o"/>
+
+                </searchpanel>
+
+            </search>
+        </field>
+    </record>
+
+    <!-- ===================== -->
+    <!-- ACTION WINDOW -->
+    <!-- ===================== -->
+    <record id="action_employee_punishment" model="ir.actions.act_window">
+        <field name="name">Employee Punishment</field>
+        <field name="res_model">employee.punishment</field>
+        <field name="view_mode">tree,form,pivot,graph</field>
+        <field name="search_view_id" ref="view_employee_punishment_search"/>
+    </record>
+
+    <!-- ===================== -->
+    <!-- MENU ITEMS -->
+    <!-- ===================== -->
+
+    <!-- Root menu -->
+<!--    <menuitem-->
+<!--        id="menu_employee_punishment_root"-->
+<!--        name="Punishment"-->
+<!--        parent="menu_employee_resume_root"-->
+<!--        sequence="66"/>-->
+
+    <!-- Child menu -->
+    <menuitem
+        id="menu_employee_punishment"
+        name="Employee Punishment"
+        parent="menu_employee_resume_root"
+        action="action_employee_punishment"
+        sequence="10"/>
+
+</odoo>
