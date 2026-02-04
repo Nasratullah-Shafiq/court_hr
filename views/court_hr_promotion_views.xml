@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- ========================= -->
+    <!-- Tree View -->
+    <!-- ========================= -->
+    <record id="view_employee_promotion_tree" model="ir.ui.view">
+        <field name="name">employee.promotion.tree</field>
+        <field name="model">employee.promotions</field>
+        <field name="arch" type="xml">
+            <tree string="Employee Promotions">
+                <field name="employee_id"/>
+                <field name="rank_promotion"/>
+                <field name="proposal_no"/>
+                <field name="approval_no"/>
+                <field name="order_no"/>
+                <field name="approval_date"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Form View with Chatter -->
+    <!-- ========================= -->
+    <record id="view_employee_promotion_form" model="ir.ui.view">
+        <field name="name">employee.promotion.form</field>
+        <field name="model">employee.promotions</field>
+        <field name="arch" type="xml">
+            <form string="Employee Promotion">
+                <sheet>
+
+                    <!-- Basic Information -->
+                    <group>
+                        <group>
+                            <field name="employee_id" required="1"/>
+                            <field name="rank_promotion"/>
+                        </group>
+                        <group>
+                            <field name="proposal_no"/>
+                            <field name="approval_no"/>
+                            <field name="order_no"/>
+                        </group>
+                    </group>
+
+                    <!-- Dates -->
+                    <group string="Promotion Dates">
+                        <group>
+                            <field name="offer_date"/>
+                            <field name="proposal_date"/>
+                        </group>
+                        <group>
+                            <field name="approval_date"/>
+                            <field name="order_date"/>
+                        </group>
+                    </group>
+
+                    <!-- Remarks -->
+                    <group string="Remarks">
+                        <field name="promotion_remarks"/>
+                    </group>
+
+                    <!-- Attachments -->
+                    <group>
+                        <field name="attachments" widget="many2many_binary"/>
+                    </group>
+
+                </sheet>
+
+                <!-- Chatter -->
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+
+            </form>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Search View with Search Panel -->
+    <!-- ========================= -->
+    <record id="view_employee_promotion_search" model="ir.ui.view">
+        <field name="name">employee.promotion.search</field>
+        <field name="model">employee.promotions</field>
+        <field name="arch" type="xml">
+            <search string="Search Employee Promotions">
+
+                <!-- Search Fields -->
+                <field name="employee_id"/>
+                <field name="rank_promotion"/>
+                <field name="approval_no"/>
+                <field name="proposal_no"/>
+
+                <!-- Search Panel -->
+                <searchpanel>
+<!--                    <field name="rank_promotion" enable_counters="1"/>-->
+<!--                    <field name="approval_date" icon="fa-calendar-o"/>-->
+                    <field name="employee_id"/>
+                </searchpanel>
+
+            </search>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Graph View -->
+    <!-- ========================= -->
+    <record id="view_employee_promotion_graph" model="ir.ui.view">
+        <field name="name">employee.promotion.graph</field>
+        <field name="model">employee.promotions</field>
+        <field name="arch" type="xml">
+            <graph string="Employee Promotion Analysis" type="bar">
+                <field name="rank_promotion" type="row"/>
+                <field name="employee_id" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Pivot View -->
+    <!-- ========================= -->
+    <record id="view_employee_promotion_pivot" model="ir.ui.view">
+        <field name="name">employee.promotion.pivot</field>
+        <field name="model">employee.promotions</field>
+        <field name="arch" type="xml">
+            <pivot string="Employee Promotion Pivot">
+                <field name="employee_id" type="row"/>
+                <field name="rank_promotion" type="col"/>
+                <field name="approval_date" type="col"/>
+            </pivot>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Action -->
+    <!-- ========================= -->
+    <record id="action_employee_promotion" model="ir.actions.act_window">
+        <field name="name">Employee Promotions</field>
+        <field name="res_model">employee.promotions</field>
+        <field name="view_mode">tree,form,graph,pivot</field>
+        <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+            Create your first employee promotion record
+        </p>
+        <p>
+            Employee promotions track rank changes, approvals, and official orders.
+        </p>
+    </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Menu Item -->
+    <!-- ========================= -->
+    <menuitem
+        id="menu_employee_promotion"
+        name="Employee Promotions"
+        parent="menu_employee_resume_root"
+        action="action_employee_promotion"
+        sequence="30"/>
+
+</odoo>
