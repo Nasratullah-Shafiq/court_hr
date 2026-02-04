@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- ========================= -->
+    <!-- Tree View -->
+    <!-- ========================= -->
+    <record id="view_employee_language_tree" model="ir.ui.view">
+        <field name="name">employee.language.tree</field>
+        <field name="model">employee.language</field>
+        <field name="arch" type="xml">
+            <tree string="Employee Language Skills">
+                <field name="employee_id"/>
+                <field name="language_id"/>
+                <field name="reading"/>
+                <field name="speaking"/>
+                <field name="listening"/>
+                <field name="writing"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Form View with Chatter -->
+    <!-- ========================= -->
+    <record id="view_employee_language_form" model="ir.ui.view">
+        <field name="name">employee.language.form</field>
+        <field name="model">employee.language</field>
+        <field name="arch" type="xml">
+            <form string="Employee Language Skills">
+                <sheet>
+
+                    <!-- Basic Information -->
+                    <group>
+                        <group>
+                            <field name="employee_id" required="1"/>
+                            <field name="language_id" required="1"/>
+                        </group>
+                    </group>
+
+                    <!-- Language Skills -->
+                    <group string="Language Proficiency">
+                        <group>
+                            <field name="reading"/>
+                            <field name="speaking"/>
+                        </group>
+                        <group>
+                            <field name="listening"/>
+                            <field name="writing"/>
+                        </group>
+                    </group>
+
+                    <!-- Remarks -->
+                    <group string="Remarks">
+                        <field name="remarks"/>
+                    </group>
+
+                    <!-- documents such as pdf, image word.... -->
+                    <group>
+                        <field name="attachments" widget="many2many_binary"/>
+                    </group>
+
+
+
+                </sheet>
+
+                <!-- Chatter -->
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+
+            </form>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Search View with Search Panel -->
+    <!-- ========================= -->
+    <record id="view_employee_language_search" model="ir.ui.view">
+        <field name="name">employee.language.search</field>
+        <field name="model">employee.language</field>
+        <field name="arch" type="xml">
+            <search string="Search Employee Language Skills">
+
+                <!-- Search Fields -->
+                <field name="employee_id"/>
+                <field name="language_id"/>
+                <field name="reading"/>
+                <field name="speaking"/>
+                <field name="listening"/>
+                <field name="writing"/>
+
+                <!-- Search Panel -->
+                <searchpanel>
+                    <field name="employee_id"/>
+                    <field name="language_id"/>
+                </searchpanel>
+
+            </search>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Graph View -->
+    <!-- ========================= -->
+    <record id="view_employee_language_graph" model="ir.ui.view">
+        <field name="name">employee.language.graph</field>
+        <field name="model">employee.language</field>
+        <field name="arch" type="xml">
+            <graph string="Employee Language Analysis" type="bar">
+                <field name="language_id" type="row"/>
+                <field name="employee_id" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Pivot View -->
+    <!-- ========================= -->
+    <record id="view_employee_language_pivot" model="ir.ui.view">
+        <field name="name">employee.language.pivot</field>
+        <field name="model">employee.language</field>
+        <field name="arch" type="xml">
+            <pivot string="Employee Language Pivot">
+                <field name="employee_id" type="row"/>
+                <field name="language_id" type="col"/>
+                <field name="reading" type="col"/>
+            </pivot>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Action -->
+    <!-- ========================= -->
+    <record id="action_employee_language" model="ir.actions.act_window">
+        <field name="name">Employee Language Skills</field>
+        <field name="res_model">employee.language</field>
+        <field name="view_mode">tree,form,graph,pivot</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first employee language record
+            </p>
+            <p>
+                Track employee language skills and proficiency levels.
+            </p>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Menu Item -->
+    <!-- ========================= -->
+    <menuitem
+        id="menu_employee_language"
+        name="Employee Language Skills"
+        parent="menu_employee_resume_root"
+        action="action_employee_language"
+        sequence="50"/>
+
+</odoo>
