@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- ========================= -->
+    <!-- Tree View -->
+    <!-- ========================= -->
+    <record id="view_employee_training_tree" model="ir.ui.view">
+        <field name="name">employee.training.tree</field>
+        <field name="model">employee.training</field>
+        <field name="arch" type="xml">
+            <tree string="Employee Trainings">
+                <field name="employee_id"/>
+                <field name="course_id"/>
+                <field name="training_location"/>
+                <field name="training_start_date"/>
+                <field name="training_end_date"/>
+                <field name="training_result"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Form View with Chatter -->
+    <!-- ========================= -->
+    <record id="view_employee_training_form" model="ir.ui.view">
+        <field name="name">employee.training.form</field>
+        <field name="model">employee.training</field>
+        <field name="arch" type="xml">
+            <form string="Employee Training">
+                <sheet>
+
+                    <!-- Basic Information -->
+                    <group>
+                        <group>
+                            <field name="employee_id" required="1"/>
+                            <field name="course_id" required="1"/>
+                        </group>
+                        <group>
+                            <field name="training_location"/>
+                            <field name="training_result"/>
+                        </group>
+                    </group>
+
+                    <!-- Dates -->
+                    <group string="Training Dates">
+                        <group>
+                            <field name="training_start_date"/>
+                            <field name="training_end_date"/>
+                        </group>
+                        <group>
+                            <field name="letter_no"/>
+                            <field name="letter_date"/>
+                        </group>
+                    </group>
+
+                    <!-- Certification & Remarks -->
+                    <group string="Additional Information">
+                        <field name="training_certification"/>
+                        <field name="training_remarks"/>
+                    </group>
+                    <group>
+                        <field name="attachments" widget="many2many_binary"/>
+                    </group>
+
+                </sheet>
+
+                <!-- Chatter -->
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+
+            </form>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Search View with Search Panel -->
+    <!-- ========================= -->
+    <record id="view_employee_training_search" model="ir.ui.view">
+        <field name="name">employee.training.search</field>
+        <field name="model">employee.training</field>
+        <field name="arch" type="xml">
+            <search string="Search Employee Trainings">
+
+                <!-- Search Fields -->
+                <field name="employee_id"/>
+                <field name="course_id"/>
+                <field name="training_result"/>
+                <field name="training_location"/>
+
+                <!-- Search Panel (SUPPORTED TYPES ONLY) -->
+                <searchpanel>
+                    <field name="employee_id"/>
+                    <field name="course_id"/>
+                    <field name="training_result"/>
+                </searchpanel>
+
+            </search>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Graph View -->
+    <!-- ========================= -->
+    <record id="view_employee_training_graph" model="ir.ui.view">
+        <field name="name">employee.training.graph</field>
+        <field name="model">employee.training</field>
+        <field name="arch" type="xml">
+            <graph string="Employee Training Analysis" type="bar">
+                <field name="course_id" type="row"/>
+                <field name="employee_id" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Pivot View -->
+    <!-- ========================= -->
+    <record id="view_employee_training_pivot" model="ir.ui.view">
+        <field name="name">employee.training.pivot</field>
+        <field name="model">employee.training</field>
+        <field name="arch" type="xml">
+            <pivot string="Employee Training Pivot">
+                <field name="employee_id" type="row"/>
+                <field name="course_id" type="col"/>
+                <field name="training_result" type="col"/>
+            </pivot>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Action -->
+    <!-- ========================= -->
+    <record id="action_employee_training" model="ir.actions.act_window">
+        <field name="name">Employee Trainings</field>
+        <field name="res_model">employee.training</field>
+        <field name="view_mode">tree,form,graph,pivot</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first employee training record
+            </p>
+            <p>
+                Track employee courses, results, and certifications.
+            </p>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Menu Item -->
+    <!-- ========================= -->
+    <menuitem
+        id="menu_employee_training"
+        name="Employee Trainings"
+        parent="menu_employee_resume_root"
+        action="action_employee_training"
+        sequence="40"/>
+
+</odoo>
