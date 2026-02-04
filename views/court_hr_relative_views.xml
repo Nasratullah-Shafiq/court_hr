@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- ========================= -->
+    <!-- Tree View -->
+    <!-- ========================= -->
+    <record id="view_employee_relatives_tree" model="ir.ui.view">
+        <field name="name">employee.relatives.tree</field>
+        <field name="model">employee.relatives</field>
+        <field name="arch" type="xml">
+            <tree string="Employee Relatives">
+                <field name="employee_id"/>
+                <field name="name"/>
+                <field name="relationship_id"/>
+                <field name="job"/>
+                <field name="permanent_address"/>
+                <field name="temporary_address"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Form View with Chatter -->
+    <!-- ========================= -->
+    <record id="view_employee_relatives_form" model="ir.ui.view">
+        <field name="name">employee.relatives.form</field>
+        <field name="model">employee.relatives</field>
+        <field name="arch" type="xml">
+            <form string="Employee Relatives">
+                <sheet>
+
+                    <!-- Basic Information -->
+                    <group>
+                        <group>
+                            <field name="employee_id" required="1"/>
+                            <field name="name"/>
+                            <field name="last_name"/>
+                            <field name="father_name"/>
+                            <field name="grand_father_name"/>
+                            <field name="job"/>
+                            <field name="nic_no"/>
+                        </group>
+                    </group>
+
+                    <!-- Address Information -->
+                    <group string="Addresses">
+                        <group>
+                            <field name="permanent_address"/>
+                            <field name="permanent_district_id"/>
+                        </group>
+                        <group>
+                            <field name="temporary_address"/>
+                            <field name="temporary_district_id"/>
+                        </group>
+                        <group>
+                            <field name="street_no"/>
+                            <field name="home_no"/>
+                        </group>
+                    </group>
+
+                    <!-- Relationship Information -->
+                    <group string="Relationship Details">
+                        <group>
+                            <field name="relationship_id"/>
+                            <field name="relationship_name"/>
+                            <field name="relationship_last_name"/>
+                            <field name="relationship_father_name"/>
+                            <field name="relationship_grand_father_name"/>
+                        </group>
+                        <group>
+                            <field name="relationship_job_position"/>
+                            <field name="relationship_email"/>
+                            <field name="relationship_contact_info"/>
+                            <field name="relationship_identification_no"/>
+                        </group>
+                        <group>
+                            <field name="relationship_permanent_address"/>
+                            <field name="relationship_contemporary_address"/>
+                            <field name="relationship_property"/>
+                            <field name="relationship_remarks"/>
+                        </group>
+                    </group>
+
+                    <!-- Health Information -->
+                    <group string="Health Records">
+                        <field name="health_ids"/>
+                    </group>
+
+                    <!-- Attachments -->
+                    <group>
+                        <field name="attachments" widget="many2many_binary"/>
+                    </group>
+
+                </sheet>
+
+                <!-- Chatter -->
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+
+            </form>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Search View with Search Panel -->
+    <!-- ========================= -->
+    <record id="view_employee_relatives_search" model="ir.ui.view">
+        <field name="name">employee.relatives.search</field>
+        <field name="model">employee.relatives</field>
+        <field name="arch" type="xml">
+            <search string="Search Employee Relatives">
+
+                <!-- Search Fields -->
+                <field name="employee_id"/>
+                <field name="name"/>
+                <field name="relationship_id"/>
+                <field name="permanent_address"/>
+                <field name="temporary_address"/>
+
+                <!-- Search Panel -->
+                <searchpanel>
+                    <field name="employee_id"/>
+                    <field name="relationship_id"/>
+                </searchpanel>
+
+            </search>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Graph View -->
+    <!-- ========================= -->
+    <record id="view_employee_relatives_graph" model="ir.ui.view">
+        <field name="name">employee.relatives.graph</field>
+        <field name="model">employee.relatives</field>
+        <field name="arch" type="xml">
+            <graph string="Employee Relatives Analysis" type="bar">
+                <field name="relationship_id" type="row"/>
+                <field name="employee_id" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Pivot View -->
+    <!-- ========================= -->
+    <record id="view_employee_relatives_pivot" model="ir.ui.view">
+        <field name="name">employee.relatives.pivot</field>
+        <field name="model">employee.relatives</field>
+        <field name="arch" type="xml">
+            <pivot string="Employee Relatives Pivot">
+                <field name="employee_id" type="row"/>
+                <field name="relationship_id" type="col"/>
+                <field name="permanent_address" type="col"/>
+            </pivot>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Action -->
+    <!-- ========================= -->
+    <record id="action_employee_relatives" model="ir.actions.act_window">
+        <field name="name">Employee Relatives</field>
+        <field name="res_model">employee.relatives</field>
+        <field name="view_mode">tree,form,graph,pivot</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first employee relative record
+            </p>
+            <p>
+                Track employee relatives, addresses, jobs, and relationship details.
+            </p>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Menu Item -->
+    <!-- ========================= -->
+    <menuitem
+        id="menu_employee_relatives"
+        name="Employee Relatives"
+        parent="menu_employee_resume_root"
+        action="action_employee_relatives"
+        sequence="60"/>
+
+</odoo>
