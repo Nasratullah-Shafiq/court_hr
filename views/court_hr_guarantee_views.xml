@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- ===================================================== -->
+    <!-- TREE VIEWS (SEPARATE PER GUARANTEE TYPE) -->
+    <!-- ===================================================== -->
+
+    <!-- Cash Guarantee Tree -->
+    <record id="view_employee_guarantee_tree_cash" model="ir.ui.view">
+        <field name="name">employee.guarantee.tree.cash</field>
+        <field name="model">employee.guarantee</field>
+        <field name="arch" type="xml">
+            <tree string="Cash Guarantees">
+                <field name="employee_id"/>
+                <field name="amount_of_cash"/>
+                <field name="bank_name"/>
+                <field name="bank_slip_no"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Property Guarantee Tree -->
+    <record id="view_employee_guarantee_tree_property" model="ir.ui.view">
+        <field name="name">employee.guarantee.tree.property</field>
+        <field name="model">employee.guarantee</field>
+        <field name="arch" type="xml">
+            <tree string="Property Guarantees">
+                <field name="employee_id"/>
+                <field name="province"/>
+                <field name="deed_no"/>
+                <field name="deed_date"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Person Guarantee Tree -->
+    <record id="view_employee_guarantee_tree_person" model="ir.ui.view">
+        <field name="name">employee.guarantee.tree.person</field>
+        <field name="model">employee.guarantee</field>
+        <field name="arch" type="xml">
+            <tree string="Person Guarantees">
+                <field name="employee_id"/>
+                <field name="person_name"/>
+                <field name="job_position"/>
+                <field name="organization"/>
+                <field name="phone_no"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- ===================================================== -->
+    <!-- FORM VIEW (CONDITIONAL BY GUARANTEE TYPE) -->
+    <!-- ===================================================== -->
+
+    <record id="view_employee_guarantee_form" model="ir.ui.view">
+        <field name="name">employee.guarantee.form</field>
+        <field name="model">employee.guarantee</field>
+        <field name="arch" type="xml">
+            <form string="Employee Guarantee">
+                <sheet>
+
+                    <!-- Header -->
+                    <group>
+                        <group>
+                            <field name="employee_id" required="1"/>
+                        </group>
+                        <group>
+                            <field name="guarantee_type" required="1"/>
+                        </group>
+                    </group>
+
+                    <!-- ================= CASH ================= -->
+                    <group string="Cash Guarantee"
+                           invisible="guarantee_type != 'cash'">
+                        <group>
+                            <field name="amount_of_cash"/>
+                            <field name="bank_name"/>
+                        </group>
+                        <group>
+                            <field name="bank_slip_no"/>
+                            <field name="cash_remarks"/>
+                        </group>
+                    </group>
+
+                    <!-- ================= PROPERTY ================= -->
+                    <group string="Property Guarantee"
+                           invisible="guarantee_type != 'property'">
+                        <group>
+                            <field name="province"/>
+                            <field name="property_district_id"/>
+                            <field name="property_village_id"/>
+                        </group>
+                        <group>
+                            <field name="deed_no"/>
+                            <field name="deed_date"/>
+                            <field name="property_remarks"/>
+                        </group>
+                    </group>
+
+                    <!-- ================= PERSON ================= -->
+                    <group string="Person Guarantee"
+                           invisible="guarantee_type != 'person'">
+                        <group>
+                            <field name="person_name"/>
+                            <field name="last_name"/>
+                            <field name="father_name"/>
+                            <field name="grand_father_name"/>
+                        </group>
+                        <group>
+                            <field name="job_position"/>
+                            <field name="organization"/>
+                            <field name="phone_no"/>
+                            <field name="email"/>
+                        </group>
+
+                        <group string="Permanent Address">
+                            <field name="permanent_province"/>
+                            <field name="permanent_district_id"/>
+                            <field name="permanent_village_id"/>
+                        </group>
+
+                        <group string="Temporary Address">
+                            <field name="temporary_province"/>
+                            <field name="temporary_district_id"/>
+                            <field name="temporary_village_id"/>
+                        </group>
+
+                        <field name="person_remarks"/>
+                    </group>
+
+                    <group>
+                        <field name="attachments" widget="many2many_binary"/>
+                    </group>
+
+                </sheet>
+
+                <!-- Chatter -->
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+
+            </form>
+        </field>
+    </record>
+
+    <!-- ===================================================== -->
+    <!-- SEARCH VIEW -->
+    <!-- ===================================================== -->
+
+    <record id="view_employee_guarantee_search" model="ir.ui.view">
+        <field name="name">employee.guarantee.search</field>
+        <field name="model">employee.guarantee</field>
+        <field name="arch" type="xml">
+            <search string="Search Guarantees">
+                <field name="employee_id"/>
+                <field name="guarantee_type"/>
+
+                <searchpanel>
+                    <field name="employee_id"/>
+                    <field name="guarantee_type"/>
+                </searchpanel>
+            </search>
+        </field>
+    </record>
+
+    <!-- ===================================================== -->
+    <!-- ACTIONS (SEPARATE PER TYPE) -->
+    <!-- ===================================================== -->
+
+    <record id="action_cash_guarantee" model="ir.actions.act_window">
+        <field name="name">Cash Guarantees</field>
+        <field name="res_model">employee.guarantee</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('guarantee_type','=','cash')]</field>
+        <field name="context">{'default_guarantee_type':'cash'}</field>
+        <field name="view_id" ref="view_employee_guarantee_tree_cash"/>
+    </record>
+
+    <record id="action_property_guarantee" model="ir.actions.act_window">
+        <field name="name">Property Guarantees</field>
+        <field name="res_model">employee.guarantee</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('guarantee_type','=','property')]</field>
+        <field name="context">{'default_guarantee_type':'property'}</field>
+        <field name="view_id" ref="view_employee_guarantee_tree_property"/>
+    </record>
+
+    <record id="action_person_guarantee" model="ir.actions.act_window">
+        <field name="name">Person Guarantees</field>
+        <field name="res_model">employee.guarantee</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('guarantee_type','=','person')]</field>
+        <field name="context">{'default_guarantee_type':'person'}</field>
+        <field name="view_id" ref="view_employee_guarantee_tree_person"/>
+    </record>
+
+    <!-- ===================================================== -->
+    <!-- MENUS -->
+    <!-- ===================================================== -->
+
+    <menuitem id="menu_employee_guarantee_root"
+              name="Guarantees"
+              parent="menu_employee_resume_root"
+              sequence="50"/>
+
+    <menuitem id="menu_cash_guarantee"
+              name="Cash Guarantee"
+              parent="menu_employee_guarantee_root"
+              action="action_cash_guarantee"
+              sequence="1"/>
+
+    <menuitem id="menu_property_guarantee"
+              name="Property Guarantee"
+              parent="menu_employee_guarantee_root"
+              action="action_property_guarantee"
+              sequence="2"/>
+
+    <menuitem id="menu_person_guarantee"
+              name="Person Guarantee"
+              parent="menu_employee_guarantee_root"
+              action="action_person_guarantee"
+              sequence="3"/>
+
+</odoo>
