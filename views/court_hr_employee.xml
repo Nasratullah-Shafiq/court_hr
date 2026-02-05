@@ -1,0 +1,767 @@
+<odoo>
+    <data>
+        <record id="hr_maintenance.hr_employee_view_form" model="ir.ui.view">
+            <field name="name">hr.employee.form.inherit</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@name='button_box']" position="inside">
+                    <!--                    <button name="267"-->
+                    <!--                            context="{'search_default_employee_id': id, 'default_employee_id': id}"-->
+                    <!--                            groups="court_hr.group_employee_officers"-->
+                    <!--                            class="o_stat_button"-->
+                    <!--                            icon="fa-cubes"-->
+                    <!--                            type="action">-->
+                    <!--                        <field name="equipment_count" widget="statinfo"/>-->
+                    <!--                    </button>-->
+                </xpath>
+            </field>
+        </record>
+
+
+        <!--        <record id="view_hr_employee_kanban_inherit_job_status" model="ir.ui.view">-->
+        <!--            <field name="name">hr.employee.kanban.inherit.job.status</field>-->
+        <!--            <field name="model">hr.employee</field>-->
+        <!--            <field name="inherit_id" ref="hr.hr_kanban_view_employees"/>-->
+        <!--            <field name="arch" type="xml">-->
+
+        <!--                &lt;!&ndash; Add Job Status below Job Title &ndash;&gt;-->
+        <!--                <xpath expr="//t[@t-name='kanban-box']//span[contains(@class,'o_kanban_record_subtitle')]"-->
+        <!--                       position="after">-->
+        <!--                    <div class="mt-1">-->
+        <!--                        <span class="badge bg-info">-->
+        <!--                            <t t-esc="record.job_status.value"/>-->
+        <!--                        </span>-->
+        <!--                    </div>-->
+        <!--                </xpath>-->
+
+        <!--            </field>-->
+        <!--        </record>-->
+
+
+        <record id="view_hr_employee_kanban_inherit_job_status" model="ir.ui.view">
+            <field name="name">hr.employee.kanban.inherit.job.status</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.hr_kanban_view_employees"/>
+            <field name="arch" type="xml">
+
+                <!-- 1️⃣ Declare the field -->
+                <xpath expr="//kanban" position="inside">
+                    <field name="job_status"/>
+                </xpath>
+
+                <!-- 2️⃣ Display Job Status safely -->
+                <xpath expr="//t[@t-name='kanban-box']//span[contains(@class,'o_kanban_record_subtitle')]"
+                       position="after">
+                    <t t-if="record.job_status">
+                        <div class="mt-1">
+                            <span class="me-1 fw-bold">Job Status:</span>
+                            <span
+                                    t-att-class="
+                                        'badge text-white ' +
+                                        (
+                                            record.job_status.raw_value == 'برحال' and 'bg-success' or
+                                            record.job_status.raw_value == 'بی سرنوشت' and 'bg-warning' or
+                                            record.job_status.raw_value == 'منفصل' and 'bg-warning' or
+                                            record.job_status.raw_value == 'معزول' and 'bg-warning' or
+
+                                            record.job_status.raw_value == 'منفک' and 'bg-danger' or
+                                            record.job_status.raw_value == 'وفات' and 'bg-dark' or
+                                            record.job_status.raw_value == 'متقاعد' and 'bg-info' or
+                                            'bg-secondary'
+                                        )
+                                    ">
+                                <t t-esc="record.job_status.value"/>
+                            </span>
+                        </div>
+                    </t>
+                </xpath>
+
+            </field>
+        </record>
+
+
+        <!--        <record id="view_hr_employee_kanban_inherit" model="ir.ui.view">-->
+        <!--            <field name="name">hr.employee.kanban.inherit.job.status</field>-->
+        <!--            <field name="model">hr.employee</field>-->
+        <!--            <field name="inherit_id" ref="hr.view_hr_employee_kanban"/>-->
+        <!--            <field name="arch" type="xml">-->
+
+        <!--                &lt;!&ndash; Insert inside the kanban card body &ndash;&gt;-->
+        <!--                <xpath expr="//t[@t-name='kanban-box']//div[contains(@class,'o_kanban_record_body')]" position="inside">-->
+        <!--                    <div class="mt8">-->
+        <!--                        <span class="badge bg-info">-->
+        <!--                            <t t-esc="record.job_status.value"/>-->
+        <!--                        </span>-->
+        <!--                    </div>-->
+        <!--                </xpath>-->
+
+        <!--            </field>-->
+        <!--        </record>-->
+
+
+        <record id="view_employee_form_inherit" model="ir.ui.view">
+            <field name="name">hr.employee.inherit</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='mobile_phone']" position="before">
+                    <field name="father_name"/>
+                    <field name="grand_father_name"/>
+                </xpath>
+                <xpath expr="//field[@name='work_email']" position="after">
+                    <field name="execution_type"/>
+                    <field name="recruitment_type"/>
+                    <field name="p2_form_no"/>
+                    <field name="p2_approval_date"/>
+                    <!--                    <group string="job information">-->
+                    <field name="approver"/>
+                    <field name="job_province"/>
+                    <field name="job_district"/>
+                    <field name="pezhand_department" invisible="position_type != 'ملکی'"/>
+                    <field name="deputy_ministry_procurement" invisible="position_type != 'ملکی'"/>
+
+
+                    <!--                    </group>-->
+                </xpath>
+                <xpath expr="//field[@name='job_id']" position="after">
+                    <field name="court_level"/>
+                    <field name="position_type"/>
+                </xpath>
+
+                <xpath expr="//field[@name='permit_no']" position="attributes">
+                    <attribute name="groups">court_hr.group_employee_officers</attribute>
+                </xpath>
+                <!--                <field name="permit_no" position="attributes">-->
+                <!--                    <attribute name="groups">court_hr.group_employee_officers</attribute>-->
+                <!--                </field>-->
+
+                <div class="oe_button_box" name="button_box">
+                    <field name="job_step" invisible="1"/>
+                    <!--                    <button-->
+                    <!--                            name="employee_fire"-->
+                    <!--                            string="Employee Fired"-->
+                    <!--                            type="object"-->
+                    <!--                            class="btn-danger"-->
+                    <!--                            invisible="single_fire_record != 'True'"/>-->
+
+                    <!--                    <butt
+                    on-->
+                    <!--                            name="active_employee"-->
+                    <!--                            string="Active Employee"-->
+                    <!--                            type="object"-->
+                    <!--                            class="btn-success"-->
+                    <!--                            invisible="single_fire_record == 'True'"/>-->
+
+                    <button
+                            name="besarnawesht_employee"
+                            string="Employee is pending"
+                            type="object"
+                            class="btn-danger"
+                            invisible="job_status != 'بی سرنوشت'"/>
+
+                    <button
+                            name="waiting_employee"
+                            string="Employee is waiting"
+                            type="object"
+                            class="btn-warning"
+                            invisible="job_status != 'منفصل'"/>
+                    <button
+                            name="retire_employee"
+                            string="Retired Employee"
+                            type="object"
+                            class="btn-warning"
+                            invisible="job_status != 'متقاعد'"/>
+
+                    <button
+                            name="active_employee"
+                            string="Active Employee"
+                            type="object"
+                            class="btn-success"
+                            invisible="job_status != 'برحال'"/>
+                    <button
+                            name="dead_employee"
+                            string="Employee Dead"
+                            type="object"
+                            class="btn-dark"
+                            invisible="job_status != 'وفات'"/>
+
+                    <button
+                            name="removed_employee"
+                            string="Removed Employee"
+                            type="object"
+                            class="btn-info"
+                            invisible="job_status != 'معزول'"/>
+                    <button
+                            name="fired_employee"
+                            string="Employee Fired"
+                            type="object"
+                            class="btn-danger"
+                            invisible="job_status != 'منفک'"/>
+                </div>
+
+                <xpath expr="//field[@name='coach_id']" position="after">
+                    <field name="job_status"/>
+                    <field name="job_step"/>
+                    <field name="recruitment_date" widget="hijri_date"/>
+
+                </xpath>
+                <xpath expr="//field[@name='coach_id']" position="replace">
+
+                    <field name="approval_date"/>
+
+                </xpath>
+                <!--                <xpath expr="//page[@name='personal_information']" position="replace">-->
+                <!--                <xpath expr="//field[@name='category_ids']" position="replace">-->
+
+                <!--                    <field name="category_ids" widget="many2many_tags" options="{'color_field': 'color', 'no_create_edit': True}" placeholder="Tags" groups="court_hr.group_employee_officers"/>-->
+                <!--                </xpath>-->
+
+
+                <!--                <xpath expr="//page[position()=2]" position="attributes">-->
+                <!--                    <attribute name="invisible">1</attribute>-->
+                <!--                </xpath>-->
+
+
+                <!--                <xpath expr="//page[@name='public']" position="attributes">-->
+                <!--                    <attribute name="invisible">1</attribute>-->
+                <!--                </xpath>-->
+                <!--                <xpath expr="//field[@name='category_ids']" position="attributes">-->
+                <!--                    <attribute name="groups">court_hr.group_employee_officers</attribute>-->
+                <!--                </xpath>-->
+
+
+                <xpath expr="//page[@name='public']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//page[@name='public']" position="after">
+                    <!-- ============================================================================ -->
+                    <!-- Employee Resume Page – Central container for all employee background records -->
+                    <!-- ============================================================================ -->
+                    <page name="employee_resume" string="Employee Resume"
+                          groups="court_hr.group_employee_officers, court_hr.group_employee_expert">
+                        <notebook>
+                            <!-- =============================================================================== -->
+                            <!-- Education Page – Manages employee academic qualifications and education history -->
+                            <!-- =============================================================================== -->
+                            <page name="employee_education" string="Educations"
+                                  groups="court_hr.group_employee_officers, court_hr.group_employee_expert">
+                                <group string="Employee Education">
+                                    <field name="education_ids" string="">
+                                        <tree>
+                                            <field name="country_id"/>
+                                            <field name="province_id"/>
+                                            <field name="degree_id"/>
+                                            <field name="university_id"/>
+                                            <field name="faculty_id"/>
+                                            <field name="major"/>
+                                            <field name="education_start_date"/>
+                                            <field name="education_end_date"/>
+                                            <field name="batch_no"/>
+                                            <field name="education_remarks"/>
+                                        </tree>
+                                        <form>
+                                            <group>
+                                                <group>
+                                                    <field name="country_id"/>
+                                                    <field name="province_id"/>
+                                                    <field name="university_id"/>
+                                                    <field name="degree_id"/>
+                                                    <field name="faculty_id"/>
+
+                                                </group>
+                                                <group>
+                                                    <field name="major"/>
+                                                    <field name="education_start_date" widget="hijri_date"/>
+                                                    <field name="education_end_date" widget="hijri_date"/>
+                                                    <field name="batch_no"/>
+
+                                                </group>
+
+                                            </group>
+                                            <group>
+                                                <field name="education_remarks"/>
+                                            </group>
+                                        </form>
+                                    </field>
+                                </group>
+                            </page>
+                            <!-- ========================================================================== -->
+                            <!-- Experience Page – Tracks employee professional history and service details -->
+                            <!-- ========================================================================== -->
+                            <page name="employee_experience" string="Experiences"
+                                  groups="court_hr.group_employee_officers, court_hr.group_employee_expert">
+                                <group string="Employee Experience">
+                                    <field name="experience_ids" string="">
+                                        <tree>
+
+                                            <field name="province"/>
+                                            <field name="organization_id"/>
+                                            <field name="job_position"/>
+                                            <field name="grade"/>
+                                            <field name="step"/>
+                                            <field name="department"/>
+                                            <field name="status_id"/>
+                                            <field name="job_start_date"/>
+                                            <field name="job_end_date"/>
+                                            <field name="organization_type"/>
+                                            <field name="duration_human_readable"/>
+                                            <field name="job_remarks"/>
+                                        </tree>
+
+                                        <form>
+                                            <group>
+                                                <group>
+
+                                                    <field name="province"/>
+                                                    <field name="organization_id"/>
+                                                    <field name="job_position"/>
+                                                    <field name="grade"/>
+                                                    <field name="step"/>
+                                                    <field name="department"/>
+                                                </group>
+                                                <group>
+                                                    <field name="status_id"/>
+                                                    <field name="job_start_date" widget="hijri_date"/>
+                                                    <field name="job_end_date" widget="hijri_date"/>
+                                                    <field name="organization_type"/>
+                                                    <field name="duration_human_readable"/>
+
+                                                </group>
+                                            </group>
+                                            <group>
+                                                <field name="job_remarks"/>
+                                            </group>
+                                        </form>
+                                    </field>
+                                </group>
+                            </page>
+                            <!-- ======================================================================= -->
+                            <!-- Exams Page – Stores employee examination results and assessment records -->
+                            <!-- ======================================================================= -->
+                            <page name="employee_exam" string="Exams"
+                                  groups="court_hr.group_employee_officers, court_hr.group_employee_expert">
+                                <group string="Employee Exam Information">
+                                    <field name="exam_ids" string="">
+                                        <tree>
+
+                                            <field name="exam_type"/>
+                                            <field name="exam_date"/>
+                                            <field name="exam_subject"/>
+                                            <field name="exam_result"/>
+                                            <field name="exam_score"/>
+                                            <field name="exam_remarks"/>
+                                        </tree>
+                                        <form>
+                                            <group>
+                                                <field name="exam_type"/>
+                                                <field name="exam_date" widget="hijri_date"/>
+                                                <field name="exam_subject"/>
+                                                <field name="exam_result"/>
+                                                <field name="exam_score"/>
+                                                <field name="exam_remarks"/>
+                                            </group>
+                                        </form>
+                                    </field>
+
+                                </group>
+                            </page>
+                            <!-- ============================================================================ -->
+                            <!-- Language Page – Manages employee language proficiency across all skill areas -->
+                            <!-- ============================================================================ -->
+<!--                            <page name="employee_language" string="Languages"-->
+<!--                                  groups="court_hr.group_employee_officers, court_hr.group_employee_expert">-->
+<!--                                <group string="Employee Language Information">-->
+<!--                                    <field name="language_ids" string="">-->
+<!--                                        <tree>-->
+<!--                                            <field name="language"/>-->
+<!--                                            <field name="reading"/>-->
+<!--                                            <field name="speaking"/>-->
+<!--                                            <field name="listening"/>-->
+<!--                                            <field name="writing"/>-->
+<!--                                        </tree>-->
+<!--                                        <form>-->
+<!--                                            <group>-->
+<!--                                                <field name="language"/>-->
+<!--                                                <field name="reading"/>-->
+<!--                                                <field name="speaking"/>-->
+<!--                                                <field name="listening"/>-->
+<!--                                                <field name="writing"/>-->
+<!--                                            </group>-->
+<!--                                        </form>-->
+<!--                                    </field>-->
+<!--                                </group>-->
+<!--                            </page>-->
+                        </notebook>
+
+
+                    </page>
+
+
+                    <!-- ============================================================================ -->
+                    <!-- Guarantee and Relative Page – Central container for employee guarantees and relatives -->
+                    <!-- ============================================================================ -->
+                    <page name="employee_guarantee" string="Guarantee and Relative"
+                          groups="court_hr.group_employee_officers, court_hr.group_employee_expert">
+                        <notebook>
+                            <!-- ============================================================================ -->
+                            <!-- Relative Page – Stores employee family and relative relationship information -->
+                            <!-- ============================================================================ -->
+                            <page name="employee_relative" string="Relatives"
+                                  groups="court_hr.group_employee_officers, court_hr.group_employee_expert">
+                                <group string="Employee Relative Information">
+                                    <field name="relationship_ids" string="">
+                                        <tree>
+                                            <field name="relationship_id"/>
+                                            <field name="relationship_name"/>
+                                            <field name="relationship_last_name"/>
+                                            <field name="relationship_father_name"/>
+                                            <field name="relationship_grand_father_name"/>
+                                            <field name="relationship_job_position"/>
+                                            <field name="relationship_contact_info"/>
+                                            <field name="relationship_identification_no"/>
+                                            <field name="attachments" string="Attachment" widget="many2many_binary"/>
+                                        </tree>
+                                        <form>
+                                            <group>
+                                                <group>
+                                                    <field name="relationship_id"/>
+                                                    <field name="relationship_name"/>
+                                                    <field name="relationship_last_name"/>
+                                                    <field name="relationship_father_name"/>
+                                                    <field name="relationship_grand_father_name"/>
+                                                    <field name="relationship_job_position"/>
+                                                </group>
+                                                <group>
+                                                    <field name="relationship_email"/>
+                                                    <field name="relationship_contact_info"/>
+                                                    <field name="relationship_identification_no"/>
+                                                    <field name="relationship_permanent_address"/>
+                                                    <field name="relationship_contemporary_address"/>
+                                                    <field name="relationship_property"/>
+                                                    <field name="attachments" string="Attachment"
+                                                           widget="many2many_binary"/>
+                                                    <!--                                                    <field name="image_1920" widget="image" class="oe_avatar"/>-->
+
+
+                                                </group>
+                                            </group>
+                                            <group>
+                                                <field name="relationship_remarks"/>
+                                            </group>
+                                        </form>
+                                    </field>
+                                </group>
+                            </page>
+                            <!-- ============================================================================ -->
+                            <!-- Person Guarantee Page – Records personal guarantor details and addresses -->
+                            <!-- ============================================================================ -->
+
+                            <!-- ============================================================================ -->
+                            <!-- Cash Guarantee Page – Manages financial guarantee records and bank references -->
+                            <!-- ============================================================================ -->
+
+                        </notebook>
+
+                    </page>
+
+
+                    <page name="employee_property_and_guarantee" string="Property"
+                          groups="court_hr.group_employee_officers, court_hr.group_employee_expert">
+                        <group string="Property Information">
+                            <field name="property_ids" string="">
+                                <tree>
+                                    <field name="property_type"/>
+                                    <field name="price"/>
+                                    <field name="remarks"/>
+                                </tree>
+                                <form>
+                                    <group>
+                                        <field name="property_type"/>
+                                        <field name="price"/>
+                                        <field name="remarks"/>
+                                    </group>
+                                </form>
+                            </field>
+
+                        </group>
+                    </page>
+                    <page name="employee_property_and_guarantee" string="Travel "
+                          groups="court_hr.group_employee_officers, court_hr.group_employee_expert">
+                        <group string="Travel Information">
+                            <field name="travel_ids" string="">
+                                <tree>
+                                    <field name="country"/>
+                                    <field name="province"/>
+                                    <field name="travel_start_date"/>
+                                    <field name="travel_end_date"/>
+                                    <field name="remarks"/>
+                                </tree>
+                                <form>
+                                    <group>
+                                        <field name="country"/>
+                                        <field name="province"/>
+                                        <field name="travel_start_date" widget="hijri_date"/>
+                                        <field name="travel_end_date" widget="hijri_date"/>
+                                        <field name="remarks"/>
+                                    </group>
+                                </form>
+                            </field>
+
+                        </group>
+                    </page>
+                    <page name="employee_training" string="Training"
+                          groups="court_hr.group_employee_officers, court_hr.group_employee_expert">
+                        <field name="training_ids">
+                            <tree>
+                                <field name="course_id"/>
+                                <field name="training_result"/>
+                                <field name="training_start_date"/>
+                                <field name="training_end_date"/>
+                                <field name="training_certification"/>
+                                <field name="training_location"/>
+                                <field name="training_remarks"/>
+                            </tree>
+                            <form>
+                                <group>
+                                    <field name="course_id"/>
+                                    <field name="training_result"/>
+                                    <field name="training_start_date" widget="hijri_date"/>
+                                    <field name="training_end_date" widget="hijri_date"/>
+                                    <field name="training_certification"/>
+                                    <field name="training_location"/>
+                                    <field name="training_remarks"/>
+                                </group>
+                            </form>
+                        </field>
+                    </page>
+
+                    <page name="employee_reward_and_punishment" string="Reward and Punishment"
+                          groups="court_hr.group_employee_officers, court_hr.group_employee_expert">
+                        <group string="Employee Reward Information">
+                            <field name="reward_ids" string="">
+                                <tree>
+                                    <field name="reward_type"/>
+                                    <field name="amount_of_cash_for_reward"/>
+                                    <field name="order_no"/>
+                                    <field name="order_date"/>
+                                    <field name="organization_id"/>
+                                    <field name="reason"/>
+                                </tree>
+                                <form>
+                                    <group>
+                                        <field name="reward_type"/>
+                                        <field name="amount_of_cash_for_reward"/>
+                                        <field name="order_no"/>
+                                        <field name="order_date" widget="hijri_date"/>
+                                        <field name="organization_id"/>
+                                        <field name="reason"/>
+                                    </group>
+                                </form>
+                            </field>
+
+                        </group>
+                        <group string="Employee Punishment Information">
+                            <field name="punishment_ids" string="">
+                                <tree>
+                                    <field name="punishment_type"/>
+                                    <field name="violation_type"/>
+                                    <field name="order"/>
+                                    <field name="punishment_start_date"/>
+                                    <field name="punishment_end_date"/>
+                                    <field name="punishment_date"/>
+
+                                    <field name="punishment_remarks"/>
+                                </tree>
+                                <form>
+                                    <group>
+                                        <field name="punishment_type"/>
+                                        <field name="violation_type"/>
+                                        <field name="order"/>
+                                        <field name="punishment_start_date" widget="hijri_date"/>
+                                        <field name="punishment_end_date" widget="hijri_date"/>
+                                        <field name="punishment_date" widget="hijri_date"/>
+
+                                        <field name="punishment_remarks"/>
+                                    </group>
+                                </form>
+                            </field>
+
+                        </group>
+                    </page>
+
+
+                    <page name="my_public" string="Publication"
+                          groups="court_hr.group_employee_officers, court_hr.group_employee_expert">
+                        <div id="o_work_employee_container"
+                             class="d-lg-flex"> <!-- These two div are used to position org_chart -->
+                            <div id="o_work_employee_main" class="flex-grow-1">
+                                <group string="Employee Publication Information">
+                                    <field name="publication_ids" string="">
+                                        <tree>
+                                            <field name="publication_type"/>
+                                            <field name="subject"/>
+                                            <field name="publication_date"/>
+                                            <field name="no_of_pages"/>
+                                            <field name="isbn"/>
+                                        </tree>
+                                        <form>
+                                            <group>
+                                                <field name="publication_type"/>
+                                                <field name="subject"/>
+                                                <field name="publication_date" widget="hijri_date"/>
+                                                <field name="no_of_pages"/>
+                                                <field name="isbn"/>
+                                            </group>
+                                        </form>
+                                    </field>
+                                </group>
+                            </div>
+                        </div>
+                    </page>
+
+
+                    <page name="employee_fire" string="Fire"
+                          groups="court_hr.group_employee_officers, court_hr.group_employee_expert"
+                    >
+
+                        <group string="Employee Fire Information">
+                            <field name="fire_ids" string="">
+                                <tree>
+                                    <field name="fire_type"/>
+                                    <field name="leave_reason"/>
+                                    <field name="date_approved"/>
+                                    <field name="order_no"/>
+                                    <field name="order_date"/>
+                                    <field name="fire_remarks"/>
+                                </tree>
+                                <form>
+                                    <group>
+                                        <field name="fire_type"/>
+                                        <field name="leave_reason"/>
+                                        <field name="date_approved" widget="hijri_date"/>
+                                        <field name="order_no"/>
+                                        <field name="order_date" widget="hijri_date"/>
+                                        <field name="fire_remarks"/>
+                                    </group>
+                                </form>
+                            </field>
+                        </group>
+
+                    </page>
+                    <page name="employee_Retirement" string="Retirement"
+                          groups="court_hr.group_employee_officers, court_hr.group_employee_expert"
+                    >
+
+                        <group string="Retirement Information">
+                            <field name="retirement_ids" string="">
+                                <tree>
+                                    <field name="retirement_type_id"/>
+                                    <field name="retirement_reason_id"/>
+                                    <field name="retirement_end_date"/>
+                                    <field name="retirement_remarks"/>
+                                </tree>
+                                <form>
+                                    <group>
+                                        <field name="retirement_type_id"/>
+                                        <field name="retirement_reason_id"/>
+                                        <field name="retirement_end_date" widget="hijri_date"/>
+                                        <field name="retirement_remarks"/>
+                                    </group>
+                                </form>
+                            </field>
+                        </group>
+                    </page>
+                    <page name="employee_health" string="Health"
+                          groups="court_hr.group_employee_officers, court_hr.group_employee_expert"
+                    >
+                        <group string="Employee Health Information">
+                            <field name="health_ids" string="">
+                                <tree>
+                                    <field name="health_status"/>
+                                    <field name="health_report_date"/>
+                                    <field name="health_remarks"/>
+                                </tree>
+                                <form>
+                                    <group>
+                                        <field name="health_status"/>
+                                        <field name="health_report_date" widget="hijri_date"/>
+                                        <field name="health_remarks"/>
+                                    </group>
+                                </form>
+                            </field>
+                        </group>
+                    </page>
+
+
+                </xpath>
+
+                <!--personal information Tab -->
+
+                <xpath expr="//page[@name='personal_information']" position="replace">
+                    <page name="employee_appraisal" string="Appraisal"
+                          groups="court_hr.group_employee_officers, court_hr.group_employee_expert">
+                        <group string="Employee Appraisal Information">
+                            <field name="appraisal_ids" string="">
+                                <tree>
+                                    <field name="appraisal_type"/>
+                                    <field name="total_marks"/>
+                                    <field name="head_details"/>
+                                    <!--                                        <field name="sending_date"/>-->
+                                    <field name="basic_objective_of_work_plan"/>
+                                    <field name="head_opinion"/>
+                                    <field name="superior_head_opinion"/>
+                                    <field name="appraisal_date"/>
+                                    <field name="is_action_plan_accommodated"/>
+                                    <field name="final_result"/>
+                                    <field name="employee_opinion"/>
+                                    <field name="is_agree_with_the_result"/>
+                                    <!--                                        <field name="admin_opinion"/>-->
+                                    <field name="employee_opinion_again"/>
+                                    <field name="supervisor_opinion"/>
+                                </tree>
+                                <form>
+                                    <group>
+                                        <group>
+                                            <field name="appraisal_type"/>
+                                            <field name="total_marks"/>
+                                            <field name="head_details"/>
+                                            <field name="basic_objective_of_work_plan"/>
+                                        </group>
+                                        <group string="Opinion before Appraisal of employee">
+                                            <field name="head_opinion"/>
+                                            <field name="superior_head_opinion"/>
+                                            <!---->
+                                        </group>
+                                        <group string="">
+                                            <field name="appraisal_date" widget="hijri_date"/>
+                                            <field name="is_action_plan_accommodated"/>
+                                            <field name="final_result"/>
+                                            <field name="employee_opinion"/>
+                                        </group>
+                                        <group string="opinion after the Appriasal result">
+                                            <!---->
+                                            <field name="is_agree_with_the_result"/>
+                                            <field name="employee_opinion_again"
+                                                   invisible="is_agree_with_the_result != 'no'"/>
+                                            <!---->
+                                            <field name="supervisor_opinion"/>
+                                        </group>
+                                    </group>
+                                </form>
+                            </field>
+                        </group>
+                    </page>
+
+                </xpath>
+
+            </field>
+        </record>
+
+    </data>
+    <menuitem
+            id="menu_employee_resume_root"
+            name="Employee Resume"
+            parent="hr.menu_hr_root"
+            sequence="60"/>
+</odoo>
