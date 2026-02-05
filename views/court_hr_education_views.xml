@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- ========================= -->
+    <!-- Tree View -->
+    <!-- ========================= -->
+    <record id="view_employee_education_tree" model="ir.ui.view">
+        <field name="name">employee.education.tree</field>
+        <field name="model">employee.education</field>
+        <field name="arch" type="xml">
+            <tree string="Employee Education">
+                <field name="employee_id"/>
+                <field name="degree_id"/>
+                <field name="university_id"/>
+                <field name="faculty_id"/>
+                <field name="major"/>
+                <field name="education_start_date"/>
+                <field name="education_end_date"/>
+                <field name="education_year"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Form View with Chatter -->
+    <!-- ========================= -->
+    <record id="view_employee_education_form" model="ir.ui.view">
+        <field name="name">employee.education.form</field>
+        <field name="model">employee.education</field>
+        <field name="arch" type="xml">
+            <form string="Employee Education">
+                <sheet>
+
+                    <!-- Basic Information -->
+                    <group>
+                        <group>
+                            <field name="employee_id" required="1"/>
+                            <field name="degree_id"/>
+                            <field name="country_id"/>
+                            <field name="university_id"/>
+                            <field name="faculty_id"/>
+                            <field name="major"/>
+                        </group>
+                        <group>
+                            <field name="education_duration"/>
+                            <field name="in_service"/>
+                            <field name="batch_no"/>
+                            <field name="education_start_date"/>
+                            <field name="education_end_date"/>
+                        </group>
+                    </group>
+
+                    <!-- Remarks -->
+                    <group string="Remarks">
+                        <field name="education_remarks"/>
+                    </group>
+
+                    <!-- Attachments -->
+                    <group>
+                        <field name="attachments" widget="many2many_binary"/>
+                    </group>
+
+                </sheet>
+
+                <!-- Chatter -->
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+
+            </form>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Search View with Search Panel -->
+    <!-- ========================= -->
+    <record id="view_employee_education_search" model="ir.ui.view">
+        <field name="name">employee.education.search</field>
+        <field name="model">employee.education</field>
+        <field name="arch" type="xml">
+            <search string="Search Employee Education">
+
+                <!-- Search Fields -->
+                <field name="employee_id"/>
+                <field name="degree_id"/>
+                <field name="university_id"/>
+                <field name="faculty_id"/>
+
+                <!-- Search Panel -->
+                <searchpanel>
+                    <field name="degree_id" icon="fa-graduation-cap" enable_counters="1"/>
+                    <field name="education_year" string="Education Year" enable_counters="1" icon="fa-calendar-o"/>
+                    <field name="education_month" string="Education Month" enable_counters="1" icon="fa-calendar-o"/>
+                </searchpanel>
+
+            </search>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Graph View -->
+    <!-- ========================= -->
+    <record id="view_employee_education_graph" model="ir.ui.view">
+        <field name="name">employee.education.graph</field>
+        <field name="model">employee.education</field>
+        <field name="arch" type="xml">
+            <graph string="Education Analysis" type="bar">
+                <field name="degree_id" type="row"/>
+                <field name="employee_id" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Pivot View (NEW) -->
+    <!-- ========================= -->
+    <record id="view_employee_education_pivot" model="ir.ui.view">
+        <field name="name">employee.education.pivot</field>
+        <field name="model">employee.education</field>
+        <field name="arch" type="xml">
+            <pivot string="Employee Education Analysis">
+                <field name="degree_id" type="row"/>
+                <field name="education_year" type="col"/>
+                <field name="employee_id" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Action -->
+    <!-- ========================= -->
+    <record id="action_employee_education" model="ir.actions.act_window">
+        <field name="name">Employee Education</field>
+        <field name="res_model">employee.education</field>
+        <field name="view_mode">tree,form,graph,pivot</field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Menu Item -->
+    <!-- ========================= -->
+    <menuitem
+            id="menu_employee_education"
+            name="Employee Education"
+            parent="menu_employee_resume_root"
+            action="action_employee_education"
+            sequence="30"/>
+
+</odoo>
