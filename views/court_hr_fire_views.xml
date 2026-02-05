@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- TREE VIEW -->
+    <record id="view_employee_fire_tree" model="ir.ui.view">
+        <field name="name">employee.fire.tree</field>
+        <field name="model">employee.fire</field>
+        <field name="arch" type="xml">
+            <tree string="Employee Fire">
+                <field name="employee_id"/>
+                <field name="fire_type"/>
+                <field name="leave_reason"/>
+                <field name="order_no"/>
+                <field name="order_date"/>
+                <field name="date_approved"/>
+                <field name="fire_month"/>
+                <field name="fire_year"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- FORM VIEW -->
+    <record id="view_employee_fire_form" model="ir.ui.view">
+        <field name="name">employee.fire.form</field>
+        <field name="model">employee.fire</field>
+        <field name="arch" type="xml">
+            <form string="Employee Fire">
+                <sheet>
+                    <group>
+                        <field name="employee_id"/>
+                        <field name="fire_type"/>
+                        <field name="leave_reason"/>
+                        <field name="order_no"/>
+                        <field name="order_date"/>
+                        <field name="date_approved"/>
+                        <field name="fire_month" readonly="1"/>
+                        <field name="fire_year" readonly="1"/>
+                    </group>
+                    <group>
+                        <field name="fire_remarks"/>
+                        <field name="attachments" widget="many2many_binary"/>
+                    </group>
+                </sheet>
+
+                <!-- Chatter -->
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- PIVOT VIEW -->
+    <record id="view_employee_fire_pivot" model="ir.ui.view">
+        <field name="name">employee.fire.pivot</field>
+        <field name="model">employee.fire</field>
+        <field name="arch" type="xml">
+            <pivot string="Employee Fire Analysis">
+                <field name="employee_id" type="row"/>
+                <field name="leave_reason" type="row"/>
+                <field name="fire_year" type="col"/>
+                <field name="fire_month" type="col"/>
+                <field name="order_no" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <!-- GRAPH VIEW -->
+    <record id="view_employee_fire_graph" model="ir.ui.view">
+        <field name="name">employee.fire.graph</field>
+        <field name="model">employee.fire</field>
+        <field name="arch" type="xml">
+            <graph string="Employee Fire Graph" type="bar">
+                <field name="leave_reason" type="row"/>
+                <field name="fire_year" type="col"/>
+                <field name="order_no" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <!-- SEARCH VIEW -->
+    <record id="view_employee_fire_search" model="ir.ui.view">
+        <field name="name">employee.fire.search</field>
+        <field name="model">employee.fire</field>
+        <field name="arch" type="xml">
+            <search string="Search Employee Fires">
+
+                <!-- Search fields -->
+                <field name="employee_id"/>
+                <field name="leave_reason"/>
+                <field name="fire_type"/>
+
+                <!-- ========================= -->
+                <!-- Search Panel -->
+                <!-- ========================= -->
+                <searchpanel>
+                    <field name="fire_type" string="Fire Type" enable_counters="1"/>
+                    <field name="fire_month" string="Month" enable_counters="1"/>
+                    <field name="fire_year" string="Year" enable_counters="1"/>
+                    <field name="leave_reason" string="Leave Reason" enable_counters="1"/>
+                </searchpanel>
+
+            </search>
+        </field>
+    </record>
+
+
+    <!-- ACTION WINDOW -->
+    <record id="action_employee_fire" model="ir.actions.act_window">
+        <field name="name">Employee Fire</field>
+        <field name="res_model">employee.fire</field>
+        <field name="view_mode">tree,form,pivot,graph</field>
+        <field name="search_view_id" ref="view_employee_fire_search"/>
+    </record>
+
+    <!-- MENU ITEM -->
+    <!-- Top-level menu under HR root -->
+<!--    <menuitem-->
+<!--            id="menu_employee_fire_root"-->
+<!--            name="Fire"-->
+<!--            parent="hr.menu_hr_root"-->
+<!--            sequence="60"/>-->
+
+    <!-- Child menu linked to action -->
+    <menuitem
+            id="menu_employee_fire"
+            name="Employee Fire Records"
+            parent="menu_employee_resume_root"
+            action="action_employee_fire"
+            sequence="10"/>
+
+
+</odoo>
