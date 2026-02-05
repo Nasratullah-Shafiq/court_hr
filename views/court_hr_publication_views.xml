@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- ========================= -->
+    <!-- Tree View -->
+    <!-- ========================= -->
+    <record id="view_employee_publication_tree" model="ir.ui.view">
+        <field name="name">employee.publication.tree</field>
+        <field name="model">employee.publication</field>
+        <field name="arch" type="xml">
+            <tree string="Employee Publications">
+                <field name="employee_id"/>
+                <field name="publication_type"/>
+                <field name="subject"/>
+                <field name="publication_date"/>
+                <field name="no_of_pages"/>
+                <field name="isbn"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Form View with Chatter -->
+    <!-- ========================= -->
+    <record id="view_employee_publication_form" model="ir.ui.view">
+        <field name="name">employee.publication.form</field>
+        <field name="model">employee.publication</field>
+        <field name="arch" type="xml">
+            <form string="Employee Publication">
+                <sheet>
+
+                    <!-- Basic Information -->
+                    <group>
+                        <group>
+                            <field name="employee_id" required="1"/>
+                            <field name="publication_type" required="1"/>
+                        </group>
+                        <group>
+                            <field name="subject"/>
+                            <field name="publication_date"/>
+                        </group>
+                    </group>
+
+                    <!-- Publication Details -->
+                    <group string="Publication Details">
+                        <group>
+                            <field name="no_of_pages"/>
+                        </group>
+                        <group>
+                            <field name="isbn"/>
+                        </group>
+                    </group>
+
+                </sheet>
+
+                <!-- Chatter -->
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+
+            </form>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Search View with Search Panel -->
+    <!-- ========================= -->
+    <record id="view_employee_publication_search" model="ir.ui.view">
+        <field name="name">employee.publication.search</field>
+        <field name="model">employee.publication</field>
+        <field name="arch" type="xml">
+            <search string="Search Employee Publications">
+
+                <!-- Search Fields -->
+                <field name="employee_id"/>
+                <field name="publication_type"/>
+                <field name="subject"/>
+                <field name="publication_date"/>
+
+                <!-- Search Panel -->
+                <searchpanel>
+                    <field name="employee_id"/>
+                    <field name="publication_type"/>
+                </searchpanel>
+
+            </search>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Graph View -->
+    <!-- ========================= -->
+    <record id="view_employee_publication_graph" model="ir.ui.view">
+        <field name="name">employee.publication.graph</field>
+        <field name="model">employee.publication</field>
+        <field name="arch" type="xml">
+            <graph string="Employee Publications Analysis" type="bar">
+                <field name="publication_type" type="row"/>
+                <field name="employee_id" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Pivot View -->
+    <!-- ========================= -->
+    <record id="view_employee_publication_pivot" model="ir.ui.view">
+        <field name="name">employee.publication.pivot</field>
+        <field name="model">employee.publication</field>
+        <field name="arch" type="xml">
+            <pivot string="Employee Publications Pivot">
+                <field name="employee_id" type="row"/>
+                <field name="publication_type" type="col"/>
+            </pivot>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Action -->
+    <!-- ========================= -->
+    <record id="action_employee_publication" model="ir.actions.act_window">
+        <field name="name">Employee Publications</field>
+        <field name="res_model">employee.publication</field>
+        <field name="view_mode">tree,form,graph,pivot</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first employee publication record
+            </p>
+            <p>
+                Track books, articles, magazines, and subjects published by employees.
+            </p>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Menu Item -->
+    <!-- ========================= -->
+    <menuitem
+        id="menu_employee_publication"
+        name="Employee Publications"
+        parent="menu_employee_resume_root"
+        action="action_employee_publication"
+        sequence="45"/>
+
+</odoo>
