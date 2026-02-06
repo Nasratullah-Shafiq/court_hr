@@ -1,0 +1,87 @@
+<odoo>
+    <data>
+
+        <record id="hr_employee_view_form" model="ir.ui.view">
+            <field name="name">hr.employee.view.form.inherit.resume</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <!-- It hide the default Skills/Resume tab to replace it with a custom employee resume implementation -->
+                <xpath expr="//page[@name='skills_resume']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+
+                <xpath expr="//page[@name='public']" position="after">
+
+                    <page name="private_information" string="Private Information"
+                          groups="court_hr.group_employee_officers, court_hr.group_employee_expert">
+                        <group string="Employees personal information, contacts and addresses">
+                            <group string="Permanent Address">
+                                <field name="country_id" placeholder="Country"/>
+                                <field name="province_id" placeholder="Country"/>
+                                <field name="permanent_province" placeholder="Permanent Province"/>
+<!--                                <field name="permanent_district" placeholder="Permanent District"/>-->
+
+                                <field name="permanent_district" domain="[('province_id','=',province_id)]"/>
+
+                                <field name="permanent_village" placeholder="Permanent Village"/>
+                                <field name="home_number" placeholder="Home Number"/>
+                                <field name="permanent_street" placeholder="Street..."/>
+
+                                <separator name="has_work_permit" string="Contemporary Address"/>
+<!--                                <field name="country_id" placeholder="Country"/>-->
+<!--                                <field name="province_id" placeholder="Country"/>-->
+                                <field name="temporary_province" placeholder="Temporary Province"/>
+                                <field name="temporary_district" domain="[('province_id','=',province_id)]"/>
+<!--                                <field name="temporary_district" placeholder="Temporary District"/>-->
+                                <field name="temporary_village" placeholder="Temporary Village"/>
+                                <field name="home_number" placeholder="Home Number"/>
+                                <field name="private_streets" placeholder="Street..."/>
+                                <field name="private_email" string="Email"/>
+                                <field name="private_phone" string="Phone"/>
+                                <field name="bank_account_id" context="{'default_partner_id': work_contact_id}"
+                                       options="{'no_quick_create': True}" readonly="not id"/>
+                            </group>
+
+                            <group string="Passport">
+                                <field name="passport_id"/>
+                                <field name="passport_type"/>
+                                <field name="passport_place_of_issue"/>
+
+                                <field name="passport_print_date" widget="hijri_date"/>
+                                <field name="passport_end_date" widget="hijri_date"/>
+                                <separator name="has_work_permit" string="Work Permit"/>
+                                <field name="permit_no"
+                                       groups="court_hr.group_employee_officers, court_hr.group_employee_expert"/>
+                                <separator name="has_work_permit" string="Identification"/>
+                                <field name="identification_type"/>
+                                <field name="identification_no"/>
+                                <field name="identification_print_date"
+                                       invisible="identification_type != 'electronic_id_card'" widget="hijri_date"/>
+                                <field name="identification_expiry_date"
+                                       invisible="identification_type != 'electronic_id_card'" widget="hijri_date"/>
+                                <field name="identification_chapter"
+                                       invisible="identification_type != 'paper_id_card'"/>
+                                <field name="identification_page_no"
+                                       invisible="identification_type != 'paper_id_card'"/>
+                                <separator name="has_work_permit" string="Personal Information"/>
+                                <field name="blood_group"/>
+                                <field name="marital_status"/>
+                                <field name="religion"/>
+                            </group>
+
+                            <group string="Citizenship">
+                                <field name="emp_nationality"/>
+                                <field name="emp_gender"/>
+                                <field name="emp_date_of_birth" widget="hijri_date"/>
+                                <field name="age"/>
+                                <field name="emp_place_of_birth"/>
+                                <field name="emp_country_of_birth"/>
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
