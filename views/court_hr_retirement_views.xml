@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- ========================= -->
+    <!-- Tree View -->
+    <!-- ========================= -->
+    <record id="view_employee_retirement_tree" model="ir.ui.view">
+        <field name="name">employee.retirement.tree</field>
+        <field name="model">employee.retirement</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="employee_id"/>
+                <field name="retirement_type_id"/>
+                <field name="retirement_reason_id"/>
+                <field name="retirement_end_date"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Form View with Chatter -->
+    <!-- ========================= -->
+    <record id="view_employee_retirement_form" model="ir.ui.view">
+        <field name="name">employee.retirement.form</field>
+        <field name="model">employee.retirement</field>
+        <field name="arch" type="xml">
+            <form string="Employee Retirement">
+                <sheet>
+
+                    <group>
+                        <group>
+                            <field name="employee_id" required="1"/>
+                            <field name="retirement_type_id"/>
+                        </group>
+                        <group>
+                            <field name="retirement_reason_id"/>
+                            <field name="retirement_end_date"/>
+                        </group>
+                    </group>
+
+                    <group>
+                        <field name="attachments" widget="many2many_binary"/>
+                        <field name="retirement_remarks"/>
+
+                    </group>
+
+                </sheet>
+
+                <!-- Chatter -->
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+
+            </form>
+        </field>
+    </record>
+
+    <!-- Search View with Search Panel -->
+    <!-- ========================= -->
+    <record id="view_employee_retirement_search" model="ir.ui.view">
+        <field name="name">employee.retirement.search</field>
+        <field name="model">employee.retirement</field>
+        <field name="arch" type="xml">
+            <search string="Search Employee Retirements">
+
+                <!-- Search fields -->
+                <field name="employee_id"/>
+                <field name="retirement_reason_id"/>
+
+                <!-- ========================= -->
+                <!-- Search Panel -->
+                <!-- ========================= -->
+                <searchpanel>
+                    <field name="retirement_type_id" string="Retirement Type" enable_counters="1"/>
+                    <field name="retirement_month" string="Retirement Month" enable_counters="1" icon="fa-calendar-o"/>
+                    <field name="retirement_year" string="Retirement Year" enable_counters="1" icon="fa-calendar-o"/>
+                    <field name="employee_id" enable_counters="1"/>
+                </searchpanel>
+
+            </search>
+        </field>
+    </record>
+
+
+    <!-- ========================= -->
+    <!-- Graph View -->
+    <!-- ========================= -->
+    <record id="view_employee_retirement_graph" model="ir.ui.view">
+        <field name="name">employee.retirement.graph</field>
+        <field name="model">employee.retirement</field>
+        <field name="arch" type="xml">
+            <graph string="Employee Retirement Analysis" type="bar">
+                <field name="retirement_type_id" type="row"/>
+                <field name="employee_id" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Action -->
+    <!-- ========================= -->
+    <record id="action_employee_retirement" model="ir.actions.act_window">
+        <field name="name">Employee Retirements</field>
+        <field name="res_model">employee.retirement</field>
+        <field name="view_mode">tree,form,graph</field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Menu Items -->
+    <!-- ========================= -->
+
+
+    <!-- Child Menu -->
+    <menuitem
+            id="menu_employee_retirement"
+            name="Employee Retirements"
+            parent="menu_employee_resume_root"
+            action="action_employee_retirement"
+            sequence="10"/>
+
+</odoo>
