@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- General Faculties -->
+    <record id="faculty_education" model="employee.faculty">
+        <field name="name">Faculty of Education</field>
+    </record>
+    <record id="faculty_science" model="employee.faculty">
+        <field name="name">Faculty of Science</field>
+    </record>
+    <record id="faculty_literature" model="employee.faculty">
+        <field name="name">Faculty of Literature</field>
+    </record>
+    <record id="faculty_social_sciences" model="employee.faculty">
+        <field name="name">Faculty of Social Sciences</field>
+    </record>
+    <record id="faculty_islamic_studies" model="employee.faculty">
+        <field name="name">Faculty of Islamic Studies</field>
+    </record>
+
+    <!-- Engineering & Technology -->
+    <record id="faculty_engineering" model="employee.faculty">
+        <field name="name">Faculty of Engineering</field>
+    </record>
+    <record id="faculty_computer_science" model="employee.faculty">
+        <field name="name">Faculty of Computer Science</field>
+    </record>
+    <record id="faculty_information_technology" model="employee.faculty">
+        <field name="name">Faculty of Information Technology</field>
+    </record>
+    <record id="faculty_telecommunications" model="employee.faculty">
+        <field name="name">Faculty of Telecommunications</field>
+    </record>
+
+    <!-- Medical & Health -->
+    <record id="faculty_medicine" model="employee.faculty">
+        <field name="name">Faculty of Medicine</field>
+    </record>
+    <record id="faculty_dentistry" model="employee.faculty">
+        <field name="name">Faculty of Dentistry</field>
+    </record>
+    <record id="faculty_pharmacy" model="employee.faculty">
+        <field name="name">Faculty of Pharmacy</field>
+    </record>
+    <record id="faculty_nursing" model="employee.faculty">
+        <field name="name">Faculty of Nursing</field>
+    </record>
+    <record id="faculty_public_health" model="employee.faculty">
+        <field name="name">Faculty of Public Health</field>
+    </record>
+
+    <!-- Law, Economics & Management -->
+    <record id="faculty_law" model="employee.faculty">
+        <field name="name">Faculty of Law</field>
+    </record>
+    <record id="faculty_economics" model="employee.faculty">
+        <field name="name">Faculty of Economics</field>
+    </record>
+    <record id="faculty_business_admin" model="employee.faculty">
+        <field name="name">Faculty of Business Administration</field>
+    </record>
+    <record id="faculty_public_administration" model="employee.faculty">
+        <field name="name">Faculty of Public Administration</field>
+    </record>
+
+    <!-- Agriculture & Natural Resources -->
+    <record id="faculty_agriculture" model="employee.faculty">
+        <field name="name">Faculty of Agriculture</field>
+    </record>
+    <record id="faculty_veterinary" model="employee.faculty">
+        <field name="name">Faculty of Veterinary Science</field>
+    </record>
+    <record id="faculty_environment" model="employee.faculty">
+        <field name="name">Faculty of Environmental Science</field>
+    </record>
+
+    <!-- Arts & Architecture -->
+    <record id="faculty_fine_arts" model="employee.faculty">
+        <field name="name">Faculty of Fine Arts</field>
+    </record>
+    <record id="faculty_architecture" model="employee.faculty">
+        <field name="name">Faculty of Architecture</field>
+    </record>
+
+</odoo>
