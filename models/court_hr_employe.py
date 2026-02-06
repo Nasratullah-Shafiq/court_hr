@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
-from email.policy import default
-from odoo import fields, models, api
-from dateutil.relativedelta import relativedelta
 from datetime import date
+
+from dateutil.relativedelta import relativedelta
+
+from odoo import fields, models, api
 
 
 class HrEmployeeInherit(models.Model):
@@ -148,13 +149,15 @@ class HrEmployeeInherit(models.Model):
                                             groups="court_hr.group_employee_officers,court_hr.group_employee_expert")
     identification_page_no = fields.Integer(string='Page No',
                                             groups="court_hr.group_employee_officers,court_hr.group_employee_expert")
-    # permanent_province = fields.Many2one('res.country.state', string="Permanent Province", tracking=True, ondelete='cascade')
-    # temporary_province = fields.Many2one('res.country.state', string="Temporary Province", tracking=True, ondelete='cascade')
-    # Use the same variable for both fields
 
-    permanent_district = fields.Many2one('employee.district', string="Permanent District", tracking=True,
-                                         ondelete='cascade',
+
+
+
+    permanent_district = fields.Many2one("employee.district", string='Province', ondelete='restrict', tracking=True,
+                                         domain="[('permanent_province', '=?', permanent_province)]",
                                          groups="court_hr.group_employee_officers,court_hr.group_employee_expert")
+
+
     temporary_district = fields.Many2one('employee.district', string="Temporary District", tracking=True,
                                          ondelete='cascade',
                                          groups="court_hr.group_employee_officers,court_hr.group_employee_expert")
@@ -198,62 +201,42 @@ class HrEmployeeInherit(models.Model):
     today_date = fields.Date(string="Today's Date", tracking=True, default=fields.Date.today,
                              groups="court_hr.group_employee_officers,court_hr.group_employee_expert")
 
-    # Define the list of provinces once
-    PROVINCES = [
-        ('Badakhshan', 'Badakhshan'),
-        ('Badghis', 'Badghis'),
-        ('Baghlan', 'Baghlan'),
-        ('Balkh', 'Balkh'),
-        ('Bamyan', 'Bamyan'),
-        ('Daykundi', 'Daykundi'),
-        ('Farah', 'Farah'),
-        ('Faryab', 'Faryab'),
-        ('Ghazni', 'Ghazni'),
-        ('Ghor', 'Ghor'),
-        ('Helmand', 'Helmand'),
-        ('Herat', 'Herat'),
-        ('Jowzjan', 'Jowzjan'),
-        ('Kabul', 'Kabul'),
-        ('Kandahar', 'Kandahar'),
-        ('Kapisa', 'Kapisa'),
-        ('Khost', 'Khost'),
-        ('Kunar', 'Kunar'),
-        ('Kunduz', 'Kunduz'),
-        ('Laghman', 'Laghman'),
-        ('Logar', 'Logar'),
-        ('Nangarhar', 'Nangarhar'),
-        ('Nimroz', 'Nimroz'),
-        ('Nuristan', 'Nuristan'),
-        ('Paktia', 'Paktia'),
-        ('Paktika', 'Paktika'),
-        ('Panjshir', 'Panjshir'),
-        ('Parwan', 'Parwan'),
-        ('Samangan', 'Samangan'),
-        ('Sar-e Pol', 'Sar-e Pol'),
-        ('Takhar', 'Takhar'),
-        ('Urozgan', 'Urozgan'),
-        ('Wardak', 'Wardak'),
-        ('Zabul', 'Zabul')
-    ]
-    permanent_province = fields.Selection(PROVINCES, string="Province",
-                                          groups="court_hr.group_employee_officers,court_hr.group_employee_expert")
-    temporary_province = fields.Selection(PROVINCES, string="Province",
-                                          groups="court_hr.group_employee_officers,court_hr.group_employee_expert")
-    job_province = fields.Selection(PROVINCES, string="Province",
-                                    groups="court_hr.group_employee_officers,court_hr.group_employee_expert")
+
+
+    permanent_province = fields.Many2one("res.country.state", string='Province', ondelete='restrict',
+                                         domain="[('country_id', '=?', country_id)]",
+                                         groups="court_hr.group_employee_officers,court_hr.group_employee_expert")
+
+    temporary_province = fields.Many2one("res.country.state", string='Province', ondelete='restrict',
+                                         domain="[('country_id', '=?', country_id)]",
+                                         groups="court_hr.group_employee_officers,court_hr.group_employee_expert")
+
+
+    job_province = fields.Many2one("res.country.state", string='Province', ondelete='restrict',
+                                   domain="[('country_id', '=?', country_id)]",
+                                   groups="court_hr.group_employee_officers,court_hr.group_employee_expert")
+
+    passport_place_of_issue = fields.Many2one("res.country.state", string='Place of Issue', ondelete='restrict',
+                                              domain="[('country_id', '=?', country_id)]",
+                                              groups="court_hr.group_employee_officers,court_hr.group_employee_expert")
+
+    nic_place_of_issue = fields.Many2one("res.country.state", string='Place of Issue', ondelete='restrict',
+                                         domain="[('country_id', '=?', country_id)]",
+                                         groups="court_hr.group_employee_officers,court_hr.group_employee_expert")
+
+
+
     job_district = fields.Many2one('employee.district', string="Permanent District", tracking=True,
                                    ondelete='cascade',
                                    groups="court_hr.group_employee_officers,court_hr.group_employee_expert")
-    passport_place_of_issue = fields.Selection(PROVINCES, string="Place of Issue",
-                                               groups="court_hr.group_employee_officers,court_hr.group_employee_expert")
-    nic_place_of_issue = fields.Selection(PROVINCES, string="Place of Issue",
-                                          groups="court_hr.group_employee_officers,court_hr.group_employee_expert")
+
 
     age = fields.Integer(
         string="Age",
         compute="_compute_age",
         store=True
     )
+
 
     def cron_retirement_toast(self):
         today = date.today()
@@ -342,13 +325,6 @@ class HrEmployeeInherit(models.Model):
 
     def removed_employee(self):
         print("These are the Removed employees!")
-
-
-
-
-
-
-
 
     has_equipment_records = fields.Char(
         string="Has Equipment Records",
