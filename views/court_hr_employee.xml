@@ -137,7 +137,7 @@
                 <!--                </field>-->
 
                 <div class="oe_button_box" name="button_box">
-                    <field name="job_step" invisible="1"/>
+
                     <!--                    <button-->
                     <!--                            name="employee_fire"-->
                     <!--                            string="Employee Fired"-->
@@ -202,7 +202,7 @@
 
                 <xpath expr="//field[@name='coach_id']" position="after">
                     <field name="job_status"/>
-                    <field name="job_step"/>
+                    <field name="step_id"/>
                     <field name="recruitment_date" widget="hijri_date"/>
 
                 </xpath>
