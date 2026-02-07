@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Job Step -->
+    <record id="first_step" model="employee.step">
+        <field name="name">First Step</field>
+    </record>
+    <record id="second_step" model="employee.step">
+        <field name="name">Second Step</field>
+    </record>
+    <record id="third_step" model="employee.step">
+        <field name="name">Third Step</field>
+    </record>
+    <record id="fourth_step" model="employee.step">
+        <field name="name">Fourth Step</field>
+    </record>
+    <record id="fifth_step" model="employee.step">
+        <field name="name">Fifth Step</field>
+    </record>
+    <record id="sixth_step" model="employee.step">
+        <field name="name">Sixth Step</field>
+    </record>
+    <record id="seventh_step" model="employee.step">
+        <field name="name">Seventh Step</field>
+    </record>
+    <record id="eight_step" model="employee.step">
+        <field name="name">Eight Step</field>
+    </record>
+    <record id="ninth_step" model="employee.step">
+        <field name="name">Ninth Step</field>
+    </record>
+    <record id="tenth_step" model="employee.step">
+        <field name="name">Tenth Step</field>
+    </record>
+    <record id="first_rank" model="employee.step">
+        <field name="name">First Rank</field>
+    </record>
+    <record id="second_rank" model="employee.step">
+        <field name="name">Second Rank</field>
+    </record>
+    <record id="third_rank" model="employee.step">
+        <field name="name">Third Rank</field>
+    </record>
+    <record id="fourth_rank" model="employee.step">
+        <field name="name">Fourth Rank</field>
+    </record>
+    <record id="fifth_rank" model="employee.step">
+        <field name="name">Fifth Rank</field>
+    </record>
+    <record id="sixth_rank" model="employee.step">
+        <field name="name">Sixth Rank</field>
+    </record>
+    <record id="seventh_rank" model="employee.step">
+        <field name="name">Seventh Rank</field>
+    </record>
+    <record id="eight_rank" model="employee.step">
+        <field name="name">Eight Rank</field>
+    </record>
+    <record id="ninth_rank" model="employee.step">
+        <field name="name">Ninth Rank</field>
+    </record>
+    <record id="tenth_rank" model="employee.step">
+        <field name="name">Tenth Rank</field>
+    </record>
+    <record id="super_rank" model="employee.step">
+        <field name="name">Super Rank</field>
+    </record>
+    <record id="superior_rank" model="employee.step">
+        <field name="name">Superior Rank</field>
+    </record>
+    <record id="unranked" model="employee.step">
+        <field name="name">Unranked</field>
+    </record>
+    <record id="professor" model="employee.step">
+        <field name="name">Professor</field>
+    </record>
+    <record id="scholar" model="employee.step">
+        <field name="name">Scholar</field>
+    </record>
+    <record id="phanmal" model="employee.degree">
+        <field name="name">Pohanmal</field>
+    </record>
+    <record id="pohand" model="employee.degree">
+        <field name="name">Pohand</field>
+    </record>
+
+</odoo>
