@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Pre-University / School Level -->
+    <record id="degree_primary_school" model="employee.degree">
+        <field name="name">Primary School Certificate</field>
+    </record>
+    <record id="degree_middle_school" model="employee.degree">
+        <field name="name">Middle School Certificate</field>
+    </record>
+    <record id="degree_secondary_school" model="employee.degree">
+        <field name="name">Secondary School Certificate (SSC)</field>
+    </record>
+    <record id="degree_high_school" model="employee.degree">
+        <field name="name">High School Diploma</field>
+    </record>
+    <record id="degree_higher_secondary" model="employee.degree">
+        <field name="name">Higher Secondary Certificate (HSC)</field>
+    </record>
+
+    <!-- Associate Degrees -->
+    <record id="degree_aa" model="employee.degree">
+        <field name="name">Associate of Arts (AA)</field>
+    </record>
+    <record id="degree_as" model="employee.degree">
+        <field name="name">Associate of Science (AS)</field>
+    </record>
+    <record id="degree_aas" model="employee.degree">
+        <field name="name">Associate of Applied Science (AAS)</field>
+    </record>
+    <record id="degree_aba" model="employee.degree">
+        <field name="name">Associate of Business Administration (ABA)</field>
+    </record>
+
+    <!-- Bachelor Degrees -->
+    <record id="degree_ba" model="employee.degree">
+        <field name="name">Bachelor of Arts (BA)</field>
+    </record>
+    <record id="degree_bsc" model="employee.degree">
+        <field name="name">Bachelor of Science (BSc)</field>
+    </record>
+    <record id="degree_bcom" model="employee.degree">
+        <field name="name">Bachelor of Commerce (BCom)</field>
+    </record>
+    <record id="degree_bba" model="employee.degree">
+        <field name="name">Bachelor of Business Administration (BBA)</field>
+    </record>
+    <record id="degree_bcs" model="employee.degree">
+        <field name="name">Bachelor of Computer Science (BCS)</field>
+    </record>
+    <record id="degree_bit" model="employee.degree">
+        <field name="name">Bachelor of Information Technology (BIT)</field>
+    </record>
+    <record id="degree_bse" model="employee.degree">
+        <field name="name">Bachelor of Software Engineering (BSE)</field>
+    </record>
+    <record id="degree_llb" model="employee.degree">
+        <field name="name">Bachelor of Laws (LLB)</field>
+    </record>
+    <record id="degree_mbbs" model="employee.degree">
+        <field name="name">MBBS</field>
+    </record>
+
+    <!-- Master Degrees -->
+    <record id="degree_ma" model="employee.degree">
+        <field name="name">Master of Arts (MA)</field>
+    </record>
+    <record id="degree_msc" model="employee.degree">
+        <field name="name">Master of Science (MSc)</field>
+    </record>
+    <record id="degree_mba" model="employee.degree">
+        <field name="name">Master of Business Administration (MBA)</field>
+    </record>
+    <record id="degree_mcs" model="employee.degree">
+        <field name="name">Master of Computer Science (MCS)</field>
+    </record>
+    <record id="degree_mit" model="employee.degree">
+        <field name="name">Master of Information Technology (MIT)</field>
+    </record>
+    <record id="degree_llm" model="employee.degree">
+        <field name="name">Master of Laws (LLM)</field>
+    </record>
+
+    <!-- Professional & Doctoral Degrees -->
+    <record id="degree_md" model="employee.degree">
+        <field name="name">Doctor of Medicine (MD)</field>
+    </record>
+    <record id="degree_pharmd" model="employee.degree">
+        <field name="name">Doctor of Pharmacy (PharmD)</field>
+    </record>
+    <record id="degree_phd" model="employee.degree">
+        <field name="name">Doctor of Philosophy (PhD)</field>
+    </record>
+    <record id="degree_dba" model="employee.degree">
+        <field name="name">Doctor of Business Administration (DBA)</field>
+    </record>
+    <record id="degree_edd" model="employee.degree">
+        <field name="name">Doctor of Education (EdD)</field>
+    </record>
+
+    <!-- Diplomas & Certificates -->
+    <record id="degree_diploma_it" model="employee.degree">
+        <field name="name">Diploma in Information Technology</field>
+    </record>
+    <record id="degree_diploma_eng" model="employee.degree">
+        <field name="name">Diploma in Engineering</field>
+    </record>
+    <record id="degree_diploma_edu" model="employee.degree">
+        <field name="name">Diploma in Education</field>
+    </record>
+    <record id="degree_professional_certificate" model="employee.degree">
+        <field name="name">Professional Certificate</field>
+    </record>
+</odoo>
