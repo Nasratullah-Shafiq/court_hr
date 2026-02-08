@@ -1,145 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-<!--    <?xml version="1.0" encoding="UTF-8"?>-->
-<!--<odoo>-->
-<!--    &lt;!&ndash; ===================== &ndash;&gt;-->
-<!--    &lt;!&ndash; Employee Languages &ndash;&gt;-->
-<!--    &lt;!&ndash; ===================== &ndash;&gt;-->
-<!--    <record id="language_english" model="employee.language">-->
-<!--        <field name="name">English</field>-->
-<!--    </record>-->
-<!--    <record id="language_mandarin" model="employee.language">-->
-<!--        <field name="name">Mandarin Chinese</field>-->
-<!--    </record>-->
-<!--    <record id="language_hindi" model="employee.language">-->
-<!--        <field name="name">Hindi</field>-->
-<!--    </record>-->
-<!--    <record id="language_spanish" model="employee.language">-->
-<!--        <field name="name">Spanish</field>-->
-<!--    </record>-->
-<!--    <record id="language_french" model="employee.language">-->
-<!--        <field name="name">French</field>-->
-<!--    </record>-->
-<!--    <record id="language_arabic" model="employee.language">-->
-<!--        <field name="name">Arabic</field>-->
-<!--    </record>-->
-<!--    <record id="language_bengali" model="employee.language">-->
-<!--        <field name="name">Bengali</field>-->
-<!--    </record>-->
-<!--    <record id="language_russian" model="employee.language">-->
-<!--        <field name="name">Russian</field>-->
-<!--    </record>-->
-<!--    <record id="language_portuguese" model="employee.language">-->
-<!--        <field name="name">Portuguese</field>-->
-<!--    </record>-->
-<!--    <record id="language_urdu" model="employee.language">-->
-<!--        <field name="name">Urdu</field>-->
-<!--    </record>-->
-<!--    <record id="language_indonesian" model="employee.language">-->
-<!--        <field name="name">Indonesian</field>-->
-<!--    </record>-->
-<!--    <record id="language_german" model="employee.language">-->
-<!--        <field name="name">German</field>-->
-<!--    </record>-->
-<!--    <record id="language_japanese" model="employee.language">-->
-<!--        <field name="name">Japanese</field>-->
-<!--    </record>-->
-<!--    <record id="language_swahili" model="employee.language">-->
-<!--        <field name="name">Swahili</field>-->
-<!--    </record>-->
-<!--    <record id="language_marathi" model="employee.language">-->
-<!--        <field name="name">Marathi</field>-->
-<!--    </record>-->
-<!--    <record id="language_telugu" model="employee.language">-->
-<!--        <field name="name">Telugu</field>-->
-<!--    </record>-->
-<!--    <record id="language_turkish" model="employee.language">-->
-<!--        <field name="name">Turkish</field>-->
-<!--    </record>-->
-<!--    <record id="language_tamil" model="employee.language">-->
-<!--        <field name="name">Tamil</field>-->
-<!--    </record>-->
-<!--    <record id="language_vietnamese" model="employee.language">-->
-<!--        <field name="name">Vietnamese</field>-->
-<!--    </record>-->
-<!--    <record id="language_korean" model="employee.language">-->
-<!--        <field name="name">Korean</field>-->
-<!--    </record>-->
-<!--    <record id="language_italian" model="employee.language">-->
-<!--        <field name="name">Italian</field>-->
-<!--    </record>-->
-<!--    <record id="language_persian_dari" model="employee.language">-->
-<!--        <field name="name">Persian (Dari/Farsi)</field>-->
-<!--    </record>-->
-<!--    <record id="language_pashto" model="employee.language">-->
-<!--        <field name="name">Pashto</field>-->
-<!--    </record>-->
-<!--    <record id="language_dari" model="employee.language">-->
-<!--        <field name="name">Dari (Persian)</field>-->
-<!--    </record>-->
-<!--    <record id="language_uzbek" model="employee.language">-->
-<!--        <field name="name">Uzbek</field>-->
-<!--    </record>-->
-<!--    <record id="language_turkmen" model="employee.language">-->
-<!--        <field name="name">Turkmen</field>-->
-<!--    </record>-->
-<!--    <record id="language_baluchi" model="employee.language">-->
-<!--        <field name="name">Baluchi</field>-->
-<!--    </record>-->
-<!--    <record id="language_pashayi" model="employee.language">-->
-<!--        <field name="name">Pashayi</field>-->
-<!--    </record>-->
-<!--    <record id="language_nuristani" model="employee.language">-->
-<!--        <field name="name">Nuristani languages</field>-->
-<!--    </record>-->
-<!--    <record id="language_pamiri" model="employee.language">-->
-<!--        <field name="name">Pamiri languages</field>-->
-<!--    </record>-->
-<!--    <record id="language_arabic_academic" model="employee.language">-->
-<!--        <field name="name">Arabic (religious/academic)</field>-->
-<!--    </record>-->
-<!--</odoo>-->
 
+    <!-- Official / National Languages -->
     <record id="lang_pashto" model="employee.language.master">
         <field name="name">Pashto</field>
         <field name="code">PS</field>
     </record>
+
     <record id="lang_dari" model="employee.language.master">
-        <field name="name">Dari</field>
-        <field name="code">DA</field>
-    </record>
-        <record id="lang_turkish" model="employee.language.master">
-        <field name="name">Turkish</field>
-        <field name="code">TR</field>
+        <field name="name">Dari (Persian)</field>
+        <field name="code">FA</field>
     </record>
 
-    <record id="lang_uzbeki" model="employee.language.master">
-        <field name="name">Uzbeki</field>
-        <field name="code">UZ</field>
-    </record>
-
-    <record id="lang_nooristani" model="employee.language.master">
-        <field name="name">Nooristani</field>
-        <field name="code">NR</field>
-    </record>
-
-    <record id="lang_turkmani" model="employee.language.master">
-        <field name="name">Turkmani</field>
-        <field name="code">TM</field>
-    </record>
-
-    <record id="lang_pashaee" model="employee.language.master">
-        <field name="name">Pashaee</field>
-        <field name="code">PSH</field>
-    </record>
-
-    <record id="lang_balochi" model="employee.language.master">
-        <field name="name">Balochi</field>
-        <field name="code">BL</field>
-    </record>
     <record id="lang_english" model="employee.language.master">
         <field name="name">English</field>
         <field name="code">EN</field>
+    </record>
+
+    <record id="lang_mandarin" model="employee.language.master">
+        <field name="name">Mandarin Chinese</field>
+        <field name="code">ZH</field>
+    </record>
+
+    <record id="lang_hindi" model="employee.language.master">
+        <field name="name">Hindi</field>
+        <field name="code">HI</field>
+    </record>
+
+    <record id="lang_spanish" model="employee.language.master">
+        <field name="name">Spanish</field>
+        <field name="code">ES</field>
     </record>
     <record id="lang_french" model="employee.language.master">
         <field name="name">French</field>
@@ -149,25 +39,83 @@
         <field name="name">Arabic</field>
         <field name="code">AR</field>
     </record>
-    <record id="lang_chinese" model="employee.language.master">
-        <field name="name">Chinese</field>
-        <field name="code">ZH</field>
+    <record id="lang_bengali" model="employee.language.master">
+        <field name="name">Bengali</field>
+        <field name="code">BN</field>
+    </record>
+    <record id="lang_portuguese" model="employee.language.master">
+        <field name="name">Portuguese</field>
+        <field name="code">PT</field>
     </record>
     <record id="lang_russian" model="employee.language.master">
         <field name="name">Russian</field>
         <field name="code">RU</field>
     </record>
-    <record id="lang_espanol" model="employee.language.master">
-        <field name="name">Spanish</field>
-        <field name="code">ES</field>
-    </record>
     <record id="lang_urdu" model="employee.language.master">
         <field name="name">Urdu</field>
         <field name="code">UR</field>
     </record>
-    <record id="lang_dutch" model="employee.language.master">
-        <field name="name">Dutch</field>
-        <field name="code">NL</field>
+
+
+    <!-- Major Regional / Ethnic Languages -->
+    <record id="lang_uzbek_af" model="employee.language.master">
+        <field name="name">Uzbek</field>
+        <field name="code">UZ</field>
+    </record>
+
+    <record id="lang_turkmen_af" model="employee.language.master">
+        <field name="name">Turkmen</field>
+        <field name="code">TK</field>
+    </record>
+
+    <record id="lang_balochi_af" model="employee.language.master">
+        <field name="name">Balochi</field>
+        <field name="code">BAL</field>
+    </record>
+
+    <record id="lang_pashayi" model="employee.language.master">
+        <field name="name">Pashayi</field>
+        <field name="code">PSH</field>
+    </record>
+
+    <record id="lang_nuristani" model="employee.language.master">
+        <field name="name">Nuristani</field>
+        <field name="code">NUR</field>
+    </record>
+
+    <record id="lang_aymaq" model="employee.language.master">
+        <field name="name">Aimaq</field>
+        <field name="code">AIQ</field>
+    </record>
+
+    <record id="lang_hazaragi" model="employee.language.master">
+        <field name="name">Hazaragi</field>
+        <field name="code">HAZ</field>
+    </record>
+
+    <record id="lang_brahui" model="employee.language.master">
+        <field name="name">Brahui</field>
+        <field name="code">BRH</field>
+    </record>
+
+    <record id="lang_kyrgyz_af" model="employee.language.master">
+        <field name="name">Kyrgyz</field>
+        <field name="code">KY</field>
+    </record>
+
+    <!-- Pamiri Language Group (spoken in Badakhshan) -->
+    <record id="lang_pamiri" model="employee.language.master">
+        <field name="name">Pamiri Languages</field>
+        <field name="code">PMR</field>
+    </record>
+
+
+    <!--international Lanuages-->
+
+
+    <record id="lang_indonesian" model="employee.language.master">
+        <field name="name">Indonesian</field>
+        <field name="code">ID</field>
     </record>
     <record id="lang_german" model="employee.language.master">
         <field name="name">German</field>
@@ -175,6 +123,140 @@
     </record>
     <record id="lang_japanese" model="employee.language.master">
         <field name="name">Japanese</field>
-        <field name="code">JP</field>
+        <field name="code">JA</field>
+    </record>
+    <record id="lang_swahili" model="employee.language.master">
+        <field name="name">Swahili</field>
+        <field name="code">SW</field>
+    </record>
+    <record id="lang_marathi" model="employee.language.master">
+        <field name="name">Marathi</field>
+        <field name="code">MR</field>
+    </record>
+    <record id="lang_telugu" model="employee.language.master">
+        <field name="name">Telugu</field>
+        <field name="code">TE</field>
+    </record>
+    <record id="lang_turkish" model="employee.language.master">
+        <field name="name">Turkish</field>
+        <field name="code">TR</field>
+    </record>
+    <record id="lang_tamil" model="employee.language.master">
+        <field name="name">Tamil</field>
+        <field name="code">TA</field>
+    </record>
+    <record id="lang_vietnamese" model="employee.language.master">
+        <field name="name">Vietnamese</field>
+        <field name="code">VI</field>
+    </record>
+    <record id="lang_korean" model="employee.language.master">
+        <field name="name">Korean</field>
+        <field name="code">KO</field>
+    </record>
+
+    <record id="lang_italian" model="employee.language.master">
+        <field name="name">Italian</field>
+        <field name="code">IT</field>
+    </record>
+    <record id="lang_thai" model="employee.language.master">
+        <field name="name">Thai</field>
+        <field name="code">TH</field>
+    </record>
+    <record id="lang_gujarati" model="employee.language.master">
+        <field name="name">Gujarati</field>
+        <field name="code">GU</field>
+    </record>
+    <record id="lang_kannada" model="employee.language.master">
+        <field name="name">Kannada</field>
+        <field name="code">KN</field>
+    </record>
+    <record id="lang_persian" model="employee.language.master">
+        <field name="name">Persian (Farsi)</field>
+        <field name="code">FA</field>
+    </record>
+    <record id="lang_bhojpuri" model="employee.language.master">
+        <field name="name">Bhojpuri</field>
+        <field name="code">BH</field>
+    </record>
+    <record id="lang_javanese" model="employee.language.master">
+        <field name="name">Javanese</field>
+        <field name="code">JV</field>
+    </record>
+    <record id="lang_malay" model="employee.language.master">
+        <field name="name">Malay</field>
+        <field name="code">MS</field>
+    </record>
+    <record id="lang_hausa" model="employee.language.master">
+        <field name="name">Hausa</field>
+        <field name="code">HA</field>
+    </record>
+    <record id="lang_punjabi" model="employee.language.master">
+        <field name="name">Punjabi</field>
+        <field name="code">PA</field>
+    </record>
+
+    <record id="lang_malayalam" model="employee.language.master">
+        <field name="name">Malayalam</field>
+        <field name="code">ML</field>
+    </record>
+    <record id="lang_odia" model="employee.language.master">
+        <field name="name">Odia</field>
+        <field name="code">OR</field>
+    </record>
+    <record id="lang_burmese" model="employee.language.master">
+        <field name="name">Burmese</field>
+        <field name="code">MY</field>
+    </record>
+    <record id="lang_sundanese" model="employee.language.master">
+        <field name="name">Sundanese</field>
+        <field name="code">SU</field>
+    </record>
+    <record id="lang_romanian" model="employee.language.master">
+        <field name="name">Romanian</field>
+        <field name="code">RO</field>
+    </record>
+
+    <record id="lang_amharic" model="employee.language.master">
+        <field name="name">Amharic</field>
+        <field name="code">AM</field>
+    </record>
+    <record id="lang_azerbaijani" model="employee.language.master">
+        <field name="name">Azerbaijani</field>
+        <field name="code">AZ</field>
+    </record>
+
+    <record id="lang_igbo" model="employee.language.master">
+        <field name="name">Igbo</field>
+        <field name="code">IG</field>
+    </record>
+    <record id="lang_yoruba" model="employee.language.master">
+        <field name="name">Yoruba</field>
+        <field name="code">YO</field>
+    </record>
+    <record id="lang_sindhi" model="employee.language.master">
+        <field name="name">Sindhi</field>
+        <field name="code">SD</field>
+    </record>
+    <record id="lang_nepali" model="employee.language.master">
+        <field name="name">Nepali</field>
+        <field name="code">NE</field>
+    </record>
+    <record id="lang_dutch" model="employee.language.master">
+        <field name="name">Dutch</field>
+        <field name="code">NL</field>
+    </record>
+    <record id="lang_greek" model="employee.language.master">
+        <field name="name">Greek</field>
+        <field name="code">EL</field>
+    </record>
+    <record id="lang_swedish" model="employee.language.master">
+        <field name="name">Swedish</field>
+        <field name="code">SV</field>
+    </record>
+    <record id="lang_ukrainian" model="employee.language.master">
+        <field name="name">Ukrainian</field>
+        <field name="code">UK</field>
     </record>
 </odoo>
+
+
