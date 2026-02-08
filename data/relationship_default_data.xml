@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- ========================= -->
+    <!-- Employee Relationships -->
+    <!-- ========================= -->
+
+    <record id="rel_father" model="employee.relationship">
+        <field name="name">Father</field>
+    </record>
+    <record id="rel_mother" model="employee.relationship">
+        <field name="name">Mother</field>
+    </record>
+    <record id="rel_brother" model="employee.relationship">
+        <field name="name">Brother</field>
+    </record>
+    <record id="rel_sister" model="employee.relationship">
+        <field name="name">Sister</field>
+    </record>
+    <record id="rel_grandfather" model="employee.relationship">
+        <field name="name">Grandfather</field>
+    </record>
+    <record id="rel_grandmother" model="employee.relationship">
+        <field name="name">Grandmother</field>
+    </record>
+    <record id="rel_uncle" model="employee.relationship">
+        <field name="name">Uncle</field>
+    </record>
+    <record id="rel_aunt" model="employee.relationship">
+        <field name="name">Aunt</field>
+    </record>
+    <record id="rel_nephew" model="employee.relationship">
+        <field name="name">Nephew</field>
+    </record>
+    <record id="rel_niece" model="employee.relationship">
+        <field name="name">Niece</field>
+    </record>
+    <record id="rel_cousin" model="employee.relationship">
+        <field name="name">Cousin</field>
+    </record>
+    <record id="rel_husband" model="employee.relationship">
+        <field name="name">Husband</field>
+    </record>
+    <record id="rel_wife" model="employee.relationship">
+        <field name="name">Wife</field>
+    </record>
+    <record id="rel_son" model="employee.relationship">
+        <field name="name">Son</field>
+    </record>
+    <record id="rel_daughter" model="employee.relationship">
+        <field name="name">Daughter</field>
+    </record>
+    <record id="rel_step_father" model="employee.relationship">
+        <field name="name">Step-Father</field>
+    </record>
+    <record id="rel_step_mother" model="employee.relationship">
+        <field name="name">Step-Mother</field>
+    </record>
+    <record id="rel_step_brother" model="employee.relationship">
+        <field name="name">Step-Brother</field>
+    </record>
+    <record id="rel_step_sister" model="employee.relationship">
+        <field name="name">Step-Sister</field>
+    </record>
+    <record id="rel_father_in_law" model="employee.relationship">
+        <field name="name">Father-in-Law</field>
+    </record>
+    <record id="rel_mother_in_law" model="employee.relationship">
+        <field name="name">Mother-in-Law</field>
+    </record>
+    <record id="rel_brother_in_law" model="employee.relationship">
+        <field name="name">Brother-in-Law</field>
+    </record>
+    <record id="rel_sister_in_law" model="employee.relationship">
+        <field name="name">Sister-in-Law</field>
+    </record>
+    <record id="rel_son_in_law" model="employee.relationship">
+        <field name="name">Son-in-Law</field>
+    </record>
+    <record id="rel_daughter_in_law" model="employee.relationship">
+        <field name="name">Daughter-in-Law</field>
+    </record>
+    <record id="rel_guardian" model="employee.relationship">
+        <field name="name">Guardian</field>
+    </record>
+    <record id="rel_other" model="employee.relationship">
+        <field name="name">Other</field>
+    </record>
+
+</odoo>
