@@ -19,26 +19,6 @@
         </record>
 
 
-        <!--        <record id="view_hr_employee_kanban_inherit_job_status" model="ir.ui.view">-->
-        <!--            <field name="name">hr.employee.kanban.inherit.job.status</field>-->
-        <!--            <field name="model">hr.employee</field>-->
-        <!--            <field name="inherit_id" ref="hr.hr_kanban_view_employees"/>-->
-        <!--            <field name="arch" type="xml">-->
-
-        <!--                &lt;!&ndash; Add Job Status below Job Title &ndash;&gt;-->
-        <!--                <xpath expr="//t[@t-name='kanban-box']//span[contains(@class,'o_kanban_record_subtitle')]"-->
-        <!--                       position="after">-->
-        <!--                    <div class="mt-1">-->
-        <!--                        <span class="badge bg-info">-->
-        <!--                            <t t-esc="record.job_status.value"/>-->
-        <!--                        </span>-->
-        <!--                    </div>-->
-        <!--                </xpath>-->
-
-        <!--            </field>-->
-        <!--        </record>-->
-
-
         <record id="view_hr_employee_kanban_inherit_job_status" model="ir.ui.view">
             <field name="name">hr.employee.kanban.inherit.job.status</field>
             <field name="model">hr.employee</field>
@@ -80,31 +60,14 @@
             </field>
         </record>
 
-
-        <!--        <record id="view_hr_employee_kanban_inherit" model="ir.ui.view">-->
-        <!--            <field name="name">hr.employee.kanban.inherit.job.status</field>-->
-        <!--            <field name="model">hr.employee</field>-->
-        <!--            <field name="inherit_id" ref="hr.view_hr_employee_kanban"/>-->
-        <!--            <field name="arch" type="xml">-->
-
-        <!--                &lt;!&ndash; Insert inside the kanban card body &ndash;&gt;-->
-        <!--                <xpath expr="//t[@t-name='kanban-box']//div[contains(@class,'o_kanban_record_body')]" position="inside">-->
-        <!--                    <div class="mt8">-->
-        <!--                        <span class="badge bg-info">-->
-        <!--                            <t t-esc="record.job_status.value"/>-->
-        <!--                        </span>-->
-        <!--                    </div>-->
-        <!--                </xpath>-->
-
-        <!--            </field>-->
-        <!--        </record>-->
-
-
         <record id="view_employee_form_inherit" model="ir.ui.view">
             <field name="name">hr.employee.inherit</field>
             <field name="model">hr.employee</field>
             <field name="inherit_id" ref="hr.view_employee_form"/>
             <field name="arch" type="xml">
+                <xpath expr="//form" position="inside">
+                    <field name="country_id" invisible="1"/>
+                </xpath>
                 <xpath expr="//field[@name='mobile_phone']" position="before">
                     <field name="father_name"/>
                     <field name="grand_father_name"/>
@@ -116,7 +79,7 @@
                     <field name="p2_approval_date"/>
                     <!--                    <group string="job information">-->
                     <field name="approver"/>
-                    <field name="job_province"/>
+                    <field name="province_id"/>
                     <field name="job_district"/>
                     <field name="pezhand_department" invisible="position_type != 'ملکی'"/>
                     <field name="deputy_ministry_procurement" invisible="position_type != 'ملکی'"/>
@@ -132,26 +95,8 @@
                 <xpath expr="//field[@name='permit_no']" position="attributes">
                     <attribute name="groups">court_hr.group_employee_officers</attribute>
                 </xpath>
-                <!--                <field name="permit_no" position="attributes">-->
-                <!--                    <attribute name="groups">court_hr.group_employee_officers</attribute>-->
-                <!--                </field>-->
 
                 <div class="oe_button_box" name="button_box">
-
-                    <!--                    <button-->
-                    <!--                            name="employee_fire"-->
-                    <!--                            string="Employee Fired"-->
-                    <!--                            type="object"-->
-                    <!--                            class="btn-danger"-->
-                    <!--                            invisible="single_fire_record != 'True'"/>-->
-
-                    <!--                    <butt
-                    on-->
-                    <!--                            name="active_employee"-->
-                    <!--                            string="Active Employee"-->
-                    <!--                            type="object"-->
-                    <!--                            class="btn-success"-->
-                    <!--                            invisible="single_fire_record == 'True'"/>-->
 
                     <button
                             name="besarnawesht_employee"
@@ -211,25 +156,6 @@
                     <field name="approval_date"/>
 
                 </xpath>
-                <!--                <xpath expr="//page[@name='personal_information']" position="replace">-->
-                <!--                <xpath expr="//field[@name='category_ids']" position="replace">-->
-
-                <!--                    <field name="category_ids" widget="many2many_tags" options="{'color_field': 'color', 'no_create_edit': True}" placeholder="Tags" groups="court_hr.group_employee_officers"/>-->
-                <!--                </xpath>-->
-
-
-                <!--                <xpath expr="//page[position()=2]" position="attributes">-->
-                <!--                    <attribute name="invisible">1</attribute>-->
-                <!--                </xpath>-->
-
-
-                <!--                <xpath expr="//page[@name='public']" position="attributes">-->
-                <!--                    <attribute name="invisible">1</attribute>-->
-                <!--                </xpath>-->
-                <!--                <xpath expr="//field[@name='category_ids']" position="attributes">-->
-                <!--                    <attribute name="groups">court_hr.group_employee_officers</attribute>-->
-                <!--                </xpath>-->
-
 
                 <xpath expr="//page[@name='public']" position="attributes">
                     <attribute name="invisible">1</attribute>
@@ -294,12 +220,12 @@
                                 <group string="Employee Experience">
                                     <field name="experience_ids" string="">
                                         <tree>
-
-                                            <field name="province"/>
+                                            <!--                                            <field name="country_id" invisible="1"/>-->
+                                            <!--                                            <field name="province_id"/>-->
                                             <field name="organization_id"/>
-                                            <field name="job_position"/>
-                                            <field name="grade"/>
-                                            <field name="step"/>
+                                            <field name="job_id"/>
+                                            <field name="grade_id"/>
+                                            <field name="step_id"/>
                                             <field name="department"/>
                                             <field name="status_id"/>
                                             <field name="job_start_date"/>
@@ -312,12 +238,12 @@
                                         <form>
                                             <group>
                                                 <group>
-
-                                                    <field name="province"/>
+                                                    <!--                                                    <field name="country_id" invisible="1"/>-->
+                                                    <!--                                                    <field name="province_id"/>-->
                                                     <field name="organization_id"/>
-                                                    <field name="job_position"/>
-                                                    <field name="grade"/>
-                                                    <field name="step"/>
+                                                    <field name="job_id"/>
+                                                    <field name="grade_id"/>
+                                                    <field name="step_id"/>
                                                     <field name="department"/>
                                                 </group>
                                                 <group>
@@ -369,29 +295,29 @@
                             <!-- ============================================================================ -->
                             <!-- Language Page – Manages employee language proficiency across all skill areas -->
                             <!-- ============================================================================ -->
-<!--                            <page name="employee_language" string="Languages"-->
-<!--                                  groups="court_hr.group_employee_officers, court_hr.group_employee_expert">-->
-<!--                                <group string="Employee Language Information">-->
-<!--                                    <field name="language_ids" string="">-->
-<!--                                        <tree>-->
-<!--                                            <field name="language"/>-->
-<!--                                            <field name="reading"/>-->
-<!--                                            <field name="speaking"/>-->
-<!--                                            <field name="listening"/>-->
-<!--                                            <field name="writing"/>-->
-<!--                                        </tree>-->
-<!--                                        <form>-->
-<!--                                            <group>-->
-<!--                                                <field name="language"/>-->
-<!--                                                <field name="reading"/>-->
-<!--                                                <field name="speaking"/>-->
-<!--                                                <field name="listening"/>-->
-<!--                                                <field name="writing"/>-->
-<!--                                            </group>-->
-<!--                                        </form>-->
-<!--                                    </field>-->
-<!--                                </group>-->
-<!--                            </page>-->
+                            <!--                            <page name="employee_language" string="Languages"-->
+                            <!--                                  groups="court_hr.group_employee_officers, court_hr.group_employee_expert">-->
+                            <!--                                <group string="Employee Language Information">-->
+                            <!--                                    <field name="language_ids" string="">-->
+                            <!--                                        <tree>-->
+                            <!--                                            <field name="language"/>-->
+                            <!--                                            <field name="reading"/>-->
+                            <!--                                            <field name="speaking"/>-->
+                            <!--                                            <field name="listening"/>-->
+                            <!--                                            <field name="writing"/>-->
+                            <!--                                        </tree>-->
+                            <!--                                        <form>-->
+                            <!--                                            <group>-->
+                            <!--                                                <field name="language"/>-->
+                            <!--                                                <field name="reading"/>-->
+                            <!--                                                <field name="speaking"/>-->
+                            <!--                                                <field name="listening"/>-->
+                            <!--                                                <field name="writing"/>-->
+                            <!--                                            </group>-->
+                            <!--                                        </form>-->
+                            <!--                                    </field>-->
+                            <!--                                </group>-->
+                            <!--                            </page>-->
                         </notebook>
 
 
@@ -407,52 +333,52 @@
                             <!-- ============================================================================ -->
                             <!-- Relative Page – Stores employee family and relative relationship information -->
                             <!-- ============================================================================ -->
-                            <page name="employee_relative" string="Relatives"
-                                  groups="court_hr.group_employee_officers, court_hr.group_employee_expert">
-                                <group string="Employee Relative Information">
-                                    <field name="relationship_ids" string="">
-                                        <tree>
-                                            <field name="relationship_id"/>
-                                            <field name="relationship_name"/>
-                                            <field name="relationship_last_name"/>
-                                            <field name="relationship_father_name"/>
-                                            <field name="relationship_grand_father_name"/>
-                                            <field name="relationship_job_position"/>
-                                            <field name="relationship_contact_info"/>
-                                            <field name="relationship_identification_no"/>
-                                            <field name="attachments" string="Attachment" widget="many2many_binary"/>
-                                        </tree>
-                                        <form>
-                                            <group>
-                                                <group>
-                                                    <field name="relationship_id"/>
-                                                    <field name="relationship_name"/>
-                                                    <field name="relationship_last_name"/>
-                                                    <field name="relationship_father_name"/>
-                                                    <field name="relationship_grand_father_name"/>
-                                                    <field name="relationship_job_position"/>
-                                                </group>
-                                                <group>
-                                                    <field name="relationship_email"/>
-                                                    <field name="relationship_contact_info"/>
-                                                    <field name="relationship_identification_no"/>
-                                                    <field name="relationship_permanent_address"/>
-                                                    <field name="relationship_contemporary_address"/>
-                                                    <field name="relationship_property"/>
-                                                    <field name="attachments" string="Attachment"
-                                                           widget="many2many_binary"/>
-                                                    <!--                                                    <field name="image_1920" widget="image" class="oe_avatar"/>-->
+                            <!--                            <page name="employee_relative" string="Relatives"-->
+                            <!--                                  groups="court_hr.group_employee_officers, court_hr.group_employee_expert">-->
+                            <!--                                <group string="Employee Relative Information">-->
+                            <!--                                    <field name="relationship_ids" string="">-->
+                            <!--                                        <tree>-->
+                            <!--                                            <field name="relationship_id"/>-->
+                            <!--                                            <field name="relationship_name"/>-->
+                            <!--                                            <field name="relationship_last_name"/>-->
+                            <!--                                            <field name="relationship_father_name"/>-->
+                            <!--                                            <field name="relationship_grand_father_name"/>-->
+                            <!--                                            <field name="relationship_job_position"/>-->
+                            <!--                                            <field name="relationship_contact_info"/>-->
+                            <!--                                            <field name="relationship_identification_no"/>-->
+                            <!--                                            <field name="attachments" string="Attachment" widget="many2many_binary"/>-->
+                            <!--                                        </tree>-->
+                            <!--                                        <form>-->
+                            <!--                                            <group>-->
+                            <!--                                                <group>-->
+                            <!--                                                    <field name="relationship_id"/>-->
+                            <!--                                                    <field name="relationship_name"/>-->
+                            <!--                                                    <field name="relationship_last_name"/>-->
+                            <!--                                                    <field name="relationship_father_name"/>-->
+                            <!--                                                    <field name="relationship_grand_father_name"/>-->
+                            <!--                                                    <field name="relationship_job_position"/>-->
+                            <!--                                                </group>-->
+                            <!--                                                <group>-->
+                            <!--                                                    <field name="relationship_email"/>-->
+                            <!--                                                    <field name="relationship_contact_info"/>-->
+                            <!--                                                    <field name="relationship_identification_no"/>-->
+                            <!--                                                    <field name="relationship_permanent_address"/>-->
+                            <!--                                                    <field name="relationship_contemporary_address"/>-->
+                            <!--                                                    <field name="relationship_property"/>-->
+                            <!--                                                    <field name="attachments" string="Attachment"-->
+                            <!--                                                           widget="many2many_binary"/>-->
+                            <!--                                                    &lt;!&ndash;                                                    <field name="image_1920" widget="image" class="oe_avatar"/>&ndash;&gt;-->
 
 
-                                                </group>
-                                            </group>
-                                            <group>
-                                                <field name="relationship_remarks"/>
-                                            </group>
-                                        </form>
-                                    </field>
-                                </group>
-                            </page>
+                            <!--                                                </group>-->
+                            <!--                                            </group>-->
+                            <!--                                            <group>-->
+                            <!--                                                <field name="relationship_remarks"/>-->
+                            <!--                                            </group>-->
+                            <!--                                        </form>-->
+                            <!--                                    </field>-->
+                            <!--                                </group>-->
+                            <!--                            </page>-->
                             <!-- ============================================================================ -->
                             <!-- Person Guarantee Page – Records personal guarantor details and addresses -->
                             <!-- ============================================================================ -->
@@ -759,9 +685,15 @@
         </record>
 
     </data>
+
     <menuitem
             id="menu_employee_resume_root"
             name="Employee Resume"
             parent="hr.menu_hr_root"
             sequence="60"/>
+
+    <menuitem id="menu_employee_resume_sub"
+              name="Employee Resume"
+              parent="menu_employee_resume_root"
+              sequence="50"/>
 </odoo>
