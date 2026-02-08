@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- ========================= -->
+    <!-- Tree View -->
+    <!-- ========================= -->
+    <record id="view_employee_property_tree" model="ir.ui.view">
+        <field name="name">employee.property.tree</field>
+        <field name="model">employee.property</field>
+        <field name="arch" type="xml">
+            <tree string="Employee Property">
+                <field name="employee_id"/>
+                <field name="property_type"/>
+                <field name="price"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Form View with Chatter -->
+    <!-- ========================= -->
+    <record id="view_employee_property_form" model="ir.ui.view">
+        <field name="name">employee.property.form</field>
+        <field name="model">employee.property</field>
+        <field name="arch" type="xml">
+            <form string="Employee Property">
+                <sheet>
+
+                    <!-- Basic Information -->
+                    <group string="Property Information">
+                        <group>
+                            <field name="employee_id" required="1"/>
+                            <field name="property_type" required="1"/>
+                        </group>
+                        <group>
+                            <field name="price"/>
+                        </group>
+                    </group>
+
+                    <!-- Remarks & Attachments -->
+                    <group string="Additional Information">
+                        <field name="remarks"/>
+                        <field name="attachments" widget="many2many_binary"/>
+                    </group>
+
+                </sheet>
+
+                <!-- Chatter -->
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+
+            </form>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Search View with Search Panel -->
+    <!-- ========================= -->
+    <record id="view_employee_property_search" model="ir.ui.view">
+        <field name="name">employee.property.search</field>
+        <field name="model">employee.property</field>
+        <field name="arch" type="xml">
+            <search string="Search Employee Property">
+
+                <!-- Search Fields -->
+                <field name="employee_id"/>
+                <field name="property_type"/>
+                <field name="price"/>
+
+                <!-- Search Panel -->
+                <searchpanel>
+                    <field name="employee_id"/>
+                    <field name="property_type"/>
+                </searchpanel>
+
+            </search>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Graph View -->
+    <!-- ========================= -->
+    <record id="view_employee_property_graph" model="ir.ui.view">
+        <field name="name">employee.property.graph</field>
+        <field name="model">employee.property</field>
+        <field name="arch" type="xml">
+            <graph string="Employee Property Analysis" type="bar">
+                <field name="property_type" type="row"/>
+                <field name="price" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Pivot View -->
+    <!-- ========================= -->
+    <record id="view_employee_property_pivot" model="ir.ui.view">
+        <field name="name">employee.property.pivot</field>
+        <field name="model">employee.property</field>
+        <field name="arch" type="xml">
+            <pivot string="Employee Property Pivot">
+                <field name="employee_id" type="row"/>
+                <field name="property_type" type="col"/>
+                <field name="price" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Action -->
+    <!-- ========================= -->
+    <record id="action_employee_property" model="ir.actions.act_window">
+        <field name="name">Employee Property</field>
+        <field name="res_model">employee.property</field>
+        <field name="view_mode">tree,form,graph,pivot</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first employee property record
+            </p>
+            <p>
+                Track employee properties, prices, and attachments.
+            </p>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Menu Item -->
+    <!-- ========================= -->
+    <menuitem
+        id="menu_employee_property"
+        name="Employee Property"
+        parent="menu_employee_resume_sub"
+        action="action_employee_property"
+        sequence="60"/>
+
+</odoo>
