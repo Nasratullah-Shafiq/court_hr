@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- Military / General Ranks -->
+    <record id="grade_major_general" model="employee.grade">
+        <field name="name">Major General</field>
+    </record>
+
+    <record id="grade_lieutenant_general" model="employee.grade">
+        <field name="name">Lieutenant General</field>
+    </record>
+
+    <record id="grade_accused_general" model="employee.grade">
+        <field name="name">Accused General</field>
+    </record>
+
+    <record id="grade_brigadier_general" model="employee.grade">
+        <field name="name">Brigadier General</field>
+    </record>
+
+    <record id="grade_colonel" model="employee.grade">
+        <field name="name">Colonel</field>
+    </record>
+
+    <record id="grade_lieutenant" model="employee.grade">
+        <field name="name">Lieutenant</field>
+    </record>
+
+    <record id="grade_battler" model="employee.grade">
+        <field name="name">Battler</field>
+    </record>
+
+    <record id="grade_accused" model="employee.grade">
+        <field name="name">Accused</field>
+    </record>
+
+    <record id="grade_first_lieutenant" model="employee.grade">
+        <field name="name">First Lieutenant</field>
+    </record>
+
+    <record id="grade_second_lieutenant" model="employee.grade">
+        <field name="name">Second Lieutenant</field>
+    </record>
+
+    <record id="grade_acting_sergeant" model="employee.grade">
+        <field name="name">Acting Sergeant</field>
+    </record>
+
+    <record id="grade_assistant_acting_sergeant" model="employee.grade">
+        <field name="name">Assistant Acting Sergeant</field>
+    </record>
+
+    <record id="grade_chief_sergeant" model="employee.grade">
+        <field name="name">Chief Sergeant</field>
+    </record>
+
+    <record id="grade_superior_rank" model="employee.grade">
+        <field name="name">Superior Rank</field>
+    </record>
+
+    <!-- Civil Grades -->
+    <record id="grade_1" model="employee.grade">
+        <field name="name">Grade 1</field>
+    </record>
+
+    <record id="grade_2" model="employee.grade">
+        <field name="name">Grade 2</field>
+    </record>
+
+    <record id="grade_3" model="employee.grade">
+        <field name="name">Grade 3</field>
+    </record>
+
+    <record id="grade_4" model="employee.grade">
+        <field name="name">Grade 4</field>
+    </record>
+
+    <record id="grade_5" model="employee.grade">
+        <field name="name">Grade 5</field>
+    </record>
+
+    <record id="grade_6" model="employee.grade">
+        <field name="name">Grade 6</field>
+    </record>
+
+    <record id="grade_7" model="employee.grade">
+        <field name="name">Grade 7</field>
+    </record>
+
+    <record id="grade_8" model="employee.grade">
+        <field name="name">Grade 8</field>
+    </record>
+
+    <record id="grade_9" model="employee.grade">
+        <field name="name">Grade 9</field>
+    </record>
+
+    <record id="grade_10" model="employee.grade">
+        <field name="name">Grade 10</field>
+    </record>
+
+    <!-- Other Ranks -->
+    <record id="grade_outside_rank" model="employee.grade">
+        <field name="name">Outside Rank</field>
+    </record>
+
+    <record id="grade_above_rank" model="employee.grade">
+        <field name="name">Above Rank</field>
+    </record>
+
+    <record id="grade_assistant_chief" model="employee.grade">
+        <field name="name">Assistant Chief</field>
+    </record>
+
+    <record id="grade_chief" model="employee.grade">
+        <field name="name">Chief</field>
+    </record>
+
+    <record id="grade_jungle_chief" model="employee.grade">
+        <field name="name">Jungle Chief</field>
+    </record>
+
+    <record id="grade_chief_of_regiment" model="employee.grade">
+        <field name="name">Chief of Regiment</field>
+    </record>
+
+    <record id="grade_without_rank" model="employee.grade">
+        <field name="name">Without Rank</field>
+    </record>
+
+    <record id="grade_soldier_officer" model="employee.grade">
+        <field name="name">Soldier / Officer</field>
+    </record>
+
+    <!-- Judicial Grades -->
+    <record id="grade_judicial_branch_1" model="employee.grade">
+        <field name="name">Judicial Branch 1</field>
+    </record>
+
+    <record id="grade_judicial_branch_2" model="employee.grade">
+        <field name="name">Judicial Branch 2</field>
+    </record>
+
+    <record id="grade_judicial_branch_3" model="employee.grade">
+        <field name="name">Judicial Branch 3</field>
+    </record>
+
+    <record id="grade_judicial_branch_4" model="employee.grade">
+        <field name="name">Judicial Branch 4</field>
+    </record>
+
+    <record id="grade_judicial_partner" model="employee.grade">
+        <field name="name">Judicial Partner</field>
+    </record>
+
+    <record id="grade_judicial_level" model="employee.grade">
+        <field name="name">Judicial Level</field>
+    </record>
+
+    <!-- Position Levels -->
+    <record id="grade_above_degree" model="employee.grade">
+        <field name="name">Above Degree</field>
+    </record>
+
+    <record id="grade_first_position" model="employee.grade">
+        <field name="name">First Position</field>
+    </record>
+
+    <record id="grade_second_position" model="employee.grade">
+        <field name="name">Second Position</field>
+    </record>
+
+    <record id="grade_third_position" model="employee.grade">
+        <field name="name">Third Position</field>
+    </record>
+
+    <record id="grade_fourth_position" model="employee.grade">
+        <field name="name">Fourth Position</field>
+    </record>
+
+    <record id="grade_fifth_position" model="employee.grade">
+        <field name="name">Fifth Position</field>
+    </record>
+
+    <record id="grade_sixth_position" model="employee.grade">
+        <field name="name">Sixth Position</field>
+    </record>
+
+    <record id="grade_seventh_position" model="employee.grade">
+        <field name="name">Seventh Position</field>
+    </record>
+
+    <record id="grade_eighth_position" model="employee.grade">
+        <field name="name">Eight Position</field>
+    </record>
+
+    <record id="grade_ninth_position" model="employee.grade">
+        <field name="name">Ninth Position</field>
+    </record>
+
+    <record id="grade_tenth_position" model="employee.grade">
+        <field name="name">Tenth Position</field>
+    </record>
+
+</odoo>
