@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- ========================= -->
+    <!-- Public Universities -->
+    <!-- ========================= -->
+
+    <record id="univ_kabul_university" model="employee.university">
+        <field name="name">Kabul University</field>
+    </record>
+
+    <record id="univ_kabul_polytechnic" model="employee.university">
+        <field name="name">Kabul Polytechnic University</field>
+    </record>
+
+    <record id="univ_kabul_medical" model="employee.university">
+        <field name="name">Kabul Medical University (Abu Ali Ibn Sina)</field>
+    </record>
+
+    <record id="univ_kabul_education" model="employee.university">
+        <field name="name">Kabul Education University (Shaheed Rabbani)</field>
+    </record>
+
+    <record id="univ_herat" model="employee.university">
+        <field name="name">Herat University</field>
+    </record>
+
+    <record id="univ_balkh" model="employee.university">
+        <field name="name">Balkh University</field>
+    </record>
+
+    <record id="univ_nangarhar" model="employee.university">
+        <field name="name">Nangarhar University</field>
+    </record>
+
+    <record id="univ_kandahar" model="employee.university">
+        <field name="name">Kandahar University</field>
+    </record>
+
+    <record id="univ_baghlan" model="employee.university">
+        <field name="name">Baghlan University</field>
+    </record>
+
+    <record id="univ_takhar" model="employee.university">
+        <field name="name">Takhar University</field>
+    </record>
+
+    <record id="univ_kunduz" model="employee.university">
+        <field name="name">Kunduz University</field>
+    </record>
+
+    <record id="univ_samangan" model="employee.university">
+        <field name="name">Samangan University</field>
+    </record>
+
+    <record id="univ_bamyan" model="employee.university">
+        <field name="name">Bamyan University</field>
+    </record>
+
+    <record id="univ_ghazni" model="employee.university">
+        <field name="name">Ghazni University</field>
+    </record>
+
+    <record id="univ_paktia" model="employee.university">
+        <field name="name">Paktia University</field>
+    </record>
+
+    <record id="univ_paktika" model="employee.university">
+        <field name="name">Paktika University</field>
+    </record>
+
+    <record id="univ_khost" model="employee.university">
+        <field name="name">Khost University (Shaikh Zayed University)</field>
+    </record>
+
+    <record id="univ_laghman" model="employee.university">
+        <field name="name">Laghman University</field>
+    </record>
+
+    <record id="univ_logar" model="employee.university">
+        <field name="name">Logar University</field>
+    </record>
+
+    <record id="univ_kapisa" model="employee.university">
+        <field name="name">Kapisa University</field>
+    </record>
+
+    <record id="univ_parwan" model="employee.university">
+        <field name="name">Parwan University</field>
+    </record>
+
+    <record id="univ_badakhshan" model="employee.university">
+        <field name="name">Badakhshan University</field>
+    </record>
+
+    <record id="univ_farrah" model="employee.university">
+        <field name="name">Farah University</field>
+    </record>
+
+    <record id="univ_helmand" model="employee.university">
+        <field name="name">Helmand University</field>
+    </record>
+
+    <record id="univ_nimroz" model="employee.university">
+        <field name="name">Nimroz Institute of Higher Education</field>
+    </record>
+
+    <record id="univ_zabul" model="employee.university">
+        <field name="name">Zabul University</field>
+    </record>
+
+    <record id="univ_ghor" model="employee.university">
+        <field name="name">Ghor University</field>
+    </record>
+
+    <record id="univ_sar_e_pol" model="employee.university">
+        <field name="name">Sar-e Pol University</field>
+    </record>
+
+    <record id="univ_jawzjan" model="employee.university">
+        <field name="name">Jawzjan University</field>
+    </record>
+
+    <record id="univ_faryab" model="employee.university">
+        <field name="name">Faryab University</field>
+    </record>
+
+    <record id="univ_wardak" model="employee.university">
+        <field name="name">Wardak University</field>
+    </record>
+
+    <record id="univ_panjshir" model="employee.university">
+        <field name="name">Panjshir University</field>
+    </record>
+
+    <record id="univ_nuristan" model="employee.university">
+        <field name="name">Nuristan University</field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Private Universities -->
+    <!-- ========================= -->
+
+    <record id="univ_auaf" model="employee.university">
+        <field name="name">American University of Afghanistan</field>
+    </record>
+
+    <record id="univ_kardan" model="employee.university">
+        <field name="name">Kardan University</field>
+    </record>
+
+    <record id="univ_kateb" model="employee.university">
+        <field name="name">Kateb University</field>
+    </record>
+
+    <record id="univ_bakhtar" model="employee.university">
+        <field name="name">Bakhtar University</field>
+    </record>
+
+    <record id="univ_dawat" model="employee.university">
+        <field name="name">Dawat University</field>
+    </record>
+
+    <record id="univ_rana" model="employee.university">
+        <field name="name">Rana University</field>
+    </record>
+
+    <record id="univ_salam" model="employee.university">
+        <field name="name">Salam University</field>
+    </record>
+
+    <record id="univ_spinghar" model="employee.university">
+        <field name="name">Spinghar University</field>
+    </record>
+
+    <record id="univ_khatam" model="employee.university">
+        <field name="name">Khatam Al-Nabieen University</field>
+    </record>
+
+</odoo>
