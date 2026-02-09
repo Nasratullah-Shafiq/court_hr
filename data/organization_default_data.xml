@@ -1,113 +1,261 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <!-- Pre-University / School Level -->
-    <record id="degree_primary_school" model="employee.organization">
-        <field name="name">Primary School Certificate</field>
-    </record>
-    <record id="degree_middle_school" model="employee.organization">
-        <field name="name">Middle School Certificate</field>
-    </record>
-    <record id="degree_secondary_school" model="employee.organization">
-        <field name="name">Secondary School Certificate (SSC)</field>
-    </record>
-    <record id="degree_high_school" model="employee.organization">
-        <field name="name">High School Diploma</field>
-    </record>
-    <record id="degree_higher_secondary" model="employee.organization">
-        <field name="name">Higher Secondary Certificate (HSC)</field>
+
+    <!-- Afghanistan Ministries -->
+
+    <record id="org_af_mofa" model="employee.organization">
+        <field name="name">Ministry of Foreign Affairs </field>
     </record>
 
-    <!-- Associate Degrees -->
-    <record id="degree_aa" model="employee.organization">
-        <field name="name">Associate of Arts (AA)</field>
-    </record>
-    <record id="degree_as" model="employee.organization">
-        <field name="name">Associate of Science (AS)</field>
-    </record>
-    <record id="degree_aas" model="employee.organization">
-        <field name="name">Associate of Applied Science (AAS)</field>
-    </record>
-    <record id="degree_aba" model="employee.organization">
-        <field name="name">Associate of Business Administration (ABA)</field>
+    <record id="org_af_moi" model="employee.organization">
+        <field name="name">Ministry of Interior Affairs </field>
     </record>
 
-    <!-- Bachelor Degrees -->
-    <record id="degree_ba" model="employee.organization">
-        <field name="name">Bachelor of Arts (BA)</field>
-    </record>
-    <record id="degree_bsc" model="employee.organization">
-        <field name="name">Bachelor of Science (BSc)</field>
-    </record>
-    <record id="degree_bcom" model="employee.organization">
-        <field name="name">Bachelor of Commerce (BCom)</field>
-    </record>
-    <record id="degree_bba" model="employee.organization">
-        <field name="name">Bachelor of Business Administration (BBA)</field>
-    </record>
-    <record id="degree_bcs" model="employee.organization">
-        <field name="name">Bachelor of Computer Science (BCS)</field>
-    </record>
-    <record id="degree_bit" model="employee.organization">
-        <field name="name">Bachelor of Information Technology (BIT)</field>
-    </record>
-    <record id="degree_bse" model="employee.organization">
-        <field name="name">Bachelor of Software Engineering (BSE)</field>
-    </record>
-    <record id="degree_llb" model="employee.organization">
-        <field name="name">Bachelor of Laws (LLB)</field>
-    </record>
-    <record id="degree_mbbs" model="employee.organization">
-        <field name="name">MBBS</field>
+    <record id="org_af_mod" model="employee.organization">
+        <field name="name">Ministry of Defense </field>
     </record>
 
-    <!-- Master Degrees -->
-    <record id="degree_ma" model="employee.organization">
-        <field name="name">Master of Arts (MA)</field>
-    </record>
-    <record id="degree_msc" model="employee.organization">
-        <field name="name">Master of Science (MSc)</field>
-    </record>
-    <record id="degree_mba" model="employee.organization">
-        <field name="name">Master of Business Administration (MBA)</field>
-    </record>
-    <record id="degree_mcs" model="employee.organization">
-        <field name="name">Master of Computer Science (MCS)</field>
-    </record>
-    <record id="degree_mit" model="employee.organization">
-        <field name="name">Master of Information Technology (MIT)</field>
-    </record>
-    <record id="degree_llm" model="employee.organization">
-        <field name="name">Master of Laws (LLM)</field>
+    <record id="org_af_mof" model="employee.organization">
+        <field name="name">Ministry of Finance </field>
     </record>
 
-    <!-- Professional & Doctoral Degrees -->
-    <record id="degree_md" model="employee.organization">
-        <field name="name">Doctor of Medicine (MD)</field>
-    </record>
-    <record id="degree_pharmd" model="employee.organization">
-        <field name="name">Doctor of Pharmacy (PharmD)</field>
-    </record>
-    <record id="degree_phd" model="employee.organization">
-        <field name="name">Doctor of Philosophy (PhD)</field>
-    </record>
-    <record id="degree_dba" model="employee.organization">
-        <field name="name">Doctor of Business Administration (DBA)</field>
-    </record>
-    <record id="degree_edd" model="employee.organization">
-        <field name="name">Doctor of Education (EdD)</field>
+    <record id="org_af_moj" model="employee.organization">
+        <field name="name">Ministry of Justice </field>
     </record>
 
-    <!-- Diplomas & Certificates -->
-    <record id="degree_diploma_it" model="employee.organization">
-        <field name="name">Diploma in Information Technology</field>
+    <record id="org_af_moecon" model="employee.organization">
+        <field name="name">Ministry of Economy </field>
     </record>
-    <record id="organization_diploma_eng" model="employee.organization">
-        <field name="name">Diploma in Engineering</field>
+
+    <record id="org_af_mpw" model="employee.organization">
+        <field name="name">Ministry of Public Works </field>
     </record>
-    <record id="organization_diploma_edu" model="employee.organization">
-        <field name="name">Diploma in Education</field>
+
+    <record id="org_af_mcit" model="employee.organization">
+        <field name="name">Ministry of Communications and Information Technology </field>
     </record>
-    <record id="organization_professional_certificate" model="employee.organization">
-        <field name="name">Professional Certificate</field>
+
+    <record id="org_af_mohe" model="employee.organization">
+        <field name="name">Ministry of Higher Education </field>
     </record>
+
+    <record id="org_af_moe" model="employee.organization">
+        <field name="name">Ministry of Education </field>
+    </record>
+
+    <record id="org_af_moph" model="employee.organization">
+        <field name="name">Ministry of Public Health </field>
+    </record>
+
+    <record id="org_af_mew" model="employee.organization">
+        <field name="name">Ministry of Energy and Water </field>
+    </record>
+
+    <record id="org_af_mail" model="employee.organization">
+        <field name="name">Ministry of Agriculture, Irrigation and Livestock </field>
+    </record>
+
+    <record id="org_af_momp" model="employee.organization">
+        <field name="name">Ministry of Mines and Petroleum </field>
+    </record>
+
+    <record id="org_af_moci" model="employee.organization">
+        <field name="name">Ministry of Industry and Commerce </field>
+    </record>
+
+    <record id="org_af_moic" model="employee.organization">
+        <field name="name">Ministry of Information and Culture </field>
+    </record>
+
+    <record id="org_af_motca" model="employee.organization">
+        <field name="name">Ministry of Transport and Civil Aviation </field>
+    </record>
+
+    <record id="org_af_molsa" model="employee.organization">
+        <field name="name">Ministry of Labor and Social Affairs </field>
+    </record>
+
+    <record id="org_af_mrrd" model="employee.organization">
+        <field name="name">Ministry of Rural Rehabilitation and Development </field>
+    </record>
+
+    <record id="org_af_mudl" model="employee.organization">
+        <field name="name">Ministry of Urban Development and Housing </field>
+    </record>
+
+    <record id="org_af_morr" model="employee.organization">
+        <field name="name">Ministry of Refugees and Repatriation </field>
+    </record>
+
+    <record id="org_af_mbta" model="employee.organization">
+        <field name="name">Ministry of Border and Tribal Affairs </field>
+    </record>
+
+    <record id="org_af_mohra" model="employee.organization">
+        <field name="name">Ministry of Hajj and Religious Affairs </field>
+    </record>
+
+    <record id="org_af_mpvpv" model="employee.organization">
+        <field name="name">Ministry for the Promotion of Virtue and Prevention of Vice </field>
+    </record>
+
+    <record id="org_af_mmd" model="employee.organization">
+        <field name="name">Ministry of Martyrs and Disabled Affairs </field>
+    </record>
+
+    <record id="org_af_mdm" model="employee.organization">
+        <field name="name">Ministry of Disaster Management </field>
+    </record>
+
+    <!-- United Nations & UN Agencies -->
+    <record id="org_un" model="employee.organization">
+        <field name="name">United Nations (UN)</field>
+    </record>
+    <record id="org_undp" model="employee.organization">
+        <field name="name">United Nations Development Programme (UNDP)</field>
+    </record>
+    <record id="org_unicef" model="employee.organization">
+        <field name="name">United Nations Children’s Fund (UNICEF)</field>
+    </record>
+    <record id="org_who" model="employee.organization">
+        <field name="name">World Health Organization (WHO)</field>
+    </record>
+    <record id="org_unhcr" model="employee.organization">
+        <field name="name">United Nations High Commissioner for Refugees (UNHCR)</field>
+    </record>
+    <record id="org_wfp" model="employee.organization">
+        <field name="name">World Food Programme (WFP)</field>
+    </record>
+    <record id="org_unesco" model="employee.organization">
+        <field name="name">United Nations Educational, Scientific and Cultural Organization (UNESCO)</field>
+    </record>
+    <record id="org_unfpa" model="employee.organization">
+        <field name="name">United Nations Population Fund (UNFPA)</field>
+    </record>
+    <record id="org_unops" model="employee.organization">
+        <field name="name">United Nations Office for Project Services (UNOPS)</field>
+    </record>
+    <record id="org_unido" model="employee.organization">
+        <field name="name">United Nations Industrial Development Organization (UNIDO)</field>
+    </record>
+    <record id="org_ilo" model="employee.organization">
+        <field name="name">International Labour Organization (ILO)</field>
+    </record>
+    <record id="org_fao" model="employee.organization">
+        <field name="name">Food and Agriculture Organization (FAO)</field>
+    </record>
+    <record id="org_iom" model="employee.organization">
+        <field name="name">International Organization for Migration (IOM)</field>
+    </record>
+    <record id="org_unwomen" model="employee.organization">
+        <field name="name">UN Women</field>
+    </record>
+    <record id="org_ocha" model="employee.organization">
+        <field name="name">Office for the Coordination of Humanitarian Affairs (OCHA)</field>
+    </record>
+    <record id="org_unep" model="employee.organization">
+        <field name="name">United Nations Environment Programme (UNEP)</field>
+    </record>
+    <record id="org_icao" model="employee.organization">
+        <field name="name">International Civil Aviation Organization (ICAO)</field>
+    </record>
+    <record id="org_imo" model="employee.organization">
+        <field name="name">International Maritime Organization (IMO)</field>
+    </record>
+
+    <!-- Financial Institutions -->
+    <record id="org_world_bank" model="employee.organization">
+        <field name="name">World Bank</field>
+    </record>
+    <record id="org_imf" model="employee.organization">
+        <field name="name">International Monetary Fund (IMF)</field>
+    </record>
+    <record id="org_adb" model="employee.organization">
+        <field name="name">Asian Development Bank (ADB)</field>
+    </record>
+    <record id="org_isdb" model="employee.organization">
+        <field name="name">Islamic Development Bank (IsDB)</field>
+    </record>
+    <record id="org_aiib" model="employee.organization">
+        <field name="name">Asian Infrastructure Investment Bank (AIIB)</field>
+    </record>
+    <record id="org_ebrd" model="employee.organization">
+        <field name="name">European Bank for Reconstruction and Development (EBRD)</field>
+    </record>
+
+    <!-- Humanitarian Organizations -->
+    <record id="org_icrc" model="employee.organization">
+        <field name="name">International Committee of the Red Cross (ICRC)</field>
+    </record>
+    <record id="org_ifrc" model="employee.organization">
+        <field name="name">International Federation of Red Cross and Red Crescent Societies (IFRC)</field>
+    </record>
+    <record id="org_msf" model="employee.organization">
+        <field name="name">Médecins Sans Frontières (MSF)</field>
+    </record>
+    <record id="org_care" model="employee.organization">
+        <field name="name">CARE International</field>
+    </record>
+    <record id="org_save_children" model="employee.organization">
+        <field name="name">Save the Children</field>
+    </record>
+    <record id="org_nrc" model="employee.organization">
+        <field name="name">Norwegian Refugee Council (NRC)</field>
+    </record>
+    <record id="org_drc" model="employee.organization">
+        <field name="name">Danish Refugee Council (DRC)</field>
+    </record>
+    <record id="org_mercy_corps" model="employee.organization">
+        <field name="name">Mercy Corps</field>
+    </record>
+    <record id="org_irc" model="employee.organization">
+        <field name="name">International Rescue Committee (IRC)</field>
+    </record>
+    <record id="org_islamic_relief" model="employee.organization">
+        <field name="name">Islamic Relief Worldwide</field>
+    </record>
+    <record id="org_akdn" model="employee.organization">
+        <field name="name">Aga Khan Development Network (AKDN)</field>
+    </record>
+
+    <!-- Development Agencies -->
+    <record id="org_giz" model="employee.organization">
+        <field name="name">Deutsche Gesellschaft für Internationale Zusammenarbeit (GIZ)</field>
+    </record>
+    <record id="org_usaid" model="employee.organization">
+        <field name="name">United States Agency for International Development (USAID)</field>
+    </record>
+    <record id="org_jica" model="employee.organization">
+        <field name="name">Japan International Cooperation Agency (JICA)</field>
+    </record>
+    <record id="org_fcdO" model="employee.organization">
+        <field name="name">UK Foreign, Commonwealth and Development Office (FCDO)</field>
+    </record>
+    <record id="org_sida" model="employee.organization">
+        <field name="name">Swedish International Development Cooperation Agency (Sida)</field>
+    </record>
+    <record id="org_sdc" model="employee.organization">
+        <field name="name">Swiss Agency for Development and Cooperation (SDC)</field>
+    </record>
+    <record id="org_dfat" model="employee.organization">
+        <field name="name">Australian Department of Foreign Affairs and Trade (DFAT)</field>
+    </record>
+
+    <!-- Regional / Political -->
+    <record id="org_eu" model="employee.organization">
+        <field name="name">European Union (EU)</field>
+    </record>
+    <record id="org_oic" model="employee.organization">
+        <field name="name">Organization of Islamic Cooperation (OIC)</field>
+    </record>
+    <record id="org_saarc" model="employee.organization">
+        <field name="name">South Asian Association for Regional Cooperation (SAARC)</field>
+    </record>
+    <record id="org_sco" model="employee.organization">
+        <field name="name">Shanghai Cooperation Organisation (SCO)</field>
+    </record>
+    <record id="org_eco" model="employee.organization">
+        <field name="name">Economic Cooperation Organization (ECO)</field>
+    </record>
+
 </odoo>
