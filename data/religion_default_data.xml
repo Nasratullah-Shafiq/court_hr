@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="religion_islam" model="employee.religion">
+        <field name="name">Islam</field>
+    </record>
+
+    <record id="religion_christianity" model="employee.religion">
+        <field name="name">Christianity</field>
+    </record>
+
+    <record id="religion_judaism" model="employee.religion">
+        <field name="name">Judaism</field>
+    </record>
+
+    <record id="religion_hinduism" model="employee.religion">
+        <field name="name">Hinduism</field>
+    </record>
+
+    <record id="religion_buddhism" model="employee.religion">
+        <field name="name">Buddhism</field>
+    </record>
+
+    <record id="religion_sikhism" model="employee.religion">
+        <field name="name">Sikhism</field>
+    </record>
+
+    <record id="religion_jainism" model="employee.religion">
+        <field name="name">Jainism</field>
+    </record>
+
+    <record id="religion_bahai" model="employee.religion">
+        <field name="name">Baháʼí Faith</field>
+    </record>
+
+    <record id="religion_zoroastrianism" model="employee.religion">
+        <field name="name">Zoroastrianism</field>
+    </record>
+
+    <record id="religion_taoism" model="employee.religion">
+        <field name="name">Taoism</field>
+    </record>
+
+    <record id="religion_confucianism" model="employee.religion">
+        <field name="name">Confucianism</field>
+    </record>
+
+    <record id="religion_shinto" model="employee.religion">
+        <field name="name">Shinto</field>
+    </record>
+
+    <record id="religion_yazidism" model="employee.religion">
+        <field name="name">Yazidism</field>
+    </record>
+
+    <record id="religion_mandaeism" model="employee.religion">
+        <field name="name">Mandaeism</field>
+    </record>
+
+    <record id="religion_druze" model="employee.religion">
+        <field name="name">Druze</field>
+    </record>
+
+    <record id="religion_rastafarianism" model="employee.religion">
+        <field name="name">Rastafarianism</field>
+    </record>
+
+    <record id="religion_african_traditional" model="employee.religion">
+        <field name="name">African Traditional Religion</field>
+    </record>
+
+    <record id="religion_shamanism" model="employee.religion">
+        <field name="name">Shamanism</field>
+    </record>
+
+    <record id="religion_native_american" model="employee.religion">
+        <field name="name">Native American Religion</field>
+    </record>
+
+    <record id="religion_scientology" model="employee.religion">
+        <field name="name">Scientology</field>
+    </record>
+
+    <record id="religion_unitarian_universalism" model="employee.religion">
+        <field name="name">Unitarian Universalism</field>
+    </record>
+
+    <record id="religion_wicca" model="employee.religion">
+        <field name="name">Wicca</field>
+    </record>
+
+    <record id="religion_neopaganism" model="employee.religion">
+        <field name="name">Neo-Paganism</field>
+    </record>
+
+    <record id="religion_falun_gong" model="employee.religion">
+        <field name="name">Falun Gong</field>
+    </record>
+
+    <record id="religion_cao_dai" model="employee.religion">
+        <field name="name">Cao Dai</field>
+    </record>
+
+    <record id="religion_atheism" model="employee.religion">
+        <field name="name">Atheism</field>
+    </record>
+
+    <record id="religion_agnosticism" model="employee.religion">
+        <field name="name">Agnosticism</field>
+    </record>
+
+    <record id="religion_deism" model="employee.religion">
+        <field name="name">Deism</field>
+    </record>
+
+    <record id="religion_humanism" model="employee.religion">
+        <field name="name">Humanism</field>
+    </record>
+
+    <record id="religion_secularism" model="employee.religion">
+        <field name="name">Secularism</field>
+    </record>
+
+</odoo>
