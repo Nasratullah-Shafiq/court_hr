@@ -1,11 +1,208 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <data noupdate="1">
-        <record id="af" model="res.country">
-            <field name="name">Afghanistan</field>
-            <field name="code">af</field>
-            <field name="currency_id" ref="AFN" />
-            <field eval="93" name="phone_code" />
-        </record>
-    </data>
+
+    <record id="state_af_badakhshan" model="res.country.state">
+        <field name="name">Badakhshan</field>
+        <field name="code">AF-BDS</field>
+        <field name="country_id" ref="base.af"/>
+    </record>
+
+    <record id="state_af_badghis" model="res.country.state">
+        <field name="name">Badghis</field>
+        <field name="code">AF-BDG</field>
+        <field name="country_id" ref="base.af"/>
+    </record>
+
+    <record id="state_af_baghlan" model="res.country.state">
+        <field name="name">Baghlan</field>
+        <field name="code">AF-BGL</field>
+        <field name="country_id" ref="base.af"/>
+    </record>
+
+    <record id="state_af_balkh" model="res.country.state">
+        <field name="name">Balkh</field>
+        <field name="code">AF-BAL</field>
+        <field name="country_id" ref="base.af"/>
+    </record>
+
+    <record id="state_af_bamyan" model="res.country.state">
+        <field name="name">Bamyan</field>
+        <field name="code">AF-BMY</field>
+        <field name="country_id" ref="base.af"/>
+    </record>
+
+    <record id="state_af_dykundi" model="res.country.state">
+        <field name="name">Daykundi</field>
+        <field name="code">AF-DAY</field>
+        <field name="country_id" ref="base.af"/>
+    </record>
+
+    <record id="state_af_farrah" model="res.country.state">
+        <field name="name">Farah</field>
+        <field name="code">AF-FRA</field>
+        <field name="country_id" ref="base.af"/>
+    </record>
+
+    <record id="state_af_faryab" model="res.country.state">
+        <field name="name">Faryab</field>
+        <field name="code">AF-FYB</field>
+        <field name="country_id" ref="base.af"/>
+    </record>
+
+    <record id="state_af_ghazni" model="res.country.state">
+        <field name="name">Ghazni</field>
+        <field name="code">AF-GHA</field>
+        <field name="country_id" ref="base.af"/>
+    </record>
+
+    <record id="state_af_ghor" model="res.country.state">
+        <field name="name">Ghor</field>
+        <field name="code">AF-GHO</field>
+        <field name="country_id" ref="base.af"/>
+    </record>
+
+    <record id="state_af_helmand" model="res.country.state">
+        <field name="name">Helmand</field>
+        <field name="code">AF-HEL</field>
+        <field name="country_id" ref="base.af"/>
+    </record>
+
+    <record id="state_af_herat" model="res.country.state">
+        <field name="name">Herat</field>
+        <field name="code">AF-HRT</field>
+        <field name="country_id" ref="base.af"/>
+    </record>
+
+    <record id="state_af_jowzjan" model="res.country.state">
+        <field name="name">Jowzjan</field>
+        <field name="code">AF-JOW</field>
+        <field name="country_id" ref="base.af"/>
+    </record>
+
+    <record id="state_af_kabul" model="res.country.state">
+        <field name="name">Kabul</field>
+        <field name="code">AF-KBL</field>
+        <field name="country_id" ref="base.af"/>
+    </record>
+
+    <record id="state_af_kandahar" model="res.country.state">
+        <field name="name">Kandahar</field>
+        <field name="code">AF-KDH</field>
+        <field name="country_id" ref="base.af"/>
+    </record>
+
+    <record id="state_af_kapisa" model="res.country.state">
+        <field name="name">Kapisa</field>
+        <field name="code">AF-KAP</field>
+        <field name="country_id" ref="base.af"/>
+    </record>
+
+    <record id="state_af_khost" model="res.country.state">
+        <field name="name">Khost</field>
+        <field name="code">AF-KHO</field>
+        <field name="country_id" ref="base.af"/>
+    </record>
+
+    <record id="state_af_kunar" model="res.country.state">
+        <field name="name">Kunar</field>
+        <field name="code">AF-KNR</field>
+        <field name="country_id" ref="base.af"/>
+    </record>
+
+    <record id="state_af_kunduz" model="res.country.state">
+        <field name="name">Kunduz</field>
+        <field name="code">AF-KDZ</field>
+        <field name="country_id" ref="base.af"/>
+    </record>
+
+    <record id="state_af_laghman" model="res.country.state">
+        <field name="name">Laghman</field>
+        <field name="code">AF-LGM</field>
+        <field name="country_id" ref="base.af"/>
+    </record>
+
+    <record id="state_af_logar" model="res.country.state">
+        <field name="name">Logar</field>
+        <field name="code">AF-LGR</field>
+        <field name="country_id" ref="base.af"/>
+    </record>
+
+    <record id="state_af_nangarhar" model="res.country.state">
+        <field name="name">Nangarhar</field>
+        <field name="code">AF-NNG</field>
+        <field name="country_id" ref="base.af"/>
+    </record>
+
+    <record id="state_af_nimroz" model="res.country.state">
+        <field name="name">Nimroz</field>
+        <field name="code">AF-NIM</field>
+        <field name="country_id" ref="base.af"/>
+    </record>
+
+    <record id="state_af_nuristan" model="res.country.state">
+        <field name="name">Nuristan</field>
+        <field name="code">AF-NUR</field>
+        <field name="country_id" ref="base.af"/>
+    </record>
+
+    <record id="state_af_paktia" model="res.country.state">
+        <field name="name">Paktia</field>
+        <field name="code">AF-PTA</field>
+        <field name="country_id" ref="base.af"/>
+    </record>
+
+    <record id="state_af_paktika" model="res.country.state">
+        <field name="name">Paktika</field>
+        <field name="code">AF-PTK</field>
+        <field name="country_id" ref="base.af"/>
+    </record>
+
+    <record id="state_af_panjshir" model="res.country.state">
+        <field name="name">Panjshir</field>
+        <field name="code">AF-PAN</field>
+        <field name="country_id" ref="base.af"/>
+    </record>
+
+    <record id="state_af_parwan" model="res.country.state">
+        <field name="name">Parwan</field>
+        <field name="code">AF-PRW</field>
+        <field name="country_id" ref="base.af"/>
+    </record>
+
+    <record id="state_af_samangan" model="res.country.state">
+        <field name="name">Samangan</field>
+        <field name="code">AF-SAM</field>
+        <field name="country_id" ref="base.af"/>
+    </record>
+
+    <record id="state_af_sarepol" model="res.country.state">
+        <field name="name">Sar-e Pol</field>
+        <field name="code">AF-SAR</field>
+        <field name="country_id" ref="base.af"/>
+    </record>
+
+    <record id="state_af_takhar" model="res.country.state">
+        <field name="name">Takhar</field>
+        <field name="code">AF-TAK</field>
+        <field name="country_id" ref="base.af"/>
+    </record>
+
+    <record id="state_af_urozgan" model="res.country.state">
+        <field name="name">Urozgan</field>
+        <field name="code">AF-URZ</field>
+        <field name="country_id" ref="base.af"/>
+    </record>
+
+    <record id="state_af_wardak" model="res.country.state">
+        <field name="name">Wardak</field>
+        <field name="code">AF-WAR</field>
+        <field name="country_id" ref="base.af"/>
+    </record>
+
+    <record id="state_af_zabul" model="res.country.state">
+        <field name="name">Zabul</field>
+        <field name="code">AF-ZAB</field>
+        <field name="country_id" ref="base.af"/>
+    </record>
+
 </odoo>
