@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- Employee Training Courses -->
+
+    <record id="employee_course_judical" model="employee.course">
+        <field name="name"> قضایی </field>
+    </record>
+
+    <record id="employee_course_administrative" model="employee.course">
+        <field name="name"> اداری </field>
+    </record>
+
+    <record id="employee_course_military" model="employee.course">
+        <field name="name"> نظامی </field>
+    </record>
+
+</odoo>
