@@ -1,0 +1,32 @@
+<odoo>
+    <record id="action_retirement_report" model="ir.actions.report">
+        <field name="name">Employee Retirement Report</field>
+        <field name="model">retirement.report.wizard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">court_hr.report_employee_retirement_template</field>
+        <field name="print_report_name">'Employee Retirement Report'</field>
+        <field name="paperformat_id" ref="court_hr.report_paperformat_a4"/>
+    </record>
+
+    <record id="action_promotion_report" model="ir.actions.report">
+        <field name="name">Employee Promotion Report</field>
+        <field name="model">promotion.report.wizard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">court_hr.report_employee_promotion_template</field>
+        <field name="report_file">court_hr.report_employee_promotion_template</field>
+        <field name="print_report_name">'Employee Promotion Report'</field>
+        <field name="paperformat_id" ref="court_hr.report_paperformat_a4"/>
+    </record>
+
+    <record id="action_employee_education_report" model="ir.actions.report">
+        <field name="name">Employee Education Report</field>
+        <field name="model">education.report.wizard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">court_hr.report_employee_education_template</field>
+        <field name="report_file">court_hr.report_employee_education_template</field>
+        <field name="print_report_name">'Employee Education Report'</field>
+        <field name="paperformat_id" ref="court_hr.report_paperformat_a4"/>
+    </record>
+
+
+</odoo>
