@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="report_employee_promotion_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+
+                <!-- Styles -->
+                <style>
+                    body {
+                        font-family: Calibri, Arial, sans-serif;
+                    }
+                    table, th, td {
+                        font-family: Calibri, Arial, sans-serif;
+                    }
+                    @page {
+                        size: A4 landscape;
+                        margin: 15mm;
+                    }
+                </style>
+
+                <div class="page">
+
+                    <!-- Report Header -->
+                    <h2 style="text-align:center; color:#4CAF50; margin-bottom:10px;">
+                        Employee Promotion Report
+                    </h2>
+
+                    <!-- Date Range -->
+                    <div style="margin-bottom:15px; font-size:14px; color:#333;">
+                        <p>
+                            <strong>From:</strong>
+                            <t t-esc="o.start_date if o.start_date else '-'"/>
+                            <strong style="margin-left:20px;">To:</strong>
+                            <t t-esc="o.end_date if o.end_date else '-'"/>
+                        </p>
+                    </div>
+
+                    <!-- Promotion Details Table -->
+                    <table style="width:100%; border-collapse:collapse; font-size:14px;" border="1">
+                        <thead style="background-color:#f5f5f5;">
+                            <tr>
+                                <th style="padding:8px;">Employee</th>
+                                <th style="padding:8px;">Approval No</th>
+                                <th style="padding:8px;">Proposal No</th>
+                                <th style="padding:8px;">Order No</th>
+                                <th style="padding:8px;">Rank Promotion</th>
+                                <th style="padding:8px;">Offer Date</th>
+                                <th style="padding:8px;">Proposal Date</th>
+                                <th style="padding:8px;">Order Date</th>
+                                <th style="padding:8px;">Approval Date</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <t t-foreach="o.promotion_lines" t-as="line">
+                                <tr>
+                                    <td style="padding:8px;">
+                                        <t t-esc="line.employee_id.name if line.employee_id else '-'"/>
+                                    </td>
+                                    <td style="padding:8px;">
+                                        <t t-esc="line.approval_no if line.approval_no else '-'"/>
+                                    </td>
+                                    <td style="padding:8px;">
+                                        <t t-esc="line.proposal_no if line.proposal_no else '-'"/>
+                                    </td>
+                                    <td style="padding:8px;">
+                                        <t t-esc="line.order_no if line.order_no else '-'"/>
+                                    </td>
+                                    <td style="padding:8px;">
+                                        <t t-esc="line.rank_promotion if line.rank_promotion else '-'"/>
+                                    </td>
+                                    <td style="padding:8px;">
+                                        <t t-esc="line.offer_date if line.offer_date else '-'"/>
+                                    </td>
+                                    <td style="padding:8px;">
+                                        <t t-esc="line.proposal_date if line.proposal_date else '-'"/>
+                                    </td>
+                                    <td style="padding:8px;">
+                                        <t t-esc="line.order_date if line.order_date else '-'"/>
+                                    </td>
+                                    <td style="padding:8px;">
+                                        <t t-esc="line.approval_date if line.approval_date else '-'"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+
+                    <!-- Summary -->
+                    <div style="margin-top:20px; font-size:14px; color:#333;">
+                        <strong>Total Promotions:</strong>
+                        <t t-esc="o.total_promotions if o.total_promotions else '0'"/>
+                    </div>
+
+                    <!-- Footer -->
+                    <div style="margin-top:30px; text-align:center; color:#888; font-size:12px;">
+                        <p>
+                            Generated on
+                            <t t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M:%S')"/>
+                        </p>
+                        <p>Powered by Supreme Court</p>
+                    </div>
+
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>
