@@ -1,0 +1,65 @@
+<odoo>
+
+    <record id="view_promotion_report_wizard" model="ir.ui.view">
+        <field name="name">promotion.report.wizard.form</field>
+        <field name="model">promotion.report.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Employee Promotion Report">
+
+                <group>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                </group>
+
+                <group string="Summary">
+                    <field name="total_promotions" readonly="1"/>
+                </group>
+
+                <group string="Promotion Details">
+                    <field name="promotion_lines" readonly="1" string="">
+                        <tree>
+                            <field name="employee_id"/>
+                            <field name="rank_promotion"/>
+                            <field name="approval_no"/>
+                            <field name="proposal_no"/>
+                            <field name="order_no"/>
+                            <field name="approval_date"/>
+                        </tree>
+                    </field>
+                </group>
+
+                <footer>
+                    <button name="generate_report"
+                            string="Generate Report"
+                            type="object"
+                            class="btn-primary"/>
+
+                    <button name="print_pdf_report"
+                            string="Print PDF"
+                            type="object"
+                            class="btn-secondary"/>
+
+                    <button string="Cancel"
+                            special="cancel"
+                            class="btn-secondary"/>
+                </footer>
+
+            </form>
+        </field>
+    </record>
+
+    <record id="action_promotion_report_wizard" model="ir.actions.act_window">
+        <field name="name">Employee Promotion Report</field>
+        <field name="res_model">promotion.report.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem
+        id="menu_promotion_report"
+        name="Employee Promotion Report"
+        parent="hr.hr_menu_hr_reports"
+        action="action_promotion_report_wizard"
+        sequence="35"/>
+
+</odoo>
