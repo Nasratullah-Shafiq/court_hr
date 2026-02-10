@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- ===================================================== -->
+    <!-- Education Report Line Tree View -->
+    <!-- ===================================================== -->
+    <record id="view_education_report_line_tree" model="ir.ui.view">
+        <field name="name">education.report.line.tree</field>
+        <field name="model">education.report.line</field>
+        <field name="arch" type="xml">
+            <tree string="Education Report" create="false" delete="false">
+                <field name="employee_id"/>
+                <field name="country_id"/>
+                <field name="province_id"/>
+                <field name="university_id"/>
+                <field name="faculty_id"/>
+                <field name="degree_id"/>
+                <field name="major"/>
+                <field name="education_start_date"/>
+                <field name="education_end_date"/>
+                <field name="batch_no"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- ===================================================== -->
+    <!-- Education Report Wizard Form View -->
+    <!-- ===================================================== -->
+    <record id="view_education_report_wizard_form" model="ir.ui.view">
+        <field name="name">education.report.wizard.form</field>
+        <field name="model">education.report.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Education Report">
+                <sheet>
+
+                    <!-- Filters -->
+                    <group col="3">
+                        <field name="university_id"/>
+                        <field name="degree_id"/>
+                        <field name="faculty_id"/>
+                    </group>
+
+                    <!-- Buttons -->
+                    <footer>
+                        <button name="generate_report"
+                                string="Generate Report"
+                                type="object"
+                                class="btn-primary"/>
+
+                        <button name="print_pdf_report"
+                                string="Print PDF"
+                                type="object"
+                                class="btn-secondary"/>
+
+                        <button string="Close"
+                                special="cancel"
+                                class="btn-link"/>
+                    </footer>
+
+                    <!-- Results -->
+                    <group>
+                        <field name="total_records" readonly="1"/>
+                    </group>
+
+                    <notebook>
+                        <page string="Education Details">
+                            <field name="education_lines" nolabel="1">
+                                <tree ref="view_education_report_line_tree"/>
+                            </field>
+                        </page>
+                    </notebook>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- ===================================================== -->
+    <!-- Education Report Wizard Action -->
+    <!-- ===================================================== -->
+    <record id="action_education_report_wizard" model="ir.actions.act_window">
+        <field name="name">Education Report</field>
+        <field name="res_model">education.report.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <!-- ===================================================== -->
+    <!-- Menu Item (Optional) -->
+    <!-- ===================================================== -->
+
+
+    <menuitem
+        id="menu_education_report"
+        name="Employee Education Report"
+        parent="hr.hr_menu_hr_reports"
+        action="action_education_report_wizard"
+        sequence="40"/>
+</odoo>
