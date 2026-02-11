@@ -1,0 +1,66 @@
+<odoo>
+
+    <record id="view_retirement_report_wizard" model="ir.ui.view">
+        <field name="name">retirement.report.wizard.form</field>
+        <field name="model">retirement.report.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Employee Retirement Report">
+
+                <group>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                    <field name="retirement_type_id"/>
+                </group>
+
+                <group string="Summary">
+                    <field name="total_retirements" readonly="1"/>
+                </group>
+
+                <group string="Retirement Details">
+                    <field name="retirement_lines" readonly="1" string="">
+                        <tree>
+                            <field name="employee_id"/>
+                            <field name="retirement_type_id"/>
+                            <field name="retirement_reason_id"/>
+                            <field name="retirement_end_date"/>
+                            <field name="retirement_month"/>
+                            <field name="retirement_year"/>
+                        </tree>
+                    </field>
+                </group>
+
+                <footer>
+                    <button name="generate_report"
+                            string="Generate Report"
+                            type="object"
+                            class="btn-primary"/>
+
+                    <button name="print_pdf_report"
+                            string="Print PDF"
+                            type="object"
+                            class="btn-secondary"/>
+
+                    <button string="Cancel"
+                            special="cancel"
+                            class="btn-secondary"/>
+                </footer>
+
+            </form>
+        </field>
+    </record>
+
+    <record id="action_retirement_report_wizard" model="ir.actions.act_window">
+        <field name="name">Employee Retirement Report</field>
+        <field name="res_model">retirement.report.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem
+    id="menu_retirement_report"
+    name="Employee Retirement Report"
+    parent="hr.hr_menu_hr_reports"
+    action="action_retirement_report_wizard"
+    sequence="30"/>
+
+</odoo>
