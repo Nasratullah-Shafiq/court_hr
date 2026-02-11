@@ -1,0 +1,89 @@
+<odoo>
+
+    <record id="view_employee_report_line_tree" model="ir.ui.view">
+        <field name="name">employee.report.line.tree</field>
+        <field name="model">employee.report.line</field>
+        <field name="arch" type="xml">
+            <tree create="false" delete="false">
+                <field name="employee_id"/>
+                <field name="job_id"/>
+                <field name="grade_id"/>
+                <field name="step_id"/>
+                <field name="court_level"/>
+                <field name="job_status"/>
+                <field name="category"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_employee_report_wizard_form" model="ir.ui.view">
+        <field name="name">employee.report.wizard.form</field>
+        <field name="model">employee.report.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Employee Report" class="o_dialog_size_large">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="ethnicity"/>
+                            <field name="category"/>
+                            <field name="job_id"/>
+                            <field name="grade_id"/>
+                            <field name="step_id"/>
+
+                        </group>
+                        <group col="4">
+                            <field name="job_province"/>
+                            <field name="court_level"/>
+                            <field name="job_status"/>
+                            <field name="recruitment_type"/>
+                            <field name="execution_type"/>
+                            <field name="resign_date"/>
+                        </group>
+                    </group>
+
+
+                    <footer>
+                        <button name="generate_report"
+                                string="Generate Report"
+                                type="object"
+                                class="btn-primary"/>
+                        <button name="print_pdf_report"
+                                string="Print PDF"
+                                type="object"
+                                class="btn-secondary"/>
+                        <button special="cancel" string="Close"/>
+                    </footer>
+
+                    <group>
+                        <field name="total_records" readonly="1"/>
+                    </group>
+
+                    <notebook>
+                        <page string="Employee Details">
+                            <field name="employee_lines">
+                                <tree ref="view_employee_report_line_tree"/>
+                            </field>
+                        </page>
+                    </notebook>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_employee_report_wizard" model="ir.actions.act_window">
+        <field name="name">Employee Report</field>
+        <field name="res_model">employee.report.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="context">{'wizard_size': 'large'}</field>
+    </record>
+
+    <menuitem
+            id="menu_employee_report"
+            name="Employee Report"
+            parent="hr.hr_menu_hr_reports"
+            action="action_employee_report_wizard"
+            sequence="45"/>
+
+</odoo>
