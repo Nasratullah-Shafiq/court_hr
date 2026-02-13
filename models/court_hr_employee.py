@@ -8,6 +8,13 @@ class HrEmployeeInherit(models.Model):
     _inherit = 'hr.employee'
     _description = "Human Resource"
 
+    education_ids = fields.One2many('employee.education', 'employee_id', tracking=True, string='Education')
+    experience_ids = fields.One2many('employee.experience', 'employee_id', string='Experience')
+    promotion_ids = fields.One2many('employee.promotions', 'employee_id', string='Fire')
+    exam_ids = fields.One2many('employee.exam', 'employee_id', string='Exam')
+
+
+
     # ===============================
     # Personal Information
     # ===============================
@@ -36,10 +43,7 @@ class HrEmployeeInherit(models.Model):
         'res.country', string="Nationality", tracking=True, ondelete='cascade',
         groups="court_hr.group_employee_officers,court_hr.group_employee_expert"
     )
-    # religion = fields.Char(
-    #     string='Religion', tracking=True,
-    #     groups="court_hr.group_employee_officers,court_hr.group_employee_expert"
-    # )
+
     blood_group = fields.Selection(
         [('a+', 'A+'), ('a-', 'A-'), ('b+', 'B+'), ('b-', 'B-'),
          ('ab+', 'AB+'), ('ab-', 'AB-'), ('o+', 'O+'), ('o-', 'O-')],
@@ -64,7 +68,21 @@ class HrEmployeeInherit(models.Model):
     position_type = fields.Selection(
         related='job_id.position_type', string='Position Type', store=True, readonly=True
     )
+    grade_id = fields.Many2one('employee.grade', string="Grade")
     step_id = fields.Many2one('employee.step', string="Step")
+
+    transfer_date = fields.Date(string='Transfer Date', tracking=True, required=True)
+    transfer_reason = fields.Text(string='Transfer Reason', tracking=True)
+    arranger_id = fields.Char(string='Arranger', tracking=True)
+    resign_date = fields.Date(string='Resign Date', tracking=True)
+    jihad_experience = fields.Text(string='Jihad Experience', tracking=True)
+    cartotech_number = fields.Char(string='Cartotech No', tracking=True)
+    category = fields.Selection([
+        ('administrative', 'Administrative'),
+        ('service', 'Service'),
+        ('judicial', 'Judicial'),
+        ('military', 'Military')
+    ], string='Category', required=True)
 
     ethnicity = fields.Selection(
         [
@@ -431,7 +449,7 @@ class EmployeeStep(models.Model):
     _name = 'employee.step'
     _description = 'Employee Step'
 
-    name = fields.Char(string='Step', tracking=True)
+    name = fields.Char(string='Step', tracking=True, translate=True, unique=True)
 
 
 
@@ -439,4 +457,4 @@ class EmployeeReligion(models.Model):
     _name = 'employee.religion'
     _description = 'Religion'
 
-    name = fields.Char(string='Religion', required=True)
+    name = fields.Char(string='Religion', required=True, translate=True, unique=True)
