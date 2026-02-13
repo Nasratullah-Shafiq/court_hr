@@ -2,149 +2,40 @@
 from odoo import fields, models, api
 from dateutil.relativedelta import relativedelta
 from odoo.exceptions import ValidationError
+import datetime
 import re
-
-
-
-class HrEmployeeInherit(models.Model):
-    _inherit = 'hr.employee'
-    _description = "Human Resource"
-
-    experience_ids = fields.One2many('employee.experience', 'employee_id', string='Experience')
-
 
 # Your Python code (e.g., in a controller or model)
 
 class EmployeeExperience(models.Model):
     _name = 'employee.experience'
     _description = 'Employee Experience'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
 
     employee_id = fields.Many2one('hr.employee', string='Employee')
 
-    province = fields.Selection([
-        ('Badakhshan', 'Badakhshan'),
-        ('Badghis', 'Badghis'),
-        ('Baghlan', 'Baghlan'),
-        ('Balkh', 'Balkh'),
-        ('Bamyan', 'Bamyan'),
-        ('Daykundi', 'Daykundi'),
-        ('Farah', 'Farah'),
-        ('Faryab', 'Faryab'),
-        ('Ghazni', 'Ghazni'),
-        ('Ghor', 'Ghor'),
-        ('Helmand', 'Helmand'),
-        ('Herat', 'Herat'),
-        ('Jowzjan', 'Jowzjan'),
-        ('Kabul', 'Kabul'),
-        ('Kandahar', 'Kandahar'),
-        ('Kapisa', 'Kapisa'),
-        ('Khost', 'Khost'),
-        ('Kunar', 'Kunar'),
-        ('Kunduz', 'Kunduz'),
-        ('Laghman', 'Laghman'),
-        ('Logar', 'Logar'),
-        ('Nangarhar', 'Nangarhar'),
-        ('Nimroz', 'Nimroz'),
-        ('Nuristan', 'Nuristan'),
-        ('Paktia', 'Paktia'),
-        ('Paktika', 'Paktika'),
-        ('Panjshir', 'Panjshir'),
-        ('Parwan', 'Parwan'),
-        ('Samangan', 'Samangan'),
-        ('Sar-e Pol', 'Sar-e Pol'),
-        ('Takhar', 'Takhar'),
-        ('Urozgan', 'Urozgan'),
-        ('Wardak', 'Wardak'),
-        ('Zabul', 'Zabul')
-    ], string="Province")
 
     organization_id = fields.Many2one('employee.organization', string="Organization")
-    job_position = fields.Char(string='Job Position')
+    job_id = fields.Many2one('hr.job', string='Job', tracking=True)
 
-    grade = fields.Selection([
-        ('major_general', 'Major General'),
-        ('lieutenant_general', 'Lieutenant Genenral'),
-        ('accused_general', 'Accused General'),
-        ('brigadier_general', 'Brigadier General'),
-        ('colonel', 'Colonel'),
-        ('lieutenant', 'Lieutenant'),
-        ('battler', 'Battler'),
-        ('accused', 'Accused'),
-        ('first_lieutenant', 'First Lieutenant'),
-        ('second_lieutenant', 'Second Lieutenant'),
-        ('acting_sergeant', 'Acting Sergeant'),
-        ('assistant_acting_sergeant', 'Assistant Acting Sergeant'),
-        ('chief_sergeant', 'Chief Sergeant'),
-        ('superior_rank', 'Superior Rank'),
-        ('grade_one', 'Grade 1'),
-        ('grade_two', 'Grade 2'),
-        ('grade_three', 'Grade 3'),
-        ('grade_four', 'Grade 4'),
-        ('grade_five', 'Grade 5'),
-        ('grade_six', 'Grade 6'),
-        ('grade_seven', 'Grade 7'),
-        ('grade_eight', 'Grade 8'),
-        ('grade_nine', 'Grade 9'),
-        ('grade_ten', 'Grade 10'),
-        ('outside_rank', 'Outside Rank'),
-        ('above_rank', 'Above Rank'),
-        ('assistant_chief', 'Assistant Chief'),
-        ('chief', 'Chief'),
-        ('jungle_chief', 'Jungle Chief'),
-        ('chief_of_regiment', 'Chief of Regiment'),
-        ('without_rank', 'Without Rank'),
-        ('soldier_or_officer', 'Soldier / Officer'),
-        ('judicial_branch_one', 'Judicial Branch 1'),
-        ('judicial_branch_two', 'Judicial Branch 2'),
-        ('judicial_branch_three', 'Judicial Branch 3'),
-        ('judicial_branch_four', 'Judicial Branch 4'),
-        ('judicial_partner', 'Judicial Partner'),
-        ('judicial_level', 'Judicial Level'),
-        ('above_degree', 'Above Degree'),
-        ('first_position', 'First Position'),
-        ('second_position', 'Second Position'),
-        ('third_position', 'Third Position'),
-        ('fourth_position', 'Fourth Position'),
-        ('fourth_position', 'Fourth Position'),
-        ('fifth_position', 'Fifth Position'),
-        ('sixth_position', 'Sixth Position'),
-        ('seventh_position', 'Seventh Position'),
-        ('eight_position', 'Eight Position'),
-        ('ninth_position', 'Ninth Position'),
-        ('tenth_position', 'Tenth Position')
-    ], string="Grade")
+    country_id = fields.Many2one(
+        'res.country',
+        string='Country',
+        default=lambda self: self.env.ref('base.af'),
+        tracking=True
+    )
 
-    step = fields.Selection([
-        ('first_step', 'First Step'),
-        ('second_step', 'Second Step'),
-        ('third_step', 'Third Step'),
-        ('fourth_step', 'Fourth Step'),
-        ('fourth_step', 'Fourth Step'),
-        ('fifth_step', 'Fifth Step'),
-        ('sixth_step', 'Sixth Step'),
-        ('seventh_step', 'Seventh Step'),
-        ('eight_step', 'Eight Step'),
-        ('ninth_step', 'Ninth Step'),
-        ('tenth_step', 'Tenth Step'),
-        ('first_rank', 'First Rank'),
-        ('second_rank', 'Second Rank'),
-        ('third_rank', 'Third Rank'),
-        ('fourth_rank', 'Fourth Rank'),
-        ('fourth_rank', 'Fourth Rank'),
-        ('fifth_rank', 'Fifth Rank'),
-        ('sixth_rank', 'Sixth Rank'),
-        ('seventh_rank', 'Seventh Rank'),
-        ('eight_rank', 'Eight Rank'),
-        ('ninth_rank', 'Ninth Rank'),
-        ('tenth_rank', 'Tenth Rank'),
-        ('super_rank', 'Super Rank'),
-        ('superior_rank', 'Superior Rank'),
-        ('unranked', 'Unranked'),
-        ('prof', 'Professor'),
-        ('scholar', 'Scholar'),
-        ('phanmal', 'Pohanmal'),
-        ('pohand', 'Pohand')
-    ], string="Step / Rank")
+    province_id = fields.Many2one(
+        'res.country.state',
+        string='Province',
+        domain="[('country_id', '=', country_id)]",
+        tracking=True
+    )
+
+    grade_id = fields.Many2one('employee.grade', string="Grade")
+
+    step_id = fields.Many2one('employee.step', string="Step")
+
     department = fields.Char(string='Department')
     status_id = fields.Many2one('employee.status', string="Status", required=True)
     job_start_date = fields.Date(string='Start Date')
@@ -158,7 +49,57 @@ class EmployeeExperience(models.Model):
         compute="_compute_duration_human_readable",
         store=True
     )
+
+    court_level = fields.Selection([
+        ('مرکز', 'مرکز'),
+        ('تمیز مرکزی', 'تمیز مرکزی'),
+        ('تمیز زون قندهار', 'تمیز زون قندهار'),
+        ('مرافعه', 'مرافعه'),
+        ('ابتداییه', 'ابتداییه'),
+        ('نظامی', 'نظامی')
+    ], default="مرکز", string="Court Level",
+        groups="court_hr.group_employee_officers,court_hr.group_employee_expert")
+
     attachments = fields.Many2many('ir.attachment', string="Attachments")
+
+    experience_month = fields.Selection(
+        [
+            ('1', 'January'), ('2', 'February'), ('3', 'March'), ('4', 'April'),
+            ('5', 'May'), ('6', 'June'), ('7', 'July'), ('8', 'August'),
+            ('9', 'September'), ('10', 'October'), ('11', 'November'), ('12', 'December')
+        ],
+        string="Experience Month",
+        compute="_compute_experience_year_month",
+        store=True
+    )
+
+    # --------------------------------------------------
+    # Experience Year
+    # --------------------------------------------------
+    experience_year = fields.Selection(
+        selection=lambda self: [
+            (str(y), str(y)) for y in range(
+                datetime.date.today().year - 30,
+                datetime.date.today().year + 10
+            )
+        ],
+        string="Experience Year",
+        compute="_compute_experience_year_month",
+        store=True
+    )
+
+    # --------------------------------------------------
+    # Compute Method
+    # --------------------------------------------------
+    @api.depends('job_end_date')
+    def _compute_experience_year_month(self):
+        for rec in self:
+            if rec.job_end_date:
+                rec.experience_month = str(rec.job_end_date.month)
+                rec.experience_year = str(rec.job_end_date.year)
+            else:
+                rec.experience_month = False
+                rec.experience_year = False
 
 
 
@@ -206,15 +147,11 @@ class EmployeeOrganization(models.Model):
     _name = 'employee.organization'
     _description = 'Employee Organization'
 
-    name = fields.Char(string='Organization')
+    name = fields.Char(string='Organization', required=True, translate=True, unique=True)
 
     @api.constrains('name')
     def _check_name_constraints(self):
         for record in self:
-            # Ensure the name contains only letters and spaces
-            if not record.name.replace(" ", "").isalpha():
-                raise ValidationError("The Organization name should only contain letters and spaces.")
-
             # Check for duplicates at the application level
             if self.search_count([('name', '=', record.name)]) > 1:
                 raise ValidationError("The Organization name must be unique!")
@@ -231,4 +168,20 @@ class EmployeeStatus(models.Model):
         for record in self:
             if self.search_count([('name', '=', record.name)]) > 1:
                 raise ValidationError('The status must be unique!')
+
+
+
+class EmployeeGrade(models.Model):
+    _name = 'employee.grade'
+    _description = 'Employee Grade'
+
+    name = fields.Char(string='Grade', required=True, translate=True, unique=True)
+
+    @api.constrains('name')
+    def _check_name_constraints(self):
+        for record in self:
+            # Check for duplicates at the application level
+            if self.search_count([('name', '=', record.name)]) > 1:
+                raise ValidationError("The Grade name must be unique!")
+
 
