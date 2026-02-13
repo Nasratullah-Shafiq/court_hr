@@ -48,6 +48,8 @@ class EmployeePunishment(models.Model):
     punishment_end_date = fields.Date(string='End Date')
     punishment_date = fields.Date(string='Date Of Punishment')
 
+    attachments = fields.Many2many('ir.attachment', string="Attachments")
+
     punishment_remarks = fields.Text(string='Remarks')
 
     punishment_month = fields.Selection(
