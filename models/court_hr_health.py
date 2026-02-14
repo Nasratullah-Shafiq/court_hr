@@ -18,3 +18,5 @@ class EmployeeHealth(models.Model):
                                       ('under_operation', 'Under Operation'),], string="Status")
     health_report_date = fields.Date(string='Report Date')
     health_remarks = fields.Text(string='Remarks')
+
+    attachments = fields.Many2many('ir.attachment', string="Attachments")
