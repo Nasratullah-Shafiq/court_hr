@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
-from odoo import fields, models, api
-from odoo.exceptions import ValidationError
 import re
+
+from odoo.exceptions import ValidationError
+
+from odoo import fields, models, api
 
 
 class HrEmployeeInherit(models.Model):
@@ -16,57 +18,107 @@ class HrEmployeeInherit(models.Model):
 class EmployeeRelative(models.Model):
     _name = 'employee.relatives'
     _description = 'Employee Relatives'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
 
-    health_ids = fields.One2many('employee.health', 'employee_id', string='Health')
-    employee_id = fields.Many2one('hr.employee', string='Employee')
+    # =========================
+    # Employee Reference
+    # =========================
+    employee_id = fields.Many2one('hr.employee', string='Employee', tracking=True)
 
-    name = fields.Char(string='Name')
+    # =========================
+    # Personal Information
+    # =========================
+    person_name = fields.Char(string='First Name', required=True)
     last_name = fields.Char(string='Last Name')
     father_name = fields.Char(string='Father Name')
     grand_father_name = fields.Char(string='Grand Father Name')
-    job = fields.Char(string='Job')
-    nic_no = fields.Integer(string='NIC No')
-    permanent_address = fields.Many2one('res.country.state', string="Province", tracking=True)
-    permanent_district_id = fields.Many2one('employee.district', string="Permanent District / Village")
-    temporary_address = fields.Many2one('res.country.state', string="Province", tracking=True)
-    temporary_district_id = fields.Many2one('employee.district', string="Temporary District / Village")
-    street_no = fields.Integer(string='Street No')
-    home_no = fields.Integer(string='Home No')
 
     relationship_id = fields.Many2one('employee.relationship', string="Relationship", tracking=True)
-    relationship_name = fields.Char(string='Name')
-    relationship_last_name = fields.Char(string='Last Name')
-    relationship_father_name = fields.Char(string='Father Name')
-    relationship_grand_father_name = fields.Char(string='Grand Father Name')
-    relationship_job_position = fields.Char(string='Job Position')
-    relationship_email = fields.Char(string='Email')
-    relationship_contact_info = fields.Char(string='Contact Info')
-    relationship_identification_no = fields.Char(string='Identification No')
-    relationship_permanent_address = fields.Char(string='Permanent Address')
-    relationship_contemporary_address = fields.Char(string='Contemporary Address')
-    relationship_property = fields.Char(string='Property')
-    relationship_remarks = fields.Text(string='Remarks')
+    job_id = fields.Many2one('hr.job', string='Job', tracking=True)
+    nic_no = fields.Integer(string='NIC No')
+    identification_no = fields.Char(string='Identification No')
 
+    # =========================
+    # Contact Information
+    # =========================
+    email = fields.Char(string='Email')
+    contact_info = fields.Char(string='Contact Info')
+
+    # =========================
+    # Country
+    # =========================
+    country_id = fields.Many2one(
+        'res.country',
+        string='Country',
+        default=lambda self: self.env.ref('base.af'),
+        tracking=True
+    )
+
+    # =========================
+    # Permanent Address
+    # =========================
+    permanent_province_id = fields.Many2one(
+        'res.country.state',
+        string='Permanent Province',
+        domain="[('country_id', '=', country_id)]",
+        tracking=True
+    )
+    permanent_district_id = fields.Many2one(
+        'employee.district',
+        string='Permanent District',
+        domain="[('province_id', '=', permanent_province_id)]",
+        tracking=True
+    )
+    permanent_street_no = fields.Char(string='Permanent Street No')
+    permanent_home_no = fields.Char(string='Permanent Home No')
+
+    # =========================
+    # Temporary Address
+    # =========================
+    temporary_province_id = fields.Many2one(
+        'res.country.state',
+        string='Temporary Province',
+        domain="[('country_id', '=', country_id)]",
+        tracking=True
+    )
+    temporary_district_id = fields.Many2one(
+        'employee.district',
+        string='Temporary District',
+        domain="[('province_id', '=', temporary_province_id)]",
+        tracking=True
+    )
+    temporary_street_no = fields.Char(string='Temporary Street No')
+    temporary_home_no = fields.Char(string='Temporary Home No')
+
+    # =========================
+    # Other Information
+    # =========================
+    property = fields.Char(string='Property')
+    remarks = fields.Text(string='Remarks')
+
+    # =========================
+    # Attachments
+    # =========================
     attachments = fields.Many2many('ir.attachment', string="Attachments")
 
 
-    @api.constrains('relationship_name', 'relationship_last_name', 'relationship_father_name',
-                    'relationship_grand_father_name', 'relationship_job_position')
-    def _check_only_characters(self):
-        pattern = r'^[a-zA-Z ]+$'
-        for record in self:
-            invalid_fields = []  # List to store fields with invalid values
+@api.constrains('person_name', 'last_name', 'father_name',
+                'grand_father_name', 'job_position')
+def _check_only_characters(self):
+    pattern = r'^[a-zA-Z ]+$'
+    for record in self:
+        invalid_fields = []  # List to store fields with invalid values
 
-            for field_name in ['relationship_name', 'relationship_last_name', 'relationship_father_name',
-                               'relationship_grand_father_name', 'relationship_job_position']:
-                value = getattr(record, field_name)
-                if value and not re.match(pattern, value):
-                    invalid_fields.append(self._fields[field_name].string)  # Store field names for error message
+        for field_name in ['person_name', 'last_name', 'father_name',
+                           'grand_father_name', 'job_position']:
+            value = getattr(record, field_name)
+            if value and not re.match(pattern, value):
+                invalid_fields.append(self._fields[field_name].string)  # Store field names for error message
 
-            if invalid_fields:  # If any invalid fields exist, raise a validation error
-                raise ValidationError(
-                    f"The following fields should contain only letters and spaces: {', '.join(invalid_fields)}"
-                )
+        if invalid_fields:  # If any invalid fields exist, raise a validation error
+            raise ValidationError(
+                f"The following fields should contain only letters and spaces: {', '.join(invalid_fields)}"
+            )
 
 
 class EmployeeRelationship(models.Model):
@@ -77,14 +129,7 @@ class EmployeeRelationship(models.Model):
 
     @api.constrains('name')
     def _check_name_only_characters(self):
-        pattern = r'^[a-zA-Z ]+$'  # Allows only letters and spaces
+        # pattern = r'^[a-zA-Z ]+$'  # Allows only letters and spaces
         for record in self:
-            if record.name and not re.match(pattern, record.name):
-                raise ValidationError("The 'Relationship' field should contain only letters and spaces.")
-
-
-
-
-
-
-
+            if self.search_count([('name', '=', record.name)]) > 1:
+                raise ValidationError("The Relative Relationship  must be unique! and should not be duplicated!")
