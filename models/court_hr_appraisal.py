@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
-from odoo import fields, models, api
-
+from odoo import models, fields, api
+from odoo.exceptions import UserError, ValidationError
+from datetime import date, datetime, timedelta
+import datetime
 
 class HrEmployeeInherit(models.Model):
     _inherit = 'hr.employee'
@@ -14,6 +16,7 @@ class HrEmployeeInherit(models.Model):
 class EmployeeAppraisal(models.Model):
     _name = 'employee.appraisal'
     _description = 'Employee Appraisal'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
 
     employee_id = fields.Many2one('hr.employee', string='Employee')
 
@@ -49,4 +52,41 @@ class EmployeeAppraisal(models.Model):
     supervisor_opinion = fields.Text(string='Superior Head')
 
     attachments = fields.Many2many('ir.attachment', string="Attachments")
+
+    appraisal_month = fields.Selection(
+        [
+            ('1', 'January'), ('2', 'February'), ('3', 'March'), ('4', 'April'),
+            ('5', 'May'), ('6', 'June'), ('7', 'July'), ('8', 'August'),
+            ('9', 'September'), ('10', 'October'), ('11', 'November'), ('12', 'December')
+        ],
+        string="Appraisal Month",
+        compute="_compute_appraisal_year_month",
+        store=True
+    )
+
+    appraisal_year = fields.Selection(
+        selection=lambda self: [
+            (str(y), str(y)) for y in
+            range(datetime.date.today().year - 30,
+                  datetime.date.today().year + 10)
+        ],
+        string="Appraisal Year",
+        compute="_compute_appraisal_year_month",
+        store=True
+    )
+
+    # -------------------------------------------------
+    # Compute Method
+    # -------------------------------------------------
+    @api.depends('appraisal_date')
+    def _compute_appraisal_year_month(self):
+        for rec in self:
+            if rec.appraisal_date:
+                rec.appraisal_month = str(rec.appraisal_date.month)
+                rec.appraisal_year = str(rec.appraisal_date.year)
+            else:
+                rec.appraisal_month = False
+                rec.appraisal_year = False
+
+
 
