@@ -35,17 +35,20 @@ class EmployeeGuarantee(models.Model):
     # =======================
     # PROPERTY GUARANTEE
     # =======================
-    PROVINCES = [
-        ('Badakhshan', 'Badakhshan'), ('Badghis', 'Badghis'), ('Baghlan', 'Baghlan'), ('Balkh', 'Balkh'),
-        ('Bamyan', 'Bamyan'), ('Daykundi', 'Daykundi'), ('Farah', 'Farah'), ('Faryab', 'Faryab'),
-        ('Ghazni', 'Ghazni'), ('Ghor', 'Ghor'), ('Helmand', 'Helmand'), ('Herat', 'Herat'), ('Jowzjan', 'Jowzjan'),
-        ('Kabul', 'Kabul'), ('Kandahar', 'Kandahar'), ('Kapisa', 'Kapisa'), ('Khost', 'Khost'), ('Kunar', 'Kunar'),
-        ('Kunduz', 'Kunduz'), ('Laghman', 'Laghman'), ('Logar', 'Logar'), ('Nangarhar', 'Nangarhar'),
-        ('Nimroz', 'Nimroz'), ('Nuristan', 'Nuristan'), ('Paktia', 'Paktia'), ('Paktika', 'Paktika'),
-        ('Panjshir', 'Panjshir'), ('Parwan', 'Parwan'), ('Samangan', 'Samangan'), ('Sar-e Pol', 'Sar-e Pol'),
-        ('Takhar', 'Takhar'), ('Urozgan', 'Urozgan'), ('Wardak', 'Wardak'), ('Zabul', 'Zabul')
-    ]
-    province = fields.Selection(PROVINCES, string="Province")
+    # PROVINCES = [
+    #     ('Badakhshan', 'Badakhshan'), ('Badghis', 'Badghis'), ('Baghlan', 'Baghlan'), ('Balkh', 'Balkh'),
+    #     ('Bamyan', 'Bamyan'), ('Daykundi', 'Daykundi'), ('Farah', 'Farah'), ('Faryab', 'Faryab'),
+    #     ('Ghazni', 'Ghazni'), ('Ghor', 'Ghor'), ('Helmand', 'Helmand'), ('Herat', 'Herat'), ('Jowzjan', 'Jowzjan'),
+    #     ('Kabul', 'Kabul'), ('Kandahar', 'Kandahar'), ('Kapisa', 'Kapisa'), ('Khost', 'Khost'), ('Kunar', 'Kunar'),
+    #     ('Kunduz', 'Kunduz'), ('Laghman', 'Laghman'), ('Logar', 'Logar'), ('Nangarhar', 'Nangarhar'),
+    #     ('Nimroz', 'Nimroz'), ('Nuristan', 'Nuristan'), ('Paktia', 'Paktia'), ('Paktika', 'Paktika'),
+    #     ('Panjshir', 'Panjshir'), ('Parwan', 'Parwan'), ('Samangan', 'Samangan'), ('Sar-e Pol', 'Sar-e Pol'),
+    #     ('Takhar', 'Takhar'), ('Urozgan', 'Urozgan'), ('Wardak', 'Wardak'), ('Zabul', 'Zabul')
+    # ]
+    # province = fields.Selection(PROVINCES, string="Province")
+    country_id = fields.Many2one('res.country', string="Country", tracking=True)
+    province_id = fields.Many2one("res.country.state", string='Province', ondelete='restrict',
+                                  domain="[('country_id', '=?', country_id)]")
     property_district_id = fields.Many2one('employee.district', string="District")
     property_village_id = fields.Many2one('employee.village', string="Village")
     deed_no = fields.Integer(string='Deed No')
@@ -62,11 +65,15 @@ class EmployeeGuarantee(models.Model):
     job_position = fields.Char(string='Job Position')
     organization_id = fields.Many2one('employee.organization', string="Organization")
 
-    permanent_province = fields.Selection(PROVINCES, string="Permanent Province")
+    permanent_province_id = fields.Many2one("res.country.state", string='Permanent Province', ondelete='restrict',
+                                  domain="[('country_id', '=?', country_id)]")
+    # permanent_province = fields.Selection(PROVINCES, string="Permanent Province")
     permanent_district_id = fields.Many2one('employee.district', string="Permanent District")
     permanent_village_id = fields.Many2one('employee.village', string="Permanent Village")
 
-    temporary_province = fields.Selection(PROVINCES, string="Temporary Province")
+    temporary_province_id = fields.Many2one("res.country.state", string='Temporary Province', ondelete='restrict',
+                                  domain="[('country_id', '=?', country_id)]")
+    # temporary_province = fields.Selection(PROVINCES, string="Temporary Province")
     temporary_district_id = fields.Many2one('employee.district', string="Temporary District")
     temporary_village_id = fields.Many2one('employee.village', string="Temporary Village")
 
