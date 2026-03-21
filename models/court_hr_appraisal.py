@@ -12,7 +12,6 @@ class HrEmployeeInherit(models.Model):
 
 
 # Your Python code (e.g., in a controller or model)
-
 class EmployeeAppraisal(models.Model):
     _name = 'employee.appraisal'
     _description = 'Employee Appraisal'
