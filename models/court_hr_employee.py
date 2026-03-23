@@ -167,7 +167,7 @@ class HrEmployeeInherit(models.Model):
     )
     permanent_district = fields.Many2one(
         "employee.district", string='Permanent District', ondelete='restrict', tracking=True,
-        domain="[('province_id', '=?', province_id)]",
+        domain="[('permanent_province', '=?', province_id)]",
         groups="court_hr.group_employee_officers,court_hr.group_employee_expert"
     )
     temporary_district = fields.Many2one(
