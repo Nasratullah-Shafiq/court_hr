@@ -7,6 +7,35 @@
         <field name="name">Arghanj Khwa</field>
         <field name="province_id" ref="state_af_badakhshan"/>
     </record>
+    <record id="district_badakhshan_kishm" model="employee.district">
+        <field name="name">Kishm</field>
+        <field name="province_id" ref="state_af_badakhshan"/>
+    </record>
+
+    <record id="district_badakhshan_shiki" model="employee.district">
+        <field name="name">Shiki</field>
+        <field name="province_id" ref="state_af_badakhshan"/>
+    </record>
+
+    <record id="district_badakhshan_yawan" model="employee.district">
+        <field name="name">Yawan</field>
+        <field name="province_id" ref="state_af_badakhshan"/>
+    </record>
+
+    <record id="district_badakhshan_karan_wa_manjan" model="employee.district">
+        <field name="name">Karan wa Manjan</field>
+        <field name="province_id" ref="state_af_badakhshan"/>
+    </record>
+
+    <record id="district_badakhshan_zebak" model="employee.district">
+        <field name="name">Zebak</field>
+        <field name="province_id" ref="state_af_badakhshan"/>
+    </record>
+
+    <record id="district_badakhshan_darwaz_e_payin" model="employee.district">
+        <field name="name">Darwaz-e Payin</field>
+        <field name="province_id" ref="state_af_badakhshan"/>
+    </record>
     <record id="district_argo" model="employee.district">
         <field name="name">Argo</field>
         <field name="province_id" ref="state_af_badakhshan"/>
@@ -477,7 +506,16 @@
     <!-- Ghor Province -->
     <!-- ===================== -->
     <record id="district_ghor_chaghcharan" model="employee.district">
-        <field name="name">Chaghcharan</field>
+        <field name="name">Feroz koh</field>
+        <field name="province_id" ref="state_af_ghor"/>
+    </record>
+    <record id="district_ghor_chahar_sada" model="employee.district">
+        <field name="name">Chahar Sada</field>
+        <field name="province_id" ref="state_af_ghor"/>
+    </record>
+
+    <record id="district_ghor_murghab" model="employee.district">
+        <field name="name">Murghab</field>
         <field name="province_id" ref="state_af_ghor"/>
     </record>
     <record id="district_ghor_dawlatyar" model="employee.district">
@@ -667,6 +705,25 @@
     </record>
     <record id="district_jowzjan_sheberghan" model="employee.district">
         <field name="name">Sheberghan</field>
+        <field name="province_id" ref="state_af_jowzjan"/>
+    </record>
+    <record id="district_jowzjan_khanaqah" model="employee.district">
+        <field name="name">Khanaqah</field>
+        <field name="province_id" ref="state_af_jowzjan"/>
+    </record>
+
+    <record id="district_jowzjan_khamab" model="employee.district">
+        <field name="name">Khamab</field>
+        <field name="province_id" ref="state_af_jowzjan"/>
+    </record>
+
+    <record id="district_jowzjan_fayzabad" model="employee.district">
+        <field name="name">Fayzabad</field>
+        <field name="province_id" ref="state_af_jowzjan"/>
+    </record>
+
+    <record id="district_jowzjan_qosh_tepa" model="employee.district">
+        <field name="name">Qosh Tepa</field>
         <field name="province_id" ref="state_af_jowzjan"/>
     </record>
 
@@ -1202,60 +1259,78 @@
     <!-- ===================== -->
     <!-- Paktika Province -->
     <!-- ===================== -->
+    <record id="district_paktika_argun" model="employee.district">
+        <field name="name">Urgun</field>
+        <field name="province_id" ref="state_af_paktika"/>
+    </record>
+
     <record id="district_paktika_barmal" model="employee.district">
         <field name="name">Barmal</field>
         <field name="province_id" ref="state_af_paktika"/>
     </record>
-    <record id="district_paktika_dila" model="employee.district">
-        <field name="name">Dila</field>
+
+    <record id="district_paktika_sarobi" model="employee.district">
+        <field name="name">Sarobi</field>
         <field name="province_id" ref="state_af_paktika"/>
     </record>
-    <record id="district_paktika_gayan" model="employee.district">
-        <field name="name">Gayan</field>
+
+    <record id="district_paktika_ziruk" model="employee.district">
+        <field name="name">Ziruk</field>
         <field name="province_id" ref="state_af_paktika"/>
     </record>
-    <record id="district_paktika_gomal" model="employee.district">
-        <field name="name">Gomal</field>
-        <field name="province_id" ref="state_af_paktika"/>
-    </record>
-    <record id="district_paktika_mata_khan" model="employee.district">
-        <field name="name">Mata Khan</field>
-        <field name="province_id" ref="state_af_paktika"/>
-    </record>
-    <record id="district_paktika_nika" model="employee.district">
-        <field name="name">Nika</field>
-        <field name="province_id" ref="state_af_paktika"/>
-    </record>
+
     <record id="district_paktika_omna" model="employee.district">
         <field name="name">Omna</field>
         <field name="province_id" ref="state_af_paktika"/>
     </record>
+
+    <record id="district_paktika_dila_khushamond" model="employee.district">
+        <field name="name">Dila wa Khushamond</field>
+        <field name="province_id" ref="state_af_paktika"/>
+    </record>
+
+    <record id="district_paktika_zarghun_shar" model="employee.district">
+        <field name="name">Zarghun Shar / Khairkot</field>
+        <field name="province_id" ref="state_af_paktika"/>
+    </record>
+
     <record id="district_paktika_sar_hawza" model="employee.district">
         <field name="name">Sar Hawza</field>
         <field name="province_id" ref="state_af_paktika"/>
     </record>
+
+    <record id="district_paktika_mata_khan" model="employee.district">
+        <field name="name">Mata Khan</field>
+        <field name="province_id" ref="state_af_paktika"/>
+    </record>
+
+    <record id="district_paktika_terwa" model="employee.district">
+        <field name="name">Terwa</field>
+        <field name="province_id" ref="state_af_paktika"/>
+    </record>
+
+    <record id="district_paktika_giyan" model="employee.district">
+        <field name="name">Giyan</field>
+        <field name="province_id" ref="state_af_paktika"/>
+    </record>
+
+    <record id="district_paktika_nika" model="employee.district">
+        <field name="name">Nika</field>
+        <field name="province_id" ref="state_af_paktika"/>
+    </record>
+
+    <record id="district_paktika_waza_khwah" model="employee.district">
+        <field name="name">Waza Khwah</field>
+        <field name="province_id" ref="state_af_paktika"/>
+    </record>
+
+    <record id="district_paktika_gomal" model="employee.district">
+        <field name="name">Gomal</field>
+        <field name="province_id" ref="state_af_paktika"/>
+    </record>
+
     <record id="district_paktika_sharan" model="employee.district">
         <field name="name">Sharan</field>
-        <field name="province_id" ref="state_af_paktika"/>
-    </record>
-    <record id="district_paktika_urgun" model="employee.district">
-        <field name="name">Urgun</field>
-        <field name="province_id" ref="state_af_paktika"/>
-    </record>
-    <record id="district_paktika_waza_khwa" model="employee.district">
-        <field name="name">Waza Khwa</field>
-        <field name="province_id" ref="state_af_paktika"/>
-    </record>
-    <record id="district_paktika_yahya_khel" model="employee.district">
-        <field name="name">Yahya Khel</field>
-        <field name="province_id" ref="state_af_paktika"/>
-    </record>
-    <record id="district_paktika_yusuf_khel" model="employee.district">
-        <field name="name">Yusuf Khel</field>
-        <field name="province_id" ref="state_af_paktika"/>
-    </record>
-    <record id="district_paktika_ziruk" model="employee.district">
-        <field name="name">Ziruk</field>
         <field name="province_id" ref="state_af_paktika"/>
     </record>
 
@@ -1343,7 +1418,6 @@
         <field name="province_id" ref="state_af_parwan"/>
     </record>
 
-
     <!-- ===================== -->
     <!-- Samangan Province -->
     <!-- ===================== -->
@@ -1375,6 +1449,10 @@
     <!-- ===================== -->
     <!-- Sar-e Pol Province -->
     <!-- ===================== -->
+    <record id="district_sar_e_pol_sozma_qala" model="employee.district">
+        <field name="name">Sozma Qala</field>
+        <field name="province_id" ref="state_af_sarepol"/>
+    </record>
     <record id="district_sar_e_pol_balkhab" model="employee.district">
         <field name="name">Balkhab</field>
         <field name="province_id" ref="state_af_sarepol"/>
@@ -1427,6 +1505,10 @@
         <field name="name">Farkhar</field>
         <field name="province_id" ref="state_af_takhar"/>
     </record>
+    <record id="district_takhar_chal" model="employee.district">
+        <field name="name">Chal</field>
+        <field name="province_id" ref="state_af_takhar"/>
+    </record>
     <record id="district_takhar_hazar_sumuch" model="employee.district">
         <field name="name">Hazar Sumuch</field>
         <field name="province_id" ref="state_af_takhar"/>
@@ -1469,8 +1551,9 @@
     </record>
 
     <!-- ===================== -->
-    <!-- Uruzgan Province -->
+    <!-- State of Uruzgan Province -->
     <!-- ===================== -->
+
     <record id="district_uruzgan_chora" model="employee.district">
         <field name="name">Chora</field>
         <field name="province_id" ref="state_af_urozgan"/>
@@ -1491,55 +1574,50 @@
         <field name="name">Tarin Kot</field>
         <field name="province_id" ref="state_af_urozgan"/>
     </record>
-
-
-    <!-- ===================== -->
-    <!-- Uruzgan Province -->
-    <!-- ===================== -->
-    <record id="district_uruzgan_chora" model="employee.district">
-        <field name="name">Chora</field>
+    <record id="district_kandahar_shah_wali_kot" model="employee.district">
+        <field name="name">Shah Wali Kot</field>
+        <field name="province_id" ref="state_af_urozgan"/>
     </record>
-    <record id="district_uruzgan_dehrawud" model="employee.district">
-        <field name="name">Dehrawud</field>
+    <record id="district_uruzgan_chinartu" model="employee.district">
+        <field name="name">Chinartu (Chinar To)</field>
+        <field name="province_id" ref="state_af_urozgan"/>
     </record>
-    <record id="district_uruzgan_gizab" model="employee.district">
-        <field name="name">Gizab</field>
-    </record>
-    <record id="district_uruzgan_khas_uruzgan" model="employee.district">
-        <field name="name">Khas Uruzgan</field>
-    </record>
-    <record id="district_uruzgan_tarin_kot" model="employee.district">
-        <field name="name">Tarin Kot</field>
+    <record id="district_uruzgan_charchino" model="employee.district">
+        <field name="name">Charchino</field>
+        <field name="province_id" ref="state_af_urozgan"/>
     </record>
 
     <!-- ===================== -->
     <!-- Wardak Province -->
     <!-- ===================== -->
+    <record id="district_wardak_markaz_e_behsud" model="employee.district">
+        <field name="name">Markaz-e Behsud</field>
+        <field name="province_id" ref="state_af_wardak"/>
+    </record>
+    <record id="district_wardak_sayed_abad" model="employee.district">
+        <field name="name">Sayed Abad</field>
+        <field name="province_id" ref="state_af_wardak"/>
+    </record>
     <record id="district_wardak_chak" model="employee.district">
         <field name="name">Chak</field>
         <field name="province_id" ref="state_af_wardak"/>
     </record>
-
     <record id="district_wardak_day_mirdad" model="employee.district">
         <field name="name">Day Mirdad</field>
         <field name="province_id" ref="state_af_wardak"/>
     </record>
-
     <record id="district_wardak_hesa_e_awal_behsud" model="employee.district">
         <field name="name">Hesa-e Awal Behsud</field>
         <field name="province_id" ref="state_af_wardak"/>
     </record>
-
     <record id="district_wardak_jaghatu" model="employee.district">
         <field name="name">Jaghatu</field>
         <field name="province_id" ref="state_af_wardak"/>
     </record>
-
     <record id="district_wardak_jalrez" model="employee.district">
         <field name="name">Jalrez</field>
         <field name="province_id" ref="state_af_wardak"/>
     </record>
-
     <record id="district_wardak_markaz_e_wardak" model="employee.district">
         <field name="name">Markaz-e Wardak</field>
         <field name="province_id" ref="state_af_wardak"/>
@@ -1549,8 +1627,6 @@
         <field name="name">Nirkh</field>
         <field name="province_id" ref="state_af_wardak"/>
     </record>
-
-
     <!-- ===================== -->
     <!-- Zabul Province -->
     <!-- ===================== -->
@@ -1590,5 +1666,8 @@
         <field name="name">Shamulzai</field>
         <field name="province_id" ref="state_af_zabul"/>
     </record>
-
+    <record id="district_zabul_shahr_e_safa" model="employee.district">
+        <field name="name">Shahr-e-Safa</field>
+        <field name="province_id" ref="state_af_zabul"/>
+    </record>
 </odoo>
