@@ -6,7 +6,7 @@ class JobApplication(http.Controller):
     @http.route('/apply_form/', auth='public', website=True)
     def render_job_personal_form(self, **kw):
         applicants = request.env['hr.applicant'].sudo().search([])
-        return request.render('court_hr.personal_information_form_template', {'applicants': applicants})
+        return request.render('egp_hr.personal_information_form_template', {'applicants': applicants})
 
 class ApplicantController(http.Controller):
 
@@ -38,5 +38,5 @@ class ApplicantController(http.Controller):
             applicant.write({'attachment_ids': [(4, attachment.id)]})
 
         # Redirect or display success message
-        return request.render('court_hr.success_message_form_template')
+        return request.render('egp_hr.success_message_form_template')
 
