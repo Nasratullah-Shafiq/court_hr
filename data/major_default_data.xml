@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="major_alimiyah_program" model="employee.major">
+        <field name="name">Alimiyah Degree Program</field>
+    </record>
+
+    <record id="major_sughra_program" model="employee.major">
+        <field name="name">Sughra Religious Program</field>
+    </record>
+
+    <record id="major_kubra_program" model="employee.major">
+        <field name="name">Kubra Religious Program</field>
+    </record>
+
+    <record id="major_takhasus_fi_al_ifta" model="employee.major">
+        <field name="name">Specialization in Islamic (Ifta)</field>
+    </record>
+
+    <record id="major_takhasus_fi_al_ifta_wa_al_qada" model="employee.major">
+        <field name="name">Specialization in Ifta and Islamic Judiciary</field>
+    </record>
+
+    <record id="major_takhasus_fi_al_lughah_al_arabiyyah" model="employee.major">
+        <field name="name">Specialization in Arabic Language</field>
+    </record>
+
+
+</odoo>
