@@ -1,85 +1,321 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
-
-    <!-- General Faculties -->
-    <record id="faculty_education" model="employee.faculty">
-        <field name="name">Faculty of Education</field>
+    <record id="faculty_anesthesiology" model="employee.faculty">
+        <field name="name">Anesthesiology</field>
     </record>
-    <record id="faculty_science" model="employee.faculty">
-        <field name="name">Faculty of Science</field>
+    <record id="faculty_medical_engineering_technology" model="employee.faculty">
+        <field name="name">Medical Engineering Technology</field>
     </record>
-    <record id="faculty_literature" model="employee.faculty">
-        <field name="name">Faculty of Literature</field>
+    <record id="faculty_medical_laboratory_technology" model="employee.faculty">
+        <field name="name">Medical Laboratory Technology</field>
     </record>
-    <record id="faculty_social_sciences" model="employee.faculty">
-        <field name="name">Faculty of Social Sciences</field>
+    <record id="faculty_physiotherapy" model="employee.faculty">
+        <field name="name">Physiotherapy</field>
     </record>
-    <record id="faculty_islamic_studies" model="employee.faculty">
-        <field name="name">Faculty of Islamic Studies</field>
-    </record>
-
-    <!-- Engineering & Technology -->
-    <record id="faculty_engineering" model="employee.faculty">
-        <field name="name">Faculty of Engineering</field>
-    </record>
-    <record id="faculty_computer_science" model="employee.faculty">
-        <field name="name">Faculty of Computer Science</field>
-    </record>
-    <record id="faculty_information_technology" model="employee.faculty">
-        <field name="name">Faculty of Information Technology</field>
-    </record>
-    <record id="faculty_telecommunications" model="employee.faculty">
-        <field name="name">Faculty of Telecommunications</field>
-    </record>
-
-    <!-- Medical & Health -->
-    <record id="faculty_medicine" model="employee.faculty">
-        <field name="name">Faculty of Medicine</field>
-    </record>
-    <record id="faculty_dentistry" model="employee.faculty">
-        <field name="name">Faculty of Dentistry</field>
-    </record>
-    <record id="faculty_pharmacy" model="employee.faculty">
-        <field name="name">Faculty of Pharmacy</field>
-    </record>
-    <record id="faculty_nursing" model="employee.faculty">
-        <field name="name">Faculty of Nursing</field>
+    <record id="faculty_stomatology" model="employee.faculty">
+        <field name="name">Stomatology</field>
     </record>
     <record id="faculty_public_health" model="employee.faculty">
-        <field name="name">Faculty of Public Health</field>
+        <field name="name">Public Health</field>
     </record>
-
-    <!-- Law, Economics & Management -->
-    <record id="faculty_law" model="employee.faculty">
-        <field name="name">Faculty of Law</field>
+    <record id="faculty_medicine" model="employee.faculty">
+        <field name="name">Medicine</field>
     </record>
-    <record id="faculty_economics" model="employee.faculty">
-        <field name="name">Faculty of Economics</field>
+    <record id="faculty_nursing" model="employee.faculty">
+        <field name="name">Nursing</field>
     </record>
-    <record id="faculty_business_admin" model="employee.faculty">
-        <field name="name">Faculty of Business Administration</field>
+    <record id="faculty_underground_mining_engineering" model="employee.faculty">
+        <field name="name">Underground Mining Engineering</field>
     </record>
-    <record id="faculty_public_administration" model="employee.faculty">
-        <field name="name">Faculty of Public Administration</field>
+    <record id="faculty_geological_engineering_and_mineral_exploration" model="employee.faculty">
+        <field name="name">Geological Engineering and Mineral Exploration</field>
     </record>
-
-    <!-- Agriculture & Natural Resources -->
-    <record id="faculty_agriculture" model="employee.faculty">
-        <field name="name">Faculty of Agriculture</field>
+    <record id="faculty_engineering_geology_and_mining_hydrogeology" model="employee.faculty">
+        <field name="name">Engineering Geology and Mining Hydrogeology</field>
     </record>
-    <record id="faculty_veterinary" model="employee.faculty">
-        <field name="name">Faculty of Veterinary Science</field>
+    <record id="faculty_petroleum_and_gas_engineering" model="employee.faculty">
+        <field name="name">Petroleum and Gas Engineering</field>
     </record>
-    <record id="faculty_environment" model="employee.faculty">
-        <field name="name">Faculty of Environmental Science</field>
+    <record id="faculty_construction_management" model="employee.faculty">
+        <field name="name">Construction Management</field>
     </record>
-
-    <!-- Arts & Architecture -->
-    <record id="faculty_fine_arts" model="employee.faculty">
-        <field name="name">Faculty of Fine Arts</field>
+    <record id="faculty_industrial_and_mining_structures" model="employee.faculty">
+        <field name="name">Industrial and Mining Structures</field>
+    </record>
+    <record id="faculty_urban_planning" model="employee.faculty">
+        <field name="name">Urban Planning</field>
     </record>
     <record id="faculty_architecture" model="employee.faculty">
-        <field name="name">Faculty of Architecture</field>
+        <field name="name">Architecture</field>
     </record>
-
+    <record id="faculty_chemical_engineering_for_oil_and_gas_industries" model="employee.faculty">
+        <field name="name">Chemical Engineering for Oil and Gas Industries</field>
+    </record>
+    <record id="faculty_food_industry_engineering" model="employee.faculty">
+        <field name="name">Food Industry Engineering</field>
+    </record>
+    <record id="faculty_inorganic_materials_engineering" model="employee.faculty">
+        <field name="name">Inorganic Materials Engineering</field>
+    </record>
+    <record id="faculty_network_engineering" model="employee.faculty">
+        <field name="name">Network Engineering</field>
+    </record>
+    <record id="faculty_computer_engineering" model="employee.faculty">
+        <field name="name">Computer Engineering</field>
+    </record>
+    <record id="faculty_information_systems" model="employee.faculty">
+        <field name="name">Information Systems</field>
+    </record>
+    <record id="faculty_automotive_engineering" model="employee.faculty">
+        <field name="name">Automotive Engineering</field>
+    </record>
+    <record id="faculty_power_supply_engineering" model="employee.faculty">
+        <field name="name">Power Supply Engineering</field>
+    </record>
+    <record id="faculty_water_supply_and_environmental_engineering" model="employee.faculty">
+        <field name="name">Water Supply and Environmental Engineering</field>
+    </record>
+    <record id="faculty_civil_and_environmental_engineering" model="employee.faculty">
+        <field name="name">Civil and Environmental Engineering</field>
+    </record>
+    <record id="faculty_hydraulic_structures_engineering" model="employee.faculty">
+        <field name="name">Hydraulic Structures Engineering</field>
+    </record>
+    <record id="faculty_geodetic_engineering" model="employee.faculty">
+        <field name="name">Geodetic Engineering</field>
+    </record>
+    <record id="faculty_gis_and_remote_sensing" model="employee.faculty">
+        <field name="name">GIS and Remote Sensing</field>
+    </record>
+    <record id="faculty_highway_and_transportation_engineering" model="employee.faculty">
+        <field name="name">Highway and Transportation Engineering</field>
+    </record>
+    <record id="faculty_railway_engineering" model="employee.faculty">
+        <field name="name">Railway Engineering</field>
+    </record>
+    <record id="faculty_agricultural_economics_and_development" model="employee.faculty">
+        <field name="name">Agricultural Economics and Development</field>
+    </record>
+    <record id="faculty_agronomy" model="employee.faculty">
+        <field name="name">Agronomy</field>
+    </record>
+    <record id="faculty_biotechnology_and_seed_science" model="employee.faculty">
+        <field name="name">Biotechnology and Seed Science</field>
+    </record>
+    <record id="faculty_food_technology" model="employee.faculty">
+        <field name="name">Food Technology</field>
+    </record>
+    <record id="faculty_forestry_and_natural_resources" model="employee.faculty">
+        <field name="name">Forestry and Natural Resources</field>
+    </record>
+    <record id="faculty_plant_protection" model="employee.faculty">
+        <field name="name">Plant Protection</field>
+    </record>
+    <record id="faculty_soil_science_and_irrigation" model="employee.faculty">
+        <field name="name">Soil Science and Irrigation</field>
+    </record>
+    <record id="faculty_animal_science" model="employee.faculty">
+        <field name="name">Animal Science</field>
+    </record>
+    <record id="faculty_horticulture" model="employee.faculty">
+        <field name="name">Horticulture</field>
+    </record>
+    <record id="faculty_spanish_language_and_literature" model="employee.faculty">
+        <field name="name">Spanish Language and Literature</field>
+    </record>
+    <record id="faculty_german_language_and_literature" model="employee.faculty">
+        <field name="name">German Language and Literature</field>
+    </record>
+    <record id="faculty_english_language_and_literature" model="employee.faculty">
+        <field name="name">English Language and Literature</field>
+    </record>
+    <record id="faculty_turkish_language_and_literature" model="employee.faculty">
+        <field name="name">Turkish Language and Literature</field>
+    </record>
+    <record id="faculty_chinese_language_and_literature" model="employee.faculty">
+        <field name="name">Chinese Language and Literature</field>
+    </record>
+    <record id="faculty_russian_language_and_literature" model="employee.faculty">
+        <field name="name">Russian Language and Literature</field>
+    </record>
+    <record id="faculty_arabic_language_and_literature" model="employee.faculty">
+        <field name="name">Arabic Language and Literature</field>
+    </record>
+    <record id="faculty_french_language_and_literature" model="employee.faculty">
+        <field name="name">French Language and Literature</field>
+    </record>
+    <record id="faculty_dramatic_literature" model="employee.faculty">
+        <field name="name">Dramatic Literature</field>
+    </record>
+    <record id="faculty_composition_and_songwriting" model="employee.faculty">
+        <field name="name">Composition and Songwriting</field>
+    </record>
+    <record id="faculty_theatre" model="employee.faculty">
+        <field name="name">Theatre</field>
+    </record>
+    <record id="faculty_cinema" model="employee.faculty">
+        <field name="name">Cinema</field>
+    </record>
+    <record id="faculty_graphic_design" model="employee.faculty">
+        <field name="name">Graphic Design</field>
+    </record>
+    <record id="faculty_painting" model="employee.faculty">
+        <field name="name">Painting</field>
+    </record>
+    <record id="faculty_islamic_arts" model="employee.faculty">
+        <field name="name">Islamic Arts</field>
+    </record>
+    <record id="faculty_energy_engineering" model="employee.faculty">
+        <field name="name">Energy Engineering</field>
+    </record>
+    <record id="faculty_electrical_and_electronic_engineering" model="employee.faculty">
+        <field name="name">Electrical and Electronic Engineering</field>
+    </record>
+    <record id="faculty_civil_engineering" model="employee.faculty">
+        <field name="name">Civil Engineering</field>
+    </record>
+    <record id="faculty_urban_design" model="employee.faculty">
+        <field name="name">Urban Design</field>
+    </record>
+    <record id="faculty_engineering" model="employee.faculty">
+        <field name="name">Engineering</field>
+    </record>
+    <record id="faculty_mechanical_engineering" model="employee.faculty">
+        <field name="name">Mechanical Engineering</field>
+    </record>
+    <record id="faculty_planning_and_policy" model="employee.faculty">
+        <field name="name">Planning and Policy</field>
+    </record>
+    <record id="faculty_pedagogy" model="employee.faculty">
+        <field name="name">Pedagogy</field>
+    </record>
+    <record id="faculty_psychology" model="employee.faculty">
+        <field name="name">Psychology</field>
+    </record>
+    <record id="faculty_counseling_psychology" model="employee.faculty">
+        <field name="name">Counseling Psychology</field>
+    </record>
+    <record id="faculty_social_work_and_social_affairs" model="employee.faculty">
+        <field name="name">Social Work and Social Affairs</field>
+    </record>
+    <record id="faculty_educational_management" model="employee.faculty">
+        <field name="name">Educational Management</field>
+    </record>
+    <record id="faculty_law" model="employee.faculty">
+        <field name="name">Law</field>
+    </record>
+    <record id="faculty_political_science_and_international_relations" model="employee.faculty">
+        <field name="name">Political Science and International Relations</field>
+    </record>
+    <record id="faculty_public_administration" model="employee.faculty">
+        <field name="name">Public Administration</field>
+    </record>
+    <record id="faculty_public_policy" model="employee.faculty">
+        <field name="name">Public Policy</field>
+    </record>
+    <record id="faculty_development_management" model="employee.faculty">
+        <field name="name">Development Management</field>
+    </record>
+    <record id="faculty_public_relations" model="employee.faculty">
+        <field name="name">Public Relations</field>
+    </record>
+    <record id="faculty_journalism" model="employee.faculty">
+        <field name="name">Journalism</field>
+    </record>
+    <record id="faculty_media_and_communication_studies" model="employee.faculty">
+        <field name="name">Media and Communication Studies</field>
+    </record>
+    <record id="faculty_uzbek_language_and_literature" model="employee.faculty">
+        <field name="name">Uzbek Language and Literature</field>
+    </record>
+    <record id="faculty_pashto_language_and_literature" model="employee.faculty">
+        <field name="name">Pashto Language and Literature</field>
+    </record>
+    <record id="faculty_dari_persian_language_and_literature" model="employee.faculty">
+        <field name="name">Dari Persian Language and Literature</field>
+    </record>
+    <record id="faculty_geography" model="employee.faculty">
+        <field name="name">Geography</field>
+    </record>
+    <record id="faculty_geology" model="employee.faculty">
+        <field name="name">Geology</field>
+    </record>
+    <record id="faculty_hydrometeorology" model="employee.faculty">
+        <field name="name">Hydrometeorology</field>
+    </record>
+    <record id="faculty_islamic_studies" model="employee.faculty">
+        <field name="name">Islamic Studies</field>
+    </record>
+    <record id="faculty_dawah_and_islamic_propagation" model="employee.faculty">
+        <field name="name">Dawah and Islamic Propagation</field>
+    </record>
+    <record id="faculty_islamic_jurisprudence_and_law" model="employee.faculty">
+        <field name="name">Islamic Jurisprudence and Law</field>
+    </record>
+    <record id="faculty_anthropology_and_archaeology" model="employee.faculty">
+        <field name="name">Anthropology and Archaeology</field>
+    </record>
+    <record id="faculty_general_history" model="employee.faculty">
+        <field name="name">General History</field>
+    </record>
+    <record id="faculty_philosophy_and_sociology" model="employee.faculty">
+        <field name="name">Philosophy and Sociology</field>
+    </record>
+    <record id="faculty_software_engineering" model="employee.faculty">
+        <field name="name">Software Engineering</field>
+    </record>
+    <record id="faculty_information_technology" model="employee.faculty">
+        <field name="name">Information Technology</field>
+    </record>
+    <record id="faculty_information_systems" model="employee.faculty">
+        <field name="name">Information Systems</field>
+    </record>
+    <record id="faculty_environmental_protection" model="employee.faculty">
+        <field name="name">Environmental Protection</field>
+    </record>
+    <record id="faculty_disaster_management" model="employee.faculty">
+        <field name="name">Disaster Management</field>
+    </record>
+    <record id="faculty_natural_resources" model="employee.faculty">
+        <field name="name">Natural Resources</field>
+    </record>
+    <record id="faculty_telecommunications_engineering" model="employee.faculty">
+        <field name="name">Telecommunications Engineering</field>
+    </record>
+    <record id="faculty_information_science_and_engineering" model="employee.faculty">
+        <field name="name">Information Science and Engineering</field>
+    </record>
+    <record id="faculty_statistics_and_econometrics" model="employee.faculty">
+        <field name="name">Statistics and Econometrics</field>
+    </record>
+    <record id="faculty_national_economics" model="employee.faculty">
+        <field name="name">National Economics</field>
+    </record>
+    <record id="faculty_finance_and_banking" model="employee.faculty">
+        <field name="name">Finance and Banking</field>
+    </record>
+    <record id="faculty_accounting" model="employee.faculty">
+        <field name="name">Accounting</field>
+    </record>
+    <record id="faculty_business_management_and_administration" model="employee.faculty">
+        <field name="name">Business Management and Administration</field>
+    </record>
+    <record id="faculty_general_biology" model="employee.faculty">
+        <field name="name">General Biology</field>
+    </record>
+    <record id="faculty_general_mathematics" model="employee.faculty">
+        <field name="name">General Mathematics</field>
+    </record>
+    <record id="faculty_general_veterinary_science" model="employee.faculty">
+        <field name="name">General Veterinary Science</field>
+    </record>
+    <record id="faculty_general_pharmacy" model="employee.faculty">
+        <field name="name">General Pharmacy</field>
+    </record>
+    <record id="faculty_general_physics" model="employee.faculty">
+        <field name="name">General Physics</field>
+    </record>
+    <record id="faculty_general_chemistry" model="employee.faculty">
+        <field name="name">General Chemistry</field>
+    </record>
 </odoo>
