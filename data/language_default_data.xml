@@ -125,25 +125,13 @@
         <field name="name">Japanese</field>
         <field name="code">JA</field>
     </record>
-    <record id="lang_swahili" model="employee.language.master">
-        <field name="name">Swahili</field>
-        <field name="code">SW</field>
-    </record>
     <record id="lang_marathi" model="employee.language.master">
         <field name="name">Marathi</field>
         <field name="code">MR</field>
     </record>
-    <record id="lang_telugu" model="employee.language.master">
-        <field name="name">Telugu</field>
-        <field name="code">TE</field>
-    </record>
     <record id="lang_turkish" model="employee.language.master">
         <field name="name">Turkish</field>
         <field name="code">TR</field>
-    </record>
-    <record id="lang_tamil" model="employee.language.master">
-        <field name="name">Tamil</field>
-        <field name="code">TA</field>
     </record>
     <record id="lang_vietnamese" model="employee.language.master">
         <field name="name">Vietnamese</field>
@@ -158,26 +146,16 @@
         <field name="name">Italian</field>
         <field name="code">IT</field>
     </record>
-    <record id="lang_thai" model="employee.language.master">
-        <field name="name">Thai</field>
-        <field name="code">TH</field>
-    </record>
     <record id="lang_gujarati" model="employee.language.master">
         <field name="name">Gujarati</field>
         <field name="code">GU</field>
     </record>
-    <record id="lang_kannada" model="employee.language.master">
-        <field name="name">Kannada</field>
-        <field name="code">KN</field>
-    </record>
+
     <record id="lang_persian" model="employee.language.master">
         <field name="name">Persian (Farsi)</field>
         <field name="code">FA</field>
     </record>
-    <record id="lang_bhojpuri" model="employee.language.master">
-        <field name="name">Bhojpuri</field>
-        <field name="code">BH</field>
-    </record>
+
     <record id="lang_javanese" model="employee.language.master">
         <field name="name">Javanese</field>
         <field name="code">JV</field>
@@ -186,52 +164,18 @@
         <field name="name">Malay</field>
         <field name="code">MS</field>
     </record>
-    <record id="lang_hausa" model="employee.language.master">
-        <field name="name">Hausa</field>
-        <field name="code">HA</field>
-    </record>
     <record id="lang_punjabi" model="employee.language.master">
         <field name="name">Punjabi</field>
         <field name="code">PA</field>
-    </record>
-
-    <record id="lang_malayalam" model="employee.language.master">
-        <field name="name">Malayalam</field>
-        <field name="code">ML</field>
-    </record>
-    <record id="lang_odia" model="employee.language.master">
-        <field name="name">Odia</field>
-        <field name="code">OR</field>
-    </record>
-    <record id="lang_burmese" model="employee.language.master">
-        <field name="name">Burmese</field>
-        <field name="code">MY</field>
-    </record>
-    <record id="lang_sundanese" model="employee.language.master">
-        <field name="name">Sundanese</field>
-        <field name="code">SU</field>
     </record>
     <record id="lang_romanian" model="employee.language.master">
         <field name="name">Romanian</field>
         <field name="code">RO</field>
     </record>
 
-    <record id="lang_amharic" model="employee.language.master">
-        <field name="name">Amharic</field>
-        <field name="code">AM</field>
-    </record>
     <record id="lang_azerbaijani" model="employee.language.master">
         <field name="name">Azerbaijani</field>
         <field name="code">AZ</field>
-    </record>
-
-    <record id="lang_igbo" model="employee.language.master">
-        <field name="name">Igbo</field>
-        <field name="code">IG</field>
-    </record>
-    <record id="lang_yoruba" model="employee.language.master">
-        <field name="name">Yoruba</field>
-        <field name="code">YO</field>
     </record>
     <record id="lang_sindhi" model="employee.language.master">
         <field name="name">Sindhi</field>
