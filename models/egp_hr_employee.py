@@ -305,12 +305,12 @@ class HrEmployeeInherit(models.Model):
     jihad_experience = fields.Text(
         string='Jihad Experience',
         tracking=True,
-        groups='egp_hr.groupt_supreme_court_employee_officers'
+        groups='egp_hr.group_supreme_court_employee_officers'
     )
     cartotech_number = fields.Char(
         string='Cartotech No',
         tracking=True,
-        groups='egp_hr.groupt_supreme_court_employee_officers'
+        groups='egp_hr.group_supreme_court_employee_officers'
     )
 
     category = fields.Selection(
@@ -322,7 +322,7 @@ class HrEmployeeInherit(models.Model):
         ],
         string='Category',
         tracking=True,
-        groups='egp_hr.groupt_supreme_court_employee_officers'
+        groups='egp_hr.group_supreme_court_employee_officers'
     )
 
     ethnicity = fields.Selection(
