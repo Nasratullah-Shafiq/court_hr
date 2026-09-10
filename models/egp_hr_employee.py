@@ -302,14 +302,28 @@ class HrEmployeeInherit(models.Model):
     )
 
     resign_date = fields.Date(string='Resign Date', tracking=True)
-    jihad_experience = fields.Text(string='Jihad Experience', tracking=True)
-    cartotech_number = fields.Char(string='Cartotech No', tracking=True)
-    category = fields.Selection([
-        ('administrative', 'Administrative'),
-        ('service', 'Service'),
-        ('judicial', 'Judicial'),
-        ('military', 'Military')
-    ], string='Category', tracking=True)
+    jihad_experience = fields.Text(
+        string='Jihad Experience',
+        tracking=True,
+        groups='egp_hr.groupt_supreme_court_employee_officers'
+    )
+    cartotech_number = fields.Char(
+        string='Cartotech No',
+        tracking=True,
+        groups='egp_hr.groupt_supreme_court_employee_officers'
+    )
+
+    category = fields.Selection(
+        [
+            ('administrative', 'Administrative'),
+            ('service', 'Service'),
+            ('judicial', 'Judicial'),
+            ('military', 'Military')
+        ],
+        string='Category',
+        tracking=True,
+        groups='egp_hr.groupt_supreme_court_employee_officers'
+    )
 
     ethnicity = fields.Selection(
         [
@@ -603,10 +617,10 @@ class HrEmployeeInherit(models.Model):
     )
 
     pezhand_department = fields.Char(
-        string='Pezhand Department', tracking=True, groups="egp_hr.group_employee_officers,egp_hr.group_employee_expert"
+        string='Pezhand Department', tracking=True, groups="egp_hr.group_supreme_court_employee_officers"
     )
     deputy_ministry_procurement = fields.Char(
-        string='Deputy Ministry of Procurement', tracking=True, groups="egp_hr.group_employee_officers,egp_hr.group_employee_expert"
+        string='Deputy Ministry of Procurement', tracking=True, groups="egp_hr.group_supreme_court_employee_officers"
     )
     message_main_attachment_id = fields.Many2one(
         groups="base.group_erp_manager,egp_hr.group_employee_officers,egp_hr.group_employee_expert"
