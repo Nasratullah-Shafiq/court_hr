@@ -3793,7 +3793,7 @@ msgstr "معلومات شخصی کارمندان، تماس ها و ادرس ه�
 #. module: egp_hr
 #: model:ir.model.fields,field_description:egp_hr.field_hr_employee__employment_reference_number
 msgid "Employment Number"
-msgstr ""
+msgstr "نمبر دفتر سوانح"
 
 #. module: hr
 #: model:ir.model.fields,field_description:hr.field_hr_job__contract_type_id
@@ -6441,7 +6441,7 @@ msgstr "مالستان"
 #: model_terms:ir.ui.view,arch_db:hr.hr_employee_public_view_search
 #: model_terms:ir.ui.view,arch_db:hr.view_employee_filter
 msgid "Manager"
-msgstr "مدیر"
+msgstr "آمر مستقیم"
 
 #. module: hr
 #. odoo-python
