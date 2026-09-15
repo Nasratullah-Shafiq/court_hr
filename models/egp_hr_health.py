@@ -30,7 +30,6 @@ class EmployeeHealth(models.Model):
     health_status = fields.Selection([
         ('excellent', 'Excellent'),
         ('good', 'Good'),
-        ('stable', 'Stable'),
         ('under_treatment', 'Under Treatment'),
         ('under_operation', 'Under Operation'),
         ('recovering', 'Recovering'),
