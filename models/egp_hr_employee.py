@@ -555,6 +555,12 @@ class HrEmployeeInherit(models.Model):
             _('Please select an employee category before printing the employee card.')
         )
 
+    def action_print_arcs_employee_card(self):
+        self.ensure_one()
+
+        return self.env.ref(
+            'egp_hr_recruitment.action_arcs_employee_card'
+        ).report_action(self)
 
     identification_print_date = fields.Date(
         string='Print Date', tracking=True, groups="egp_hr.group_employee_officers,egp_hr.group_employee_expert"
