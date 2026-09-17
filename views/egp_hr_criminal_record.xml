@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- ========================= -->
+    <!-- Tree View -->
+    <!-- ========================= -->
+    <record id="view_employee_criminal_info_tree" model="ir.ui.view">
+        <field name="name">employee.criminal.info.tree</field>
+        <field name="model">employee.criminal.info</field>
+        <field name="arch" type="xml">
+            <tree string="Employee Criminal Information">
+                <field name="employee_id"/>
+                <field name="letter_no"/>
+                <field name="letter_date"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Form View -->
+    <!-- ========================= -->
+    ```xml
+<record id="view_employee_criminal_info_form" model="ir.ui.view">
+    <field name="name">employee.criminal.info.form</field>
+    <field name="model">employee.criminal.info</field>
+    <field name="arch" type="xml">
+        <form string="Employee Criminal Information">
+
+            <sheet>
+
+                <!-- Employee Information -->
+                <group string="Employee Information">
+                    <group>
+                        <field name="employee_id" required="1"/>
+                        <field name="father_name" required="1"/>
+                    </group>
+
+                    <group>
+                        <field name="grand_father_name" required="1"/>
+                        <field name="job_id" required="1"/>
+                        <field name="department_id" required="1"/>
+                    </group>
+                </group>
+
+                <!-- Criminal Information -->
+                <group string="Criminal Information">
+                    <group>
+                        <field name="letter_no"/>
+                        <field name="letter_date"/>
+                    </group>
+
+                    <group>
+                        <field name="remarks"/>
+                    </group>
+                </group>
+
+                <!-- Responsibility -->
+                <group string="Responsibility">
+                    <field name="responsibility" nolabel="1"/>
+                </group>
+
+                <!-- Non Responsibility -->
+                <group string="Non-Responsibility">
+                    <field name="non_responsibility" nolabel="1"/>
+                </group>
+
+                <!-- Attachments -->
+                <group string="Attachments">
+                    <field name="attachments" widget="many2many_binary"/>
+                </group>
+
+            </sheet>
+
+            <!-- Chatter -->
+            <div class="oe_chatter">
+                <field name="message_follower_ids"/>
+                <field name="activity_ids"/>
+                <field name="message_ids"/>
+            </div>
+
+        </form>
+    </field>
+</record>
+```
+
+
+    <!-- ========================= -->
+    <!-- Search View -->
+    <!-- ========================= -->
+    <record id="view_employee_criminal_info_search" model="ir.ui.view">
+        <field name="name">employee.criminal.info.search</field>
+        <field name="model">employee.criminal.info</field>
+        <field name="arch" type="xml">
+            <search string="Search Employee Criminal Information">
+
+                <!-- Search Fields -->
+                <field name="employee_id"/>
+                <field name="letter_no"/>
+                <field name="letter_date"/>
+
+                <!-- Search Panel -->
+                <searchpanel>
+                    <field name="employee_id"/>
+                </searchpanel>
+
+            </search>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Graph View -->
+    <!-- ========================= -->
+    <record id="view_employee_criminal_info_graph" model="ir.ui.view">
+        <field name="name">employee.criminal.info.graph</field>
+        <field name="model">employee.criminal.info</field>
+        <field name="arch" type="xml">
+            <graph string="Employee Criminal Information Analysis" type="bar">
+                <field name="employee_id" type="row"/>
+                <field name="letter_no" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Pivot View -->
+    <!-- ========================= -->
+    <record id="view_employee_criminal_info_pivot" model="ir.ui.view">
+        <field name="name">employee.criminal.info.pivot</field>
+        <field name="model">employee.criminal.info</field>
+        <field name="arch" type="xml">
+            <pivot string="Employee Criminal Information Pivot">
+                <field name="employee_id" type="row"/>
+                <field name="letter_date" type="col"/>
+            </pivot>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Action -->
+    <!-- ========================= -->
+    <record id="action_employee_criminal_info" model="ir.actions.act_window">
+        <field name="name">Employee Criminal Information</field>
+        <field name="res_model">employee.criminal.info</field>
+        <field name="view_mode">tree,form,graph,pivot</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first employee criminal information record
+            </p>
+            <p>
+                Store employee disciplinary, responsibility, and criminal-related information along with official documents and attachments.
+            </p>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Menu Item -->
+    <!-- ========================= -->
+    <menuitem
+        id="menu_employee_criminal_info"
+        name="Criminal Information"
+        parent="menu_employee_resume_sub"
+        action="action_employee_criminal_info"
+        sequence="40"/>
+
+</odoo>
