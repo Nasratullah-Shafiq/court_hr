@@ -98,6 +98,10 @@ class HrEmployeeInherit(models.Model):
         string='English Job Position', tracking=True,
         groups="egp_hr.group_employee_officers,egp_hr.group_employee_expert"
     )
+    english_department = fields.Char(
+        string='English Department', tracking=True,
+        groups="egp_hr.group_arcs_employee_officers"
+    )
 
     # ===============================
     # Personal Information
