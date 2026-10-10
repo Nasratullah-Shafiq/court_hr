@@ -1,11 +1,28 @@
-/* Ensure file viewer is always on top */
-.o_file_viewer,
+/* =============================
+   MODALS / DIALOGS / FILE VIEWER
+   ============================= */
 .o_dialog,
-.modal {
-    z-index: 2000 !important;
+.modal,
+.o_file_viewer {
+    z-index: 2400 !important; /* modal on top of everything */
 }
 
-/* If inside another modal */
+/* Backdrop just below the modal */
 .modal-backdrop {
     z-index: 1990 !important;
+}
+
+/* =============================
+   FLATPICKR DATE / DATETIME PICKER
+   ============================= */
+/* Flatpickr calendar */
+.flatpickr-calendar,
+.flatpickr-calendar.open {
+    z-index: 2200 !important; /* always above modal */
+    position: absolute !important; /* ensures correct stacking */
+}
+
+/* Optional: if you also want popups inside file viewer to stay above */
+.o_file_viewer .flatpickr-calendar {
+    z-index: 2250 !important;
 }
