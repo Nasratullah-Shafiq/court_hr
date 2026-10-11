@@ -4,19 +4,7 @@
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="o">
 
-                <!-- Styles -->
-                <style>
-                    body {
-                    font-family: Calibri, Arial, sans-serif;
-                    }
-                    table, th, td {
-                    font-family: Calibri, Arial, sans-serif;
-                    }
-                    @page {
-                    size: A4 landscape;
-                    margin: 15mm;
-                    }
-                </style>
+
 
                 <div class="page">
 
@@ -111,8 +99,8 @@
                     <!-- Footer -->
                     <div style="margin-top:30px; text-align:center; color:#888; font-size:12px;">
                         <p>
-                            Generated on
-                            <t t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M:%S')"/>
+<!--                            Generated on-->
+<!--                            Generated on <t t-esc="time.strftime('%Y-%m-%d %H:%M:%S')"/>-->
                         </p>
                         <p>Powered by Supreme Court</p>
                     </div>

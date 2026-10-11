@@ -148,7 +148,7 @@ class EmployeeReportWizard(models.TransientModel):
     def print_pdf_report(self):
         self.generate_report()
         return self.env.ref(
-            'court_hr.action_employee_report'
+            'egp_hr.action_employee_report'
         ).report_action(self)
 
 
