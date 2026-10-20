@@ -9,6 +9,7 @@ class EmployeeGuarantee(models.Model):
     _name = 'employee.guarantee'
     _description = 'Employee Guarantee'
     _inherit = ['mail.thread', 'mail.activity.mixin']
+    
 
     guarantee_type = fields.Selection([
         ('cash', 'Cash Guarantee'),

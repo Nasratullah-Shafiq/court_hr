@@ -13,6 +13,7 @@ class HrEmployeeInherit(models.Model):
 # Your Python code (e.g., in a controller or model)
 
 class EmployeeAttachment(models.Model):
+    
     _name = 'employee.document'
     _description = 'Employee Document'
 

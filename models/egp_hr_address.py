@@ -33,7 +33,6 @@ class EmployeeVillage(models.Model):
     _name = 'employee.village'
     
     _description = 'Employee Village'
-
     name = fields.Char(string='Village',tracking=True)
 
     @api.constrains('name')

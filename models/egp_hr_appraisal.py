@@ -10,7 +10,6 @@ class HrEmployeeInherit(models.Model):
 
     appraisal_ids = fields.One2many('employee.appraisal', 'employee_id', string='Appraisal', tracking=True)
 
-
 # Your Python code (e.g., in a controller or model)
 class EmployeeAppraisal(models.Model):
     _name = 'employee.appraisal'
