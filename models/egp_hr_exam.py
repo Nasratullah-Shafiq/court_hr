@@ -14,7 +14,7 @@ class EmployeeExam(models.Model):
     employee_id = fields.Many2one('hr.employee', string='Employee', tracking=True)
     job_id = fields.Many2one('hr.job', string='Job', related='employee_id.job_id', store=True, readonly=True, tracking=True)
     department_id = fields.Many2one('hr.department', related='employee_id.department_id', string='Department', tracking=True)
-    
+
     father_name = fields.Char(
         string='Father Name',
         related='employee_id.father_name',
