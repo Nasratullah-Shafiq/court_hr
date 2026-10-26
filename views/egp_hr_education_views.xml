@@ -24,6 +24,7 @@
             </tree>
         </field>
     </record>
+    
 
     <!-- Islamic Education Tree -->
     <record id="view_employee_education_tree_islamic" model="ir.ui.view">

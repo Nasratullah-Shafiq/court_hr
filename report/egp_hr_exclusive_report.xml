@@ -18,6 +18,7 @@
             <field name="paperformat_id" ref="egp_hr.report_paperformat_a4"/>
             <field name="binding_type">report</field>
         </record>
+        
 
         <!-- ========================================================= -->
         <!-- MAIN TEMPLATE                                               -->

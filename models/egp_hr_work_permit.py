@@ -13,6 +13,7 @@ class EmployeeWorkPermit(models.Model):
                              tracking=True)
     department_id = fields.Many2one('hr.department', related='employee_id.department_id', string='Department',
                                     tracking=True)
+    
     father_name = fields.Char(
         string='Father Name',
         related='employee_id.father_name',
