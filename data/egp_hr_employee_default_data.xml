@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <data noupdate="1">
+    <data>
         <record id="egp_hr_employee_default_user" model="res.users">
             <field name="name">
                 <![CDATA[ امر سوانح ]]>
@@ -43,6 +43,18 @@
             <field name="password">123</field>
             <field name="groups_id"
                    eval="[(4, ref('base.group_user')), (4, ref('egp_hr.group_employee_expert'))]"/>
+            <!--  Add other user fields as required  -->
+        </record>
+
+        <!--Default Employee Officer User -->
+        <record id="egp_hr_employee_default_id_card_user" model="res.users">
+            <field name="name">
+                <![CDATA[ مدیر آی دی کارت ]]>
+            </field>
+            <field name="login">id_card_officer@gmail.com</field>
+            <field name="password">123</field>
+            <field name="groups_id"
+                   eval="[(4, ref('base.group_user')), (4, ref('egp_hr.group_id_card_officer'))]"/>
             <!--  Add other user fields as required  -->
         </record>
 
