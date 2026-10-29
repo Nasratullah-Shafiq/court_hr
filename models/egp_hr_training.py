@@ -21,7 +21,6 @@ class EmployeeTraining(models.Model):
         readonly=True
     )
 
-    
     grand_father_name = fields.Char(
         string='Grand Father Name',
         related='employee_id.grand_father_name',

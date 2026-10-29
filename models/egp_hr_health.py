@@ -27,6 +27,7 @@ class EmployeeHealth(models.Model):
         readonly=True
     )
 
+
     health_status = fields.Selection([
         ('excellent', 'Excellent'),
         ('good', 'Good'),

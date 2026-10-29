@@ -18,7 +18,6 @@
             </tree>
         </field>
     </record>
-    
 
     <!-- Property Guarantee Tree -->
     <record id="view_employee_guarantee_tree_property" model="ir.ui.view">

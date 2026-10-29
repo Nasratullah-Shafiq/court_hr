@@ -30,7 +30,6 @@ class EmployeeDocumentType(models.Model):
 
     name = fields.Char(string='Document Type', tracking=True)
 
-    
     @api.constrains('name')
     def _check_name_constraints(self):
         for record in self:
