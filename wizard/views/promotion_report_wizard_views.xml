@@ -10,7 +10,6 @@
                     <field name="start_date"/>
                     <field name="end_date"/>
                 </group>
-
                 <group string="Summary">
                     <field name="total_promotions" readonly="1"/>
                 </group>

@@ -15,7 +15,6 @@
             <field name="dpi">97</field>
         </record>
 
-
 <!--        <record id="action_report_job_description" model="ir.actions.report">-->
 <!--            <field name="name">Print Position</field>-->
 <!--            <field name="model">hr.job</field>-->

@@ -5,7 +5,6 @@
         <field name="model">retirement.report.wizard</field>
         <field name="arch" type="xml">
             <form string="Employee Retirement Report">
-
                 <group>
                     <field name="start_date"/>
                     <field name="end_date"/>
