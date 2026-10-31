@@ -9,7 +9,6 @@
         <field name="model">employee.training</field>
         <field name="arch" type="xml">
             <tree string="Employee Trainings">
-            
                 <field name="employee_id"/>
                 <field name="course_id"/>
                 <field name="training_location"/>

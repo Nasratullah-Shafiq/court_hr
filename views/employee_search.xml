@@ -9,7 +9,6 @@
                 <xpath expr="//search" position="inside">
 
                     <field name="parent_id" string="Manager"/>
-
                 </xpath>
                 
             </field>

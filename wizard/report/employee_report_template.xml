@@ -3,7 +3,6 @@
     <template id="report_employee_template">
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="o">
-
                 <!-- Styles -->
 <!--                <style>-->
 <!--                    body {-->

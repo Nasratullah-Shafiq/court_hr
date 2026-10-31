@@ -9,7 +9,6 @@
         <field name="model">employee.retirement</field>
         <field name="arch" type="xml">
             <tree string="">
-            
                 <field name="employee_id"/>
                 <field name="retirement_type_id"/>
                 <field name="retirement_reason_id"/>
