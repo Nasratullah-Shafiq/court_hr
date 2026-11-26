@@ -46,17 +46,17 @@
             <!--  Add other user fields as required  -->
         </record>
 
-        <!--Default Employee Officer User -->
-        <record id="egp_hr_employee_default_id_card_user" model="res.users">
-            <field name="name">
-                <![CDATA[ مدیر آی دی کارت ]]>
-            </field>
-            <field name="login">id_card_officer@gmail.com</field>
-            <field name="password">123</field>
-            <field name="groups_id"
-                   eval="[(4, ref('base.group_user')), (4, ref('egp_hr.group_id_card_officer'))]"/>
-            <!--  Add other user fields as required  -->
-        </record>
+<!--        &lt;!&ndash;Default Employee Officer User &ndash;&gt;-->
+<!--        <record id="egp_hr_employee_default_id_card_user" model="res.users">-->
+<!--            <field name="name">-->
+<!--                <![CDATA[ مدیر آی دی کارت ]]>-->
+<!--            </field>-->
+<!--            <field name="login">id_card_officer@gmail.com</field>-->
+<!--            <field name="password">123</field>-->
+<!--            <field name="groups_id"-->
+<!--                   eval="[(4, ref('base.group_user')), (4, ref('egp_hr.group_id_card_officer'))]"/>-->
+<!--            &lt;!&ndash;  Add other user fields as required  &ndash;&gt;-->
+<!--        </record>-->
 
         <record id="employee_qdp" model="hr.employee">
             <field name="name">نصرت الله شفیق</field>

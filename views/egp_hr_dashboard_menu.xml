@@ -9,6 +9,7 @@
         id="menu_employee_dashboard"
         name="Employee Dashboard"
         action="action_employee_dashboard"
+        groups="egp_hr.group_employee_officers"
         sequence="1"
     />
 

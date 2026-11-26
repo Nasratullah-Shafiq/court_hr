@@ -14,7 +14,7 @@
         'security/ir.model.access.csv',
 
         # default Data Files.
-        'data/egp_hr_employee_default_data.xml',
+        'data/egp_hr_employee_default_user_data.xml',
         'data/res_country_state_data.xml',
         'data/training_type_data.xml',
         'data/language_default_data.xml',
@@ -60,6 +60,7 @@
         'views/egp_hr_property_views.xml',
         'views/egp_hr_work_permit_views.xml',
         'views/egp_hr_dashboard_menu.xml',
+        # 'views/egp_hr_id_card_views.xml',
 
         # wizard xml views
         'wizard/views/retirement_report_wizard_views.xml',

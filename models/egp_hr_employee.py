@@ -74,26 +74,26 @@ class HrEmployeeInherit(models.Model):
     #
     father_name = fields.Char(
         string='Father Name', tracking=True,
-        groups="egp_hr.group_employee_officers,egp_hr.group_employee_expert"
+        groups="egp_hr.group_employee_officers,egp_hr.group_employee_expert,egp_hr_recruitment.group_id_card_officer"
     )
     grand_father_name = fields.Char(
         string='Grand Father Name', tracking=True,
-        groups="egp_hr.group_employee_officers,egp_hr.group_employee_expert"
+        groups="egp_hr.group_employee_officers,egp_hr.group_employee_expert,egp_hr_recruitment.group_id_card_officer"
     )
 
     english_name = fields.Char(
         string='English Name', tracking=True,
-        groups="egp_hr.group_employee_officers,egp_hr.group_employee_expert"
+        groups="egp_hr.group_employee_officers,egp_hr.group_employee_expert,egp_hr_recruitment.group_id_card_officer"
     )
 
     english_father_name = fields.Char(
         string='English Father Name', tracking=True,
-        groups="egp_hr.group_employee_officers,egp_hr.group_employee_expert"
+        groups="egp_hr.group_employee_officers,egp_hr.group_employee_expert,egp_hr_recruitment.group_id_card_officer"
     )
 
     english_job_position = fields.Char(
         string='English Job Position', tracking=True,
-        groups="egp_hr.group_employee_officers,egp_hr.group_employee_expert"
+        groups="egp_hr.group_employee_officers,egp_hr.group_employee_expert,egp_hr_recruitment.group_id_card_officer"
     )
     english_department = fields.Char(
         string='English Department', tracking=True,
@@ -323,7 +323,7 @@ class HrEmployeeInherit(models.Model):
         ],
         string='Category',
         tracking=True,
-        groups='egp_hr.group_supreme_court_employee_officers'
+        groups='egp_hr.group_supreme_court_employee_officers,egp_hr_recruitment.group_id_card_officer'
     )
 
     ethnicity = fields.Selection(
@@ -367,7 +367,7 @@ class HrEmployeeInherit(models.Model):
         [('برحال', 'برحال'), ('منفصل', 'منفصل'), ('منفک', 'منفک'), ('معزول', 'معزول'),
          ('بی سرنوشت', 'بی سرنوشت'), ('متقاعد', 'متقاعد'), ('وفات', 'وفات')],
         default="برحال", string="Job Status", tracking=True,
-        groups="egp_hr.group_employee_officers,egp_hr.group_employee_expert"
+        groups="egp_hr.group_employee_officers,egp_hr.group_employee_expert,egp_hr_recruitment.group_id_card_officer"
     )
     court_level = fields.Selection(
         [('مرکز', 'مرکز'), ('تمیز مرکزی', 'تمیز مرکزی'), ('تمیز زون قندهار', 'تمیز زون قندهار'),
@@ -510,7 +510,7 @@ class HrEmployeeInherit(models.Model):
         )
 
     identification_no = fields.Char(string='Identification No', tracking=True,
-        groups="egp_hr.group_employee_officers,egp_hr.group_employee_expert")
+        groups="egp_hr.group_employee_officers,egp_hr.group_employee_expert,egp_hr_recruitment.group_id_card_officer")
 
 
 

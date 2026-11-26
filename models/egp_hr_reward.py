@@ -30,7 +30,6 @@ class EmployeeReward(models.Model):
         readonly=True
     )
 
-
     reward_type = fields.Selection([('sign', 'Sign'), ('medal', 'Medal'), ('cash', 'Cash'),
                                     ('one_month_salary', 'One Month Salary'),
                                     ('honorary_letter_of_appreciation', 'Honorary Letter of Appreciation'),
